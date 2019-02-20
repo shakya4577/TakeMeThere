@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v5I-1I-8sf">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="myEyes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4S-3k-ZG5">
+                                <rect key="frame" x="50" y="350.5" width="275" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="hqb-Eg-e0R"/>
+                                </constraints>
+                                <state key="normal" title="Lets Walk"/>
+                                <connections>
+                                    <action selector="btnLetsWalkClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OIX-6E-YXJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="H4S-3k-ZG5" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="03t-zJ-39k"/>
+                            <constraint firstItem="H4S-3k-ZG5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="PLR-FD-pKk"/>
+                            <constraint firstItem="H4S-3k-ZG5" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Q2L-Cw-SRr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CUf-2l-1Ct"/>
+                    <connections>
+                        <segue destination="p2M-Hi-Bvz" kind="show" identifier="ToARViewController" id="09U-D5-Ve0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="588" y="182.15892053973016"/>
+        </scene>
+        <!--My EyesAR View Controller-->
+        <scene sceneID="BkD-xx-oGj">
+            <objects>
+                <viewController id="p2M-Hi-Bvz" customClass="MyEyesARViewController" customModule="myEyes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lP9-oL-FzE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EfE-sd-vhe">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                <connections>
+                                    <outlet property="delegate" destination="p2M-Hi-Bvz" id="7fJ-cv-rju"/>
+                                </connections>
+                            </arscnView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dxF-Gd-XK2">
+                                <rect key="frame" x="0.0" y="367" width="375" height="300"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dxF-Gd-XK2" firstAttribute="leading" secondItem="Wsq-aY-yN1" secondAttribute="leading" id="7eo-x1-B7T"/>
+                            <constraint firstItem="EfE-sd-vhe" firstAttribute="top" secondItem="lP9-oL-FzE" secondAttribute="top" id="ACi-FZ-xSg"/>
+                            <constraint firstItem="EfE-sd-vhe" firstAttribute="leading" secondItem="Wsq-aY-yN1" secondAttribute="leading" id="Aqh-r1-U76"/>
+                            <constraint firstItem="Wsq-aY-yN1" firstAttribute="bottom" secondItem="dxF-Gd-XK2" secondAttribute="bottom" id="Des-1W-Ahi"/>
+                            <constraint firstItem="EfE-sd-vhe" firstAttribute="height" secondItem="lP9-oL-FzE" secondAttribute="height" multiplier="0.45" id="Gzb-1X-eGc"/>
+                            <constraint firstItem="Wsq-aY-yN1" firstAttribute="trailing" secondItem="dxF-Gd-XK2" secondAttribute="trailing" id="PPn-9S-6B4"/>
+                            <constraint firstItem="dxF-Gd-XK2" firstAttribute="height" secondItem="lP9-oL-FzE" secondAttribute="height" multiplier="0.45" id="Xmd-M2-qfQ"/>
+                            <constraint firstItem="EfE-sd-vhe" firstAttribute="trailing" secondItem="Wsq-aY-yN1" secondAttribute="trailing" id="btW-s5-Dij"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Wsq-aY-yN1"/>
+                    </view>
+                    <connections>
+                        <outlet property="routeMap" destination="dxF-Gd-XK2" id="5al-B7-unC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jLA-QC-zQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1312.8" y="197.45127436281859"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="egm-QN-nLD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v5I-1I-8sf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FwN-jK-a7p">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="lXY-cN-FIC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ddM-hl-TZ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-351.19999999999999" y="182.15892053973016"/>
+        </scene>
+    </scenes>
+</document>
