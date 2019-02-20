@@ -12,7 +12,8 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     var messageToSiri:String = String()
     let request = MKDirections.Request()
     var destinationCoordinate:CLLocationCoordinate2D = CLLocationCoordinate2D()
-    
+    var addressString : String = ""
+    let geocoder = CLGeocoder()
     
     init(iRouteMap:MKMapView, iDestLat:Double,iDestLong:Double)
     {
@@ -39,7 +40,6 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
         currentLocation = locations[0] as CLLocation
         markMe()
         takeMeThere()
-        whereAmI()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
@@ -110,56 +110,51 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     }
     
     func showRoute(_ response: MKDirections.Response) {
-        var nowMoveCount = 0;
+        var counter:Int = 0;
         var audioMessage:String = String();
         for route in response.routes {
             
             routeMap.addOverlay(route.polyline,
                                 level: MKOverlayLevel.aboveRoads)
-            for step in route.steps
+            
+            if (moveCount>route.steps.count || moveCount<route.steps.count)
             {
-                if(audioMessage.isEmpty)
+                moveCount = route.steps.count
+                while(audioMessage.isEmpty)
                 {
-                    audioMessage = step.instructions
+                    audioMessage = route.steps[counter].instructions
+                    counter = counter+1;
                 }
-                nowMoveCount = nowMoveCount + 1;
-                //print(step.instructions)
             }
-            if(moveCount>nowMoveCount || moveCount<nowMoveCount)
-            {
-                moveCount = nowMoveCount
-                MyEyesARViewController.nextMove(step: audioMessage)
-            }
+            
         }
     }
     
-    func whereAmI()->String
+    func whereAmI()
     {
-        var addressString : String = ""
-        let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(currentLocation) { (placemarksArray, error) in
             if (placemarksArray?.count)! > 0 {
                 let pm = placemarksArray![0]
                 
                 if pm.subLocality != nil {
-                    addressString = addressString + pm.subLocality! + ", "
+                    self.addressString = self.addressString + pm.subLocality! + ", "
                 }
                 if pm.thoroughfare != nil {
-                    addressString = addressString + pm.thoroughfare! + ", "
+                    self.addressString = self.addressString + pm.thoroughfare! + ", "
                 }
                 if pm.locality != nil {
-                    addressString = addressString + pm.locality! + ", "
+                    self.addressString = self.addressString + pm.locality! + ", "
                 }
                 if pm.country != nil {
-                    addressString = addressString + pm.country! + ", "
+                    self.addressString = self.addressString + pm.country! + ", "
                 }
                 if pm.postalCode != nil {
-                    addressString = addressString + pm.postalCode! + " "
+                    self.addressString = self.addressString + pm.postalCode! + " "
                 }
+                MyEyesARViewController.iAmAt(location:self.addressString);
             }
-        }
-        print(addressString)
-        return  addressString
+         }
+       
     }
     
 }

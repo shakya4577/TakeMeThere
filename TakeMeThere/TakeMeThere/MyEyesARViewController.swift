@@ -30,7 +30,11 @@ class MyEyesARViewController: UIViewController
     }
     func whereAmI()
     {
-       // MyEyesARViewController.speakSiri(message: (locationManager?.whereAmI())!)
+       locationManager?.whereAmI()
+    }
+    static func iAmAt(location:String)
+    {
+        print(location)
     }
     
 }
