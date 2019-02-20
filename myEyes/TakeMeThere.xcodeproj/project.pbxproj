@@ -39,17 +39,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B1F83E33221B0E2100F19F2B /* myEyes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myEyes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1F83E33221B0E2100F19F2B /* TakeMeThere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeMeThere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F83E36221B0E2200F19F2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1F83E38221B0E2200F19F2B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B1F83E3B221B0E2200F19F2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B1F83E3D221B0E2F00F19F2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1F83E40221B0E2F00F19F2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1F83E42221B0E2F00F19F2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B1F83E47221B0E2F00F19F2B /* myEyesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myEyesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1F83E47221B0E2F00F19F2B /* TakeMeThereTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TakeMeThereTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F83E4B221B0E2F00F19F2B /* myEyesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myEyesTests.swift; sourceTree = "<group>"; };
 		B1F83E4D221B0E2F00F19F2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B1F83E52221B0E2F00F19F2B /* myEyesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myEyesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1F83E52221B0E2F00F19F2B /* TakeMeThereUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TakeMeThereUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F83E56221B0E2F00F19F2B /* myEyesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myEyesUITests.swift; sourceTree = "<group>"; };
 		B1F83E58221B0E2F00F19F2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1F83E65221B136700F19F2B /* MyEyesARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEyesARViewController.swift; sourceTree = "<group>"; };
@@ -104,9 +104,9 @@
 		B1F83E34221B0E2100F19F2B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B1F83E33221B0E2100F19F2B /* myEyes.app */,
-				B1F83E47221B0E2F00F19F2B /* myEyesTests.xctest */,
-				B1F83E52221B0E2F00F19F2B /* myEyesUITests.xctest */,
+				B1F83E33221B0E2100F19F2B /* TakeMeThere.app */,
+				B1F83E47221B0E2F00F19F2B /* TakeMeThereTests.xctest */,
+				B1F83E52221B0E2F00F19F2B /* TakeMeThereUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -167,9 +167,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B1F83E32221B0E2100F19F2B /* myEyes */ = {
+		B1F83E32221B0E2100F19F2B /* TakeMeThere */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B1F83E5B221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "myEyes" */;
+			buildConfigurationList = B1F83E5B221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "TakeMeThere" */;
 			buildPhases = (
 				B1F83E2F221B0E2100F19F2B /* Sources */,
 				B1F83E30221B0E2100F19F2B /* Frameworks */,
@@ -179,14 +179,14 @@
 			);
 			dependencies = (
 			);
-			name = myEyes;
+			name = TakeMeThere;
 			productName = myEyes;
-			productReference = B1F83E33221B0E2100F19F2B /* myEyes.app */;
+			productReference = B1F83E33221B0E2100F19F2B /* TakeMeThere.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B1F83E46221B0E2F00F19F2B /* myEyesTests */ = {
+		B1F83E46221B0E2F00F19F2B /* TakeMeThereTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B1F83E5E221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "myEyesTests" */;
+			buildConfigurationList = B1F83E5E221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "TakeMeThereTests" */;
 			buildPhases = (
 				B1F83E43221B0E2F00F19F2B /* Sources */,
 				B1F83E44221B0E2F00F19F2B /* Frameworks */,
@@ -197,14 +197,14 @@
 			dependencies = (
 				B1F83E49221B0E2F00F19F2B /* PBXTargetDependency */,
 			);
-			name = myEyesTests;
+			name = TakeMeThereTests;
 			productName = myEyesTests;
-			productReference = B1F83E47221B0E2F00F19F2B /* myEyesTests.xctest */;
+			productReference = B1F83E47221B0E2F00F19F2B /* TakeMeThereTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		B1F83E51221B0E2F00F19F2B /* myEyesUITests */ = {
+		B1F83E51221B0E2F00F19F2B /* TakeMeThereUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B1F83E61221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "myEyesUITests" */;
+			buildConfigurationList = B1F83E61221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "TakeMeThereUITests" */;
 			buildPhases = (
 				B1F83E4E221B0E2F00F19F2B /* Sources */,
 				B1F83E4F221B0E2F00F19F2B /* Frameworks */,
@@ -215,9 +215,9 @@
 			dependencies = (
 				B1F83E54221B0E2F00F19F2B /* PBXTargetDependency */,
 			);
-			name = myEyesUITests;
+			name = TakeMeThereUITests;
 			productName = myEyesUITests;
-			productReference = B1F83E52221B0E2F00F19F2B /* myEyesUITests.xctest */;
+			productReference = B1F83E52221B0E2F00F19F2B /* TakeMeThereUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -243,7 +243,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B1F83E2E221B0E2100F19F2B /* Build configuration list for PBXProject "myEyes" */;
+			buildConfigurationList = B1F83E2E221B0E2100F19F2B /* Build configuration list for PBXProject "TakeMeThere" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -256,9 +256,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B1F83E32221B0E2100F19F2B /* myEyes */,
-				B1F83E46221B0E2F00F19F2B /* myEyesTests */,
-				B1F83E51221B0E2F00F19F2B /* myEyesUITests */,
+				B1F83E32221B0E2100F19F2B /* TakeMeThere */,
+				B1F83E46221B0E2F00F19F2B /* TakeMeThereTests */,
+				B1F83E51221B0E2F00F19F2B /* TakeMeThereUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -322,12 +322,12 @@
 /* Begin PBXTargetDependency section */
 		B1F83E49221B0E2F00F19F2B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B1F83E32221B0E2100F19F2B /* myEyes */;
+			target = B1F83E32221B0E2100F19F2B /* TakeMeThere */;
 			targetProxy = B1F83E48221B0E2F00F19F2B /* PBXContainerItemProxy */;
 		};
 		B1F83E54221B0E2F00F19F2B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B1F83E32221B0E2100F19F2B /* myEyes */;
+			target = B1F83E32221B0E2100F19F2B /* TakeMeThere */;
 			targetProxy = B1F83E53221B0E2F00F19F2B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -520,7 +520,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myEyes.app/myEyes";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TakeMeThere.app/TakeMeThere";
 			};
 			name = Debug;
 		};
@@ -540,7 +540,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/myEyes.app/myEyes";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TakeMeThere.app/TakeMeThere";
 			};
 			name = Release;
 		};
@@ -585,7 +585,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B1F83E2E221B0E2100F19F2B /* Build configuration list for PBXProject "myEyes" */ = {
+		B1F83E2E221B0E2100F19F2B /* Build configuration list for PBXProject "TakeMeThere" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B1F83E59221B0E2F00F19F2B /* Debug */,
@@ -594,7 +594,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B1F83E5B221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "myEyes" */ = {
+		B1F83E5B221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "TakeMeThere" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B1F83E5C221B0E2F00F19F2B /* Debug */,
@@ -603,7 +603,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B1F83E5E221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "myEyesTests" */ = {
+		B1F83E5E221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "TakeMeThereTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B1F83E5F221B0E2F00F19F2B /* Debug */,
@@ -612,7 +612,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B1F83E61221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "myEyesUITests" */ = {
+		B1F83E61221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "TakeMeThereUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B1F83E62221B0E2F00F19F2B /* Debug */,
