@@ -12,8 +12,8 @@
 		B1F83E3C221B0E2200F19F2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1F83E3A221B0E2200F19F2B /* Main.storyboard */; };
 		B1F83E3E221B0E2F00F19F2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1F83E3D221B0E2F00F19F2B /* Assets.xcassets */; };
 		B1F83E41221B0E2F00F19F2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1F83E3F221B0E2F00F19F2B /* LaunchScreen.storyboard */; };
-		B1F83E4C221B0E2F00F19F2B /* myEyesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E4B221B0E2F00F19F2B /* myEyesTests.swift */; };
-		B1F83E57221B0E2F00F19F2B /* myEyesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E56221B0E2F00F19F2B /* myEyesUITests.swift */; };
+		B1F83E4C221B0E2F00F19F2B /* TakeMeThereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E4B221B0E2F00F19F2B /* TakeMeThereTests.swift */; };
+		B1F83E57221B0E2F00F19F2B /* TakeMeThereUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E56221B0E2F00F19F2B /* TakeMeThereUITests.swift */; };
 		B1F83E66221B136700F19F2B /* MyEyesARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E65221B136700F19F2B /* MyEyesARViewController.swift */; };
 		B1F83E75221BB24700F19F2B /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F83E74221BB24600F19F2B /* ARKit.framework */; };
 		B1F83E76221BB24D00F19F2B /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F83E68221B1C3D00F19F2B /* SceneKit.framework */; };
@@ -27,14 +27,14 @@
 			containerPortal = B1F83E2B221B0E2100F19F2B /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = B1F83E32221B0E2100F19F2B;
-			remoteInfo = myEyes;
+			remoteInfo = TakeMeThere;
 		};
 		B1F83E53221B0E2F00F19F2B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B1F83E2B221B0E2100F19F2B /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = B1F83E32221B0E2100F19F2B;
-			remoteInfo = myEyes;
+			remoteInfo = TakeMeThere;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -47,10 +47,10 @@
 		B1F83E40221B0E2F00F19F2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1F83E42221B0E2F00F19F2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1F83E47221B0E2F00F19F2B /* TakeMeThereTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TakeMeThereTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1F83E4B221B0E2F00F19F2B /* myEyesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myEyesTests.swift; sourceTree = "<group>"; };
+		B1F83E4B221B0E2F00F19F2B /* TakeMeThereTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeMeThereTests.swift; sourceTree = "<group>"; };
 		B1F83E4D221B0E2F00F19F2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1F83E52221B0E2F00F19F2B /* TakeMeThereUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TakeMeThereUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1F83E56221B0E2F00F19F2B /* myEyesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myEyesUITests.swift; sourceTree = "<group>"; };
+		B1F83E56221B0E2F00F19F2B /* TakeMeThereUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeMeThereUITests.swift; sourceTree = "<group>"; };
 		B1F83E58221B0E2F00F19F2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1F83E65221B136700F19F2B /* MyEyesARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEyesARViewController.swift; sourceTree = "<group>"; };
 		B1F83E68221B1C3D00F19F2B /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
@@ -93,9 +93,9 @@
 		B1F83E2A221B0E2100F19F2B = {
 			isa = PBXGroup;
 			children = (
-				B1F83E35221B0E2200F19F2B /* myEyes */,
-				B1F83E4A221B0E2F00F19F2B /* myEyesTests */,
-				B1F83E55221B0E2F00F19F2B /* myEyesUITests */,
+				B1F83E35221B0E2200F19F2B /* TakeMeThere */,
+				B1F83E4A221B0E2F00F19F2B /* TakeMeThereTests */,
+				B1F83E55221B0E2F00F19F2B /* TakeMeThereUITests */,
 				B1F83E34221B0E2100F19F2B /* Products */,
 				B1F83E67221B1C3C00F19F2B /* Frameworks */,
 			);
@@ -111,7 +111,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B1F83E35221B0E2200F19F2B /* myEyes */ = {
+		B1F83E35221B0E2200F19F2B /* TakeMeThere */ = {
 			isa = PBXGroup;
 			children = (
 				B1F83E36221B0E2200F19F2B /* AppDelegate.swift */,
@@ -123,25 +123,25 @@
 				B1F83E65221B136700F19F2B /* MyEyesARViewController.swift */,
 				B1F83E64221B129D00F19F2B /* ARKit */,
 			);
-			path = myEyes;
+			path = TakeMeThere;
 			sourceTree = "<group>";
 		};
-		B1F83E4A221B0E2F00F19F2B /* myEyesTests */ = {
+		B1F83E4A221B0E2F00F19F2B /* TakeMeThereTests */ = {
 			isa = PBXGroup;
 			children = (
-				B1F83E4B221B0E2F00F19F2B /* myEyesTests.swift */,
+				B1F83E4B221B0E2F00F19F2B /* TakeMeThereTests.swift */,
 				B1F83E4D221B0E2F00F19F2B /* Info.plist */,
 			);
-			path = myEyesTests;
+			path = TakeMeThereTests;
 			sourceTree = "<group>";
 		};
-		B1F83E55221B0E2F00F19F2B /* myEyesUITests */ = {
+		B1F83E55221B0E2F00F19F2B /* TakeMeThereUITests */ = {
 			isa = PBXGroup;
 			children = (
-				B1F83E56221B0E2F00F19F2B /* myEyesUITests.swift */,
+				B1F83E56221B0E2F00F19F2B /* TakeMeThereUITests.swift */,
 				B1F83E58221B0E2F00F19F2B /* Info.plist */,
 			);
-			path = myEyesUITests;
+			path = TakeMeThereUITests;
 			sourceTree = "<group>";
 		};
 		B1F83E64221B129D00F19F2B /* ARKit */ = {
@@ -180,7 +180,7 @@
 			dependencies = (
 			);
 			name = TakeMeThere;
-			productName = myEyes;
+			productName = TakeMeThere;
 			productReference = B1F83E33221B0E2100F19F2B /* TakeMeThere.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -198,7 +198,7 @@
 				B1F83E49221B0E2F00F19F2B /* PBXTargetDependency */,
 			);
 			name = TakeMeThereTests;
-			productName = myEyesTests;
+			productName = TakeMeThereTests;
 			productReference = B1F83E47221B0E2F00F19F2B /* TakeMeThereTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -216,7 +216,7 @@
 				B1F83E54221B0E2F00F19F2B /* PBXTargetDependency */,
 			);
 			name = TakeMeThereUITests;
-			productName = myEyesUITests;
+			productName = TakeMeThereUITests;
 			productReference = B1F83E52221B0E2F00F19F2B /* TakeMeThereUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
@@ -305,7 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1F83E4C221B0E2F00F19F2B /* myEyesTests.swift in Sources */,
+				B1F83E4C221B0E2F00F19F2B /* TakeMeThereTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,7 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1F83E57221B0E2F00F19F2B /* myEyesUITests.swift in Sources */,
+				B1F83E57221B0E2F00F19F2B /* TakeMeThereUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,12 +474,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VRGWW7P72C;
-				INFOPLIST_FILE = myEyes/Info.plist;
+				INFOPLIST_FILE = TakeMeThere/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = myAppShakya.myEyes;
+				PRODUCT_BUNDLE_IDENTIFIER = myAppShakya.TakeMeThereApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -492,12 +492,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VRGWW7P72C;
-				INFOPLIST_FILE = myEyes/Info.plist;
+				INFOPLIST_FILE = TakeMeThere/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = myAppShakya.myEyes;
+				PRODUCT_BUNDLE_IDENTIFIER = myAppShakya.TakeMeThereApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -510,13 +510,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = myEyesTests/Info.plist;
+				INFOPLIST_FILE = TakeMeThereTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = myAppShakya.myEyesTests;
+				PRODUCT_BUNDLE_IDENTIFIER = myAppShakya.TakeMeThereTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -530,13 +530,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = myEyesTests/Info.plist;
+				INFOPLIST_FILE = TakeMeThereTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = myAppShakya.myEyesTests;
+				PRODUCT_BUNDLE_IDENTIFIER = myAppShakya.TakeMeThereTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -549,17 +549,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = myEyesUITests/Info.plist;
+				INFOPLIST_FILE = TakeMeThereUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = myAppShakya.myEyesUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = myAppShakya.TakeMeThereUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = myEyes;
+				TEST_TARGET_NAME = TakeMeThere;
 			};
 			name = Debug;
 		};
@@ -568,17 +568,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = myEyesUITests/Info.plist;
+				INFOPLIST_FILE = TakeMeThereUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = myAppShakya.myEyesUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = myAppShakya.TakeMeThereUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = myEyes;
+				TEST_TARGET_NAME = TakeMeThere;
 			};
 			name = Release;
 		};
