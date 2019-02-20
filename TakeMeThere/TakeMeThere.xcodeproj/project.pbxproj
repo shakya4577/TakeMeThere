@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B1CA9184221D2CA0004B4CAB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CA9183221D2CA0004B4CAB /* LocationManager.swift */; };
+		B1CA9186221D2CF6004B4CAB /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CA9185221D2CF6004B4CAB /* LocationDelegate.swift */; };
 		B1F83E37221B0E2200F19F2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E36221B0E2200F19F2B /* AppDelegate.swift */; };
 		B1F83E39221B0E2200F19F2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E38221B0E2200F19F2B /* ViewController.swift */; };
 		B1F83E3C221B0E2200F19F2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1F83E3A221B0E2200F19F2B /* Main.storyboard */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B1CA9183221D2CA0004B4CAB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		B1CA9185221D2CF6004B4CAB /* LocationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDelegate.swift; sourceTree = "<group>"; };
 		B1F83E33221B0E2100F19F2B /* TakeMeThere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeMeThere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F83E36221B0E2200F19F2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1F83E38221B0E2200F19F2B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +94,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B1CA917F221D2BD5004B4CAB /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		B1CA9180221D2BE2004B4CAB /* Location Service */ = {
+			isa = PBXGroup;
+			children = (
+				B1CA9183221D2CA0004B4CAB /* LocationManager.swift */,
+				B1CA9185221D2CF6004B4CAB /* LocationDelegate.swift */,
+			);
+			path = "Location Service";
+			sourceTree = "<group>";
+		};
+		B1CA9181221D2BF0004B4CAB /* Augumented Reality */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Augumented Reality";
+			sourceTree = "<group>";
+		};
+		B1CA9182221D2C5A004B4CAB /* SiRi */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SiRi;
+			sourceTree = "<group>";
+		};
 		B1F83E2A221B0E2100F19F2B = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +148,10 @@
 		B1F83E35221B0E2200F19F2B /* TakeMeThere */ = {
 			isa = PBXGroup;
 			children = (
+				B1CA9182221D2C5A004B4CAB /* SiRi */,
+				B1CA9181221D2BF0004B4CAB /* Augumented Reality */,
+				B1CA9180221D2BE2004B4CAB /* Location Service */,
+				B1CA917F221D2BD5004B4CAB /* ViewController */,
 				B1F83E36221B0E2200F19F2B /* AppDelegate.swift */,
 				B1F83E38221B0E2200F19F2B /* ViewController.swift */,
 				B1F83E3A221B0E2200F19F2B /* Main.storyboard */,
@@ -295,9 +333,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1CA9184221D2CA0004B4CAB /* LocationManager.swift in Sources */,
 				B1F83E39221B0E2200F19F2B /* ViewController.swift in Sources */,
 				B1F83E66221B136700F19F2B /* MyEyesARViewController.swift in Sources */,
 				B1F83E37221B0E2200F19F2B /* AppDelegate.swift in Sources */,
+				B1CA9186221D2CF6004B4CAB /* LocationDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
