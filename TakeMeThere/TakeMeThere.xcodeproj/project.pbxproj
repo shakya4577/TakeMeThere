@@ -99,12 +99,12 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		B1CA9180221D2BE2004B4CAB /* Location Service */ = {
+		B1CA9180221D2BE2004B4CAB /* Location */ = {
 			isa = PBXGroup;
 			children = (
 				B1CA9185221D2CF6004B4CAB /* LocationManager.swift */,
 			);
-			path = "Location Service";
+			path = Location;
 			sourceTree = "<group>";
 		};
 		B1CA9181221D2BF0004B4CAB /* Augumented Reality */ = {
@@ -147,7 +147,7 @@
 			children = (
 				B1CA9182221D2C5A004B4CAB /* SiRi */,
 				B1CA9181221D2BF0004B4CAB /* Augumented Reality */,
-				B1CA9180221D2BE2004B4CAB /* Location Service */,
+				B1CA9180221D2BE2004B4CAB /* Location */,
 				B1CA917F221D2BD5004B4CAB /* ViewController */,
 				B1F83E36221B0E2200F19F2B /* AppDelegate.swift */,
 				B1F83E38221B0E2200F19F2B /* ViewController.swift */,
