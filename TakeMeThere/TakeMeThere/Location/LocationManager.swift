@@ -90,6 +90,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
         let desitnationPlaceMark = MKPlacemark.init(coordinate: destinationCoordinate)
         request.destination = MKMapItem.init(placemark: desitnationPlaceMark)
         request.requestsAlternateRoutes = false
+        request.transportType = MKDirectionsTransportType.walking
         let directions = MKDirections(request: request)
         directions.calculate(completionHandler: {(response, error) in
             
@@ -111,14 +112,22 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
             routeMap.addOverlay(route.polyline,
                                 level: MKOverlayLevel.aboveRoads)
             
+            print("move count \(moveCount)")
+            print("Steo count \(route.steps.count)")
             if (moveCount>route.steps.count || moveCount<route.steps.count)
             {
                 moveCount = route.steps.count
                 while(audioMessage.isEmpty)
                 {
                     audioMessage = route.steps[counter].instructions
-                    counter = counter+1;
+                   if let notice = route.steps[counter].notice
+                   {
+                      print("Notice:-  \(notice)")
+                   }
+                   print("distance:-  \(route.steps[counter].distance)")
+                   counter = counter+1;
                 }
+                MyEyesARViewController.nextMove(step: audioMessage)
             }
             
         }
