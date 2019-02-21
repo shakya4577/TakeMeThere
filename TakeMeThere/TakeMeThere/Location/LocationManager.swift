@@ -14,7 +14,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     var destinationCoordinate:CLLocationCoordinate2D = CLLocationCoordinate2D()
     var addressString : String = ""
     let geocoder = CLGeocoder()
-    
+    var isStartLocationMarked:Bool=false
     init(iRouteMap:MKMapView, iDestLat:Double,iDestLong:Double)
     {
         super.init()
@@ -38,8 +38,8 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         currentLocation = locations[0] as CLLocation
-        markMe()
         takeMeThere()
+        markMe()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
@@ -80,21 +80,15 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     func markMe()
     {
         let centre = currentLocation.coordinate
-        let region = MKCoordinateRegion(center: centre, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.0))
+        let region = MKCoordinateRegion(center: centre, span: MKCoordinateSpan(latitudeDelta: 0.0001, longitudeDelta: 0.0))
         self.routeMap.setRegion(region, animated: true)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = currentLocation.coordinate
-        annotation.title = "I am here"
-        self.routeMap.addAnnotation(annotation)
     }
     
     func takeMeThere() {
         
         request.source = MKMapItem.forCurrentLocation()
-        
         let desitnationPlaceMark = MKPlacemark.init(coordinate: destinationCoordinate)
         request.destination = MKMapItem.init(placemark: desitnationPlaceMark)
-        
         request.requestsAlternateRoutes = false
         let directions = MKDirections(request: request)
         directions.calculate(completionHandler: {(response, error) in

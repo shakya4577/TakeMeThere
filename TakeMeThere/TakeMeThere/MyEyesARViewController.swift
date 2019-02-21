@@ -16,7 +16,7 @@ class MyEyesARViewController: UIViewController
     override func viewDidLoad()
     {
         locationManager = LocationManager(iRouteMap: routeMap, iDestLat: destinationLat, iDestLong: destinationLong)
-        whereAmI()
+        siriInput()
         super.viewDidLoad()
         
     }
@@ -28,15 +28,18 @@ class MyEyesARViewController: UIViewController
     {
         print(message)
     }
-    func whereAmI()
+    func siriInput()
     {
-       locationManager?.whereAmI()
     }
     static func iAmAt(location:String)
     {
         print(location)
     }
     
+    @IBAction func btnTestClick(_ sender: Any)
+    {
+        locationManager?.whereAmI()
+    }
 }
 
 
