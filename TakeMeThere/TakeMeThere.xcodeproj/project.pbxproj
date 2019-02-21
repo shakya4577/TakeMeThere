@@ -41,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		B1CA9185221D2CF6004B4CAB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		B1CA9187221E5B49004B4CAB /* TakeMeThere.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TakeMeThere.entitlements; sourceTree = "<group>"; };
 		B1F83E33221B0E2100F19F2B /* TakeMeThere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeMeThere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F83E36221B0E2200F19F2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1F83E38221B0E2200F19F2B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +146,7 @@
 		B1F83E35221B0E2200F19F2B /* TakeMeThere */ = {
 			isa = PBXGroup;
 			children = (
+				B1CA9187221E5B49004B4CAB /* TakeMeThere.entitlements */,
 				B1CA9182221D2C5A004B4CAB /* SiRi */,
 				B1CA9181221D2BF0004B4CAB /* Augumented Reality */,
 				B1CA9180221D2BE2004B4CAB /* Location */,
@@ -267,6 +269,11 @@
 				TargetAttributes = {
 					B1F83E32221B0E2100F19F2B = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					B1F83E46221B0E2F00F19F2B = {
 						CreatedOnToolsVersion = 10.1;
@@ -508,6 +515,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TakeMeThere/TakeMeThere.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VRGWW7P72C;
 				INFOPLIST_FILE = TakeMeThere/Info.plist;
@@ -526,6 +534,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TakeMeThere/TakeMeThere.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VRGWW7P72C;
 				INFOPLIST_FILE = TakeMeThere/Info.plist;

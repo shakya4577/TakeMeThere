@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="myEyes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TakeMeThere" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,7 @@
         <!--My EyesAR View Controller-->
         <scene sceneID="BkD-xx-oGj">
             <objects>
-                <viewController id="p2M-Hi-Bvz" customClass="MyEyesARViewController" customModule="myEyes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="p2M-Hi-Bvz" customClass="MyEyesARViewController" customModule="TakeMeThere" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lP9-oL-FzE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,17 +63,28 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dxF-Gd-XK2">
                                 <rect key="frame" x="0.0" y="367" width="375" height="300"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQ2-hF-hCJ">
+                                <rect key="frame" x="164" y="318" width="46" height="30"/>
+                                <state key="normal" title="Test"/>
+                                <connections>
+                                    <action selector="btnTestClick:" destination="p2M-Hi-Bvz" eventType="touchUpInside" id="d7m-Cy-tF8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dxF-Gd-XK2" firstAttribute="leading" secondItem="Wsq-aY-yN1" secondAttribute="leading" id="7eo-x1-B7T"/>
                             <constraint firstItem="EfE-sd-vhe" firstAttribute="top" secondItem="lP9-oL-FzE" secondAttribute="top" id="ACi-FZ-xSg"/>
                             <constraint firstItem="EfE-sd-vhe" firstAttribute="leading" secondItem="Wsq-aY-yN1" secondAttribute="leading" id="Aqh-r1-U76"/>
+                            <constraint firstItem="dxF-Gd-XK2" firstAttribute="top" secondItem="FQ2-hF-hCJ" secondAttribute="bottom" constant="19" id="BS0-6m-p26"/>
                             <constraint firstItem="Wsq-aY-yN1" firstAttribute="bottom" secondItem="dxF-Gd-XK2" secondAttribute="bottom" id="Des-1W-Ahi"/>
                             <constraint firstItem="EfE-sd-vhe" firstAttribute="height" secondItem="lP9-oL-FzE" secondAttribute="height" multiplier="0.45" id="Gzb-1X-eGc"/>
                             <constraint firstItem="Wsq-aY-yN1" firstAttribute="trailing" secondItem="dxF-Gd-XK2" secondAttribute="trailing" id="PPn-9S-6B4"/>
                             <constraint firstItem="dxF-Gd-XK2" firstAttribute="height" secondItem="lP9-oL-FzE" secondAttribute="height" multiplier="0.45" id="Xmd-M2-qfQ"/>
                             <constraint firstItem="EfE-sd-vhe" firstAttribute="trailing" secondItem="Wsq-aY-yN1" secondAttribute="trailing" id="btW-s5-Dij"/>
+                            <constraint firstItem="Wsq-aY-yN1" firstAttribute="trailing" secondItem="FQ2-hF-hCJ" secondAttribute="trailing" constant="165" id="mtq-id-fox"/>
+                            <constraint firstItem="FQ2-hF-hCJ" firstAttribute="top" secondItem="EfE-sd-vhe" secondAttribute="bottom" constant="18" id="qGI-Ew-Aea"/>
+                            <constraint firstItem="FQ2-hF-hCJ" firstAttribute="leading" secondItem="Wsq-aY-yN1" secondAttribute="leading" constant="164" id="rCd-IH-b47"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wsq-aY-yN1"/>
                     </view>
