@@ -13,6 +13,7 @@
 		B15AC70C221EB79E00953F0E /* UserDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15AC70B221EB79E00953F0E /* UserDetailModel.swift */; };
 		B15AC73C221EC20F00953F0E /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15AC73B221EC20F00953F0E /* Realm.framework */; };
 		B15AC73E221EC20F00953F0E /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15AC73D221EC20F00953F0E /* RealmSwift.framework */; };
+		B15AC740221EC36900953F0E /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15AC73F221EC36900953F0E /* LocationModel.swift */; };
 		B1CA9186221D2CF6004B4CAB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CA9185221D2CF6004B4CAB /* LocationManager.swift */; };
 		B1F83E37221B0E2200F19F2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E36221B0E2200F19F2B /* AppDelegate.swift */; };
 		B1F83E39221B0E2200F19F2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E38221B0E2200F19F2B /* ViewController.swift */; };
@@ -56,6 +57,7 @@
 		B15AC70B221EB79E00953F0E /* UserDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailModel.swift; sourceTree = "<group>"; };
 		B15AC73B221EC20F00953F0E /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B15AC73D221EC20F00953F0E /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B15AC73F221EC36900953F0E /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		B1CA9185221D2CF6004B4CAB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B1CA9187221E5B49004B4CAB /* TakeMeThere.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TakeMeThere.entitlements; sourceTree = "<group>"; };
 		B1F83E33221B0E2100F19F2B /* TakeMeThere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeMeThere.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				B15AC70B221EB79E00953F0E /* UserDetailModel.swift */,
+				B15AC73F221EC36900953F0E /* LocationModel.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -481,6 +484,7 @@
 				B1F83E66221B136700F19F2B /* MyEyesARViewController.swift in Sources */,
 				B15AC70C221EB79E00953F0E /* UserDetailModel.swift in Sources */,
 				B1F83E37221B0E2200F19F2B /* AppDelegate.swift in Sources */,
+				B15AC740221EC36900953F0E /* LocationModel.swift in Sources */,
 				B1CA9186221D2CF6004B4CAB /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
