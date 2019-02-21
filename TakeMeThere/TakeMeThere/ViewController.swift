@@ -12,11 +12,17 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let userDetailModel:UserDetailModel = UserDetailModel()
+        userDetailModel.userName = "Test User"
+        userDetailModel.userEmergencyNumber = "11111"
+        userDetailModel.userNumber = "2222"
+        userDetailModel.userAddress = "Test Address"
+        RealmManager.saveUserDetail(userDetails: userDetailModel)
     }
     
     @IBAction func btnLetsWalkClick(_ sender: Any)
     {
-        performSegue(withIdentifier: "ToARViewController", sender: Data())
+       performSegue(withIdentifier: "ToARViewController", sender: Data())
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {

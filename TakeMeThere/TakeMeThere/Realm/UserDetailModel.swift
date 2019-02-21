@@ -1,7 +1,7 @@
 import Realm
 import RealmSwift
 
-class UserModel : Object
+class UserDetailModel : Object
 {
     @objc dynamic var userName = ""
     @objc dynamic var userAddress = ""
