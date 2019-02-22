@@ -10,6 +10,7 @@
 		02D0C0BCDAA718A6286705AC /* Pods_TakeMeThereUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9ADDC25CD6592A076A85E43 /* Pods_TakeMeThereUITests.framework */; };
 		2C87078A2419EFA743581726 /* Pods_TakeMeThere.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3227C3B1474E531FFF9C48F8 /* Pods_TakeMeThere.framework */; };
 		49ABF07450CEEEE5B7AA4183 /* Pods_TakeMeThereTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E860CEACD657ECA41F80844 /* Pods_TakeMeThereTests.framework */; };
+		B104D7A522205C9400BA6D5A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B104D7A422205C9400BA6D5A /* Constants.swift */; };
 		B15AC70C221EB79E00953F0E /* UserDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15AC70B221EB79E00953F0E /* UserDetailModel.swift */; };
 		B15AC73C221EC20F00953F0E /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15AC73B221EC20F00953F0E /* Realm.framework */; };
 		B15AC73E221EC20F00953F0E /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15AC73D221EC20F00953F0E /* RealmSwift.framework */; };
@@ -57,6 +58,7 @@
 		942992C311D8F5B606B7FCEA /* Pods-TakeMeThere.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeThere.debug.xcconfig"; path = "Target Support Files/Pods-TakeMeThere/Pods-TakeMeThere.debug.xcconfig"; sourceTree = "<group>"; };
 		9E860CEACD657ECA41F80844 /* Pods_TakeMeThereTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TakeMeThereTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5B84F2C5840B39EC47E414 /* Pods-TakeMeThereTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TakeMeThereTests.release.xcconfig"; path = "Target Support Files/Pods-TakeMeThereTests/Pods-TakeMeThereTests.release.xcconfig"; sourceTree = "<group>"; };
+		B104D7A422205C9400BA6D5A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B15AC70B221EB79E00953F0E /* UserDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailModel.swift; sourceTree = "<group>"; };
 		B15AC73B221EC20F00953F0E /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B15AC73D221EC20F00953F0E /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -216,6 +218,7 @@
 				B1F83E3F221B0E2F00F19F2B /* LaunchScreen.storyboard */,
 				B1F83E42221B0E2F00F19F2B /* Info.plist */,
 				B1F83E65221B136700F19F2B /* MyEyesARViewController.swift */,
+				B104D7A422205C9400BA6D5A /* Constants.swift */,
 			);
 			path = TakeMeThere;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				B15AC740221EC36900953F0E /* LocationModel.swift in Sources */,
 				B15AC742221EC3FF00953F0E /* RealmManager.swift in Sources */,
 				B1CA9186221D2CF6004B4CAB /* LocationManager.swift in Sources */,
+				B104D7A522205C9400BA6D5A /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

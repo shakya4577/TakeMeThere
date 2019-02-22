@@ -18,31 +18,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H4S-3k-ZG5">
-                                <rect key="frame" x="50" y="350.5" width="275" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="hqb-Eg-e0R"/>
-                                </constraints>
-                                <state key="normal" title="Lets Walk"/>
+                            <tableView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iv6-nH-X1O">
+                                <rect key="frame" x="0.0" y="124" width="375" height="543"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <imageView multipleTouchEnabled="YES" alpha="0.10000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Q0-ii-8oh">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <gestureRecognizers/>
                                 <connections>
-                                    <action selector="btnLetsWalkClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OIX-6E-YXJ"/>
+                                    <outletCollection property="gestureRecognizers" destination="mMi-SN-Z3b" appends="YES" id="ECI-PO-YgZ"/>
+                                    <outletCollection property="gestureRecognizers" destination="D3G-iD-xIL" appends="YES" id="oc5-WR-br7"/>
                                 </connections>
-                            </button>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CVD-lq-4pF">
+                                <rect key="frame" x="20" y="84" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="H4S-3k-ZG5" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="03t-zJ-39k"/>
-                            <constraint firstItem="H4S-3k-ZG5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="PLR-FD-pKk"/>
-                            <constraint firstItem="H4S-3k-ZG5" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Q2L-Cw-SRr"/>
+                            <constraint firstItem="iv6-nH-X1O" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0Iv-fh-NGU"/>
+                            <constraint firstItem="iv6-nH-X1O" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0Wy-nc-z4U"/>
+                            <constraint firstItem="6Q0-ii-8oh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="I1G-hh-z51"/>
+                            <constraint firstItem="CVD-lq-4pF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="K7x-E2-3qg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CVD-lq-4pF" secondAttribute="trailing" constant="20" id="LgO-ID-8up"/>
+                            <constraint firstItem="iv6-nH-X1O" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="R5R-sY-40o"/>
+                            <constraint firstItem="CVD-lq-4pF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Vg8-7d-iEH"/>
+                            <constraint firstItem="6Q0-ii-8oh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xzm-UY-DUW"/>
+                            <constraint firstItem="6Q0-ii-8oh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bg7-JV-Ll6"/>
+                            <constraint firstItem="6Q0-ii-8oh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="uWb-Fh-LkD"/>
+                            <constraint firstItem="iv6-nH-X1O" firstAttribute="top" secondItem="CVD-lq-4pF" secondAttribute="bottom" constant="10" id="wzQ-aD-jvA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="CUf-2l-1Ct"/>
                     <connections>
-                        <segue destination="p2M-Hi-Bvz" kind="show" identifier="ToARViewController" id="09U-D5-Ve0"/>
+                        <outlet property="locationTableView" destination="iv6-nH-X1O" id="aFe-jv-FTn"/>
+                        <outlet property="mainView" destination="6Q0-ii-8oh" id="6Fw-PG-Cxf"/>
+                        <segue destination="p2M-Hi-Bvz" kind="show" identifier="segueExplore" id="09U-D5-Ve0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1" id="mMi-SN-Z3b">
+                    <connections>
+                        <action selector="longPressDetected:" destination="BYZ-38-t0r" id="4Dv-g2-XnA"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="D3G-iD-xIL">
+                    <connections>
+                        <action selector="panDetected:" destination="BYZ-38-t0r" id="Rbg-Q0-Xrs"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="588" y="182.15892053973016"/>
         </scene>
@@ -89,12 +117,13 @@
                         <viewLayoutGuide key="safeArea" id="Wsq-aY-yN1"/>
                     </view>
                     <connections>
+                        <outlet property="arSceneHeightContraint" destination="Gzb-1X-eGc" id="5c9-uB-GBb"/>
                         <outlet property="routeMap" destination="dxF-Gd-XK2" id="5al-B7-unC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jLA-QC-zQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1312.8" y="197.45127436281859"/>
+            <point key="canvasLocation" x="1569" y="202"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="egm-QN-nLD">

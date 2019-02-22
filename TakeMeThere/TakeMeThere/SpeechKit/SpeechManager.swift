@@ -7,8 +7,11 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine:AVAudioEngine? = AVAudioEngine()
+    private let audioSession = AVAudioSession.sharedInstance()
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
-
+    private var voiceInteractorSemaphor = true
+    private var listeningSempahor = true
+    private var voiceInputMessage = String()
     override init()
     {
         super.init()
@@ -22,14 +25,13 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
         }
     }
     
-    func Listening() {
+    func voiceInput() {
         
         if recognitionTask != nil {
             recognitionTask?.cancel()
             recognitionTask = nil
         }
         
-        let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(.record, mode: .default)
             try audioSession.setMode(AVAudioSession.Mode.measurement)
@@ -51,11 +53,14 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
         recognitionTask = speechRecognizer!.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
             
             if result != nil {
-                let audioMessage:String = (result?.bestTranscription.formattedString)!
-                print(audioMessage)
-                //self.audioEngine!.stop()
+                self.voiceInputMessage = (result?.bestTranscription.formattedString)!
+                if(self.listeningSempahor)
+                {
+                  self.listeningSempahor = false
+                    Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.voiceInputAction), userInfo: nil, repeats: false)
+                }
+                //print(self.voiceInputMessage)
             }
-            
             if error != nil  {
                 self.audioEngine!.stop()
                 inputNode.removeTap(onBus: 0)
@@ -76,7 +81,42 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
         }
     }
     
-    func saying(message:String)
+    @objc func voiceInputAction()
+    {
+        voiceInputMessage = voiceInputMessage.trimmingCharacters(in: .whitespacesAndNewlines)
+        print(" final "+voiceInputMessage)
+      
+        if(voiceInputMessage == "Let's walk")
+        {
+           AppDelegate.homeViewController.letsWalk()
+        }
+        else if (voiceInputMessage == "Take me to")
+        {
+            AppDelegate.homeViewController.takeMetoDestination();
+        }
+        else
+        {
+            
+        }
+    }
+    
+    func awakeVoiceInteractor()
+    {
+        if(voiceInteractorSemaphor)
+        {
+            voiceInteractorSemaphor = false;
+            _ = Timer.scheduledTimer(withTimeInterval: 20, repeats: false)
+            { timer in
+                self.voiceInteractorSemaphor = true
+            }
+            voiceOutput(message: Constants.awakeMessage)
+            sleep(4)
+            voiceInput()
+        }
+    }
+    
+    
+    func voiceOutput(message:String)
     {
         let utterance = AVSpeechUtterance(string: message)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
