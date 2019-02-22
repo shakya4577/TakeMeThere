@@ -1,17 +1,13 @@
-//
-//  ViewController.swift
-//  myEyes
-//
-//  Created by Wilson Kardam on 18/02/19.
-//  Copyright © 2019 Wilson Shakya. All rights reserved.
-//
-
 import UIKit
-
-class ViewController: UIViewController {
+import Speech
+class ViewController: UIViewController,SFSpeechRecognizerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func testRealm()
+    {
         let userDetailModel:UserDetailModel = UserDetailModel()
         userDetailModel.userName = "Test User"
         userDetailModel.userEmergencyNumber = "11111"
@@ -33,6 +29,5 @@ class ViewController: UIViewController {
             arVC?.destinationLong = 77.2321066
         }
     }
-
 }
 

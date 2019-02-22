@@ -22,7 +22,7 @@ class MyEyesARViewController: UIViewController
     }
     static func nextMove(step:String)
     {
-        speakSiri(message: step)
+       AppDelegate.speechManager.saying(message: step)
     }
     static func speakSiri(message:String)
     {
