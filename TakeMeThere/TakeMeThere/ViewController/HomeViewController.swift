@@ -7,7 +7,8 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     
     private var localLocationList = ["Australia","Australia one","Australia two","Australia three","four Australia me","France","France one","France two","France three","USA","South Africa","Canada","India"]
     
-    private var isWalkMode = true;
+    private var isWalkMode = true
+    private var isSelection = false
     @IBOutlet weak var txtLocationSearch: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +33,30 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         AppDelegate.speechManager.awakeVoiceInteractor()
     }
     
-    @IBAction func panDetected(_ sender: UIPanGestureRecognizer)
+   
+    @IBAction func swipeDetected(_ sender: UISwipeGestureRecognizer)
     {
-        
+        if(sender.direction == .up && !isSelection)
+        {
+            filterLocationInput()
+        }
+        else if(sender.direction == .up && isSelection)
+        {
+            
+        }
+        else if(sender.direction == .right)
+        {
+            letsWalk()
+        }
+        else if(sender.direction == .down && isSelection)
+        {
+            
+        }
+    }
+    
+    @IBAction func tapDetected(_ sender: UITapGestureRecognizer)
+    {
+        whereAmI()
     }
     
     func whereAmI()
@@ -58,7 +80,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         locationTableView.reloadData()
     }
     
-    func filterLocationInput(filterInput: String)
+    func filterLocationInput(filterInput: String="")
     {
         localLocationList = localLocationList.filter { $0.contains(filterInput) }
         locationTableView.reloadData()
@@ -71,6 +93,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     
     func takeMetoDestination(destination:String)
     {
+        isSelection = true
         isWalkMode = false
         performSegue(withIdentifier: "VisionSegue", sender: Data())
     }

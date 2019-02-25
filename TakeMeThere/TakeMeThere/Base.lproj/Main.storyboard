@@ -56,7 +56,11 @@
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="mMi-SN-Z3b" appends="YES" id="ECI-PO-YgZ"/>
-                                    <outletCollection property="gestureRecognizers" destination="D3G-iD-xIL" appends="YES" id="oc5-WR-br7"/>
+                                    <outletCollection property="gestureRecognizers" destination="dSe-k0-IxC" appends="YES" id="8nz-VM-E73"/>
+                                    <outletCollection property="gestureRecognizers" destination="ylb-Yx-Jic" appends="YES" id="gSd-CW-lLs"/>
+                                    <outletCollection property="gestureRecognizers" destination="ske-UM-01c" appends="YES" id="ITn-1K-CZk"/>
+                                    <outletCollection property="gestureRecognizers" destination="nC3-YJ-ezS" appends="YES" id="mrg-S1-3k6"/>
+                                    <outletCollection property="gestureRecognizers" destination="2Wv-vk-9jm" appends="YES" id="dLL-ZT-cme"/>
                                 </connections>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CVD-lq-4pF">
@@ -96,11 +100,31 @@
                         <action selector="longPressDetected:" destination="BYZ-38-t0r" id="4Dv-g2-XnA"/>
                     </connections>
                 </pongPressGestureRecognizer>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="D3G-iD-xIL">
+                <swipeGestureRecognizer direction="up" id="dSe-k0-IxC">
                     <connections>
-                        <action selector="panDetected:" destination="BYZ-38-t0r" id="Rbg-Q0-Xrs"/>
+                        <action selector="swipeDetected:" destination="BYZ-38-t0r" id="aGC-na-yof"/>
                     </connections>
-                </panGestureRecognizer>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="ylb-Yx-Jic">
+                    <connections>
+                        <action selector="swipeDetected:" destination="BYZ-38-t0r" id="6zw-Cb-fXX"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="down" id="ske-UM-01c">
+                    <connections>
+                        <action selector="swipeDetected:" destination="BYZ-38-t0r" id="PNK-DG-LcD"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="nC3-YJ-ezS">
+                    <connections>
+                        <action selector="swipeDetected:" destination="BYZ-38-t0r" id="vPT-8D-Px5"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="2Wv-vk-9jm">
+                    <connections>
+                        <action selector="tapDetected:" destination="BYZ-38-t0r" id="5xW-SY-h7a"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="588" y="182.15892053973016"/>
         </scene>
