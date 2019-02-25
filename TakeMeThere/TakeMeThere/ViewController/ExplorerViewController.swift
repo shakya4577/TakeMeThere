@@ -32,11 +32,6 @@ class ExplorerViewController: UIViewController
        AppDelegate.speechManager.voiceOutput(message: step)
     }
     
-    static func speakSiri(message:String)
-    {
-        print(message)
-    }
-    
     func whereAmI(location:String)
     {
         locationManager!.getUserLocatoin { (location:String) in
