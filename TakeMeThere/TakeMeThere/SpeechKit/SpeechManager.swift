@@ -89,7 +89,11 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
       
         if(voiceInputMessage == "Let's walk")
         {
-            AppDelegate.visioinDelegate!.letsWalk()
+            AppDelegate.primeDelegate!.letsWalk()
+        }
+        else if(voiceInputMessage == "Where am I")
+        {
+            AppDelegate.primeDelegate!.whereAmI()
         }
         else
         {
@@ -98,7 +102,7 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
             let destination:String = String(voiceInputMessage[index...voiceInputMessage.endIndex])
             if (isTakeMeCommand == "Take me to")
             {
-                AppDelegate.visioinDelegate!.filterLocationInput(filterInput: destination)
+                AppDelegate.primeDelegate!.filterLocationInput(filterInput: destination)
             }
         }
     }
@@ -112,10 +116,9 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
             { timer in
                 self.voiceInteractorSemaphor = true
             }
-            AppDelegate.visioinDelegate!.filterLocationInput(filterInput: "Aus")
-//            voiceOutput(message: Constants.awakeMessage)
-//            sleep(2)
-//            voiceInput()
+            voiceOutput(message: Constants.awakeMessage)
+            sleep(2)
+            voiceInput()
         }
     }
     

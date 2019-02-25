@@ -4,7 +4,7 @@ import SceneKit
 import CoreLocation
 import MapKit
 
-class ExplorerViewController: UIViewController
+class VisionViewController: UIViewController
 {
     @IBOutlet weak var routeMap: MKMapView!
     @IBOutlet weak var lblInfoTwo: UILabel!

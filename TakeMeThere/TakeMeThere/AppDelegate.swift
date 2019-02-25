@@ -14,7 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     static let speechManager:SpeechManager = SpeechManager()
     static let homeViewController:HomeViewController = HomeViewController()
-    static var visioinDelegate:VisionDelegate?
+    static var primeDelegate:PrimeDelegate?
+    static var visionDelegate:VisionDelegate?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

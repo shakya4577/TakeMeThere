@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="124" width="375" height="543"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DestinationCell" rowHeight="79" id="DkC-Id-XMH" customClass="LocationTableCell" customModule="TakeMeThere" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DestinationCell" rowHeight="79" id="DkC-Id-XMH" customClass="LocationTableCell" customModule="TakeMeThere" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DkC-Id-XMH" id="MmV-tz-JQb">
@@ -86,7 +86,8 @@
                     <connections>
                         <outlet property="locationTableView" destination="iv6-nH-X1O" id="aFe-jv-FTn"/>
                         <outlet property="mainView" destination="6Q0-ii-8oh" id="6Fw-PG-Cxf"/>
-                        <segue destination="p2M-Hi-Bvz" kind="presentation" identifier="ExplorerSegue" id="Cwh-fv-tc8"/>
+                        <outlet property="txtLocationSearch" destination="CVD-lq-4pF" id="Zc4-zp-W7P"/>
+                        <segue destination="p2M-Hi-Bvz" kind="presentation" identifier="VisionSegue" id="Cwh-fv-tc8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -103,10 +104,10 @@
             </objects>
             <point key="canvasLocation" x="588" y="182.15892053973016"/>
         </scene>
-        <!--Explorer View Controller-->
+        <!--Vision View Controller-->
         <scene sceneID="BkD-xx-oGj">
             <objects>
-                <viewController storyboardIdentifier="ExplorerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p2M-Hi-Bvz" customClass="ExplorerViewController" customModule="TakeMeThere" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExplorerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p2M-Hi-Bvz" customClass="VisionViewController" customModule="TakeMeThere" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lP9-oL-FzE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -1,6 +1,6 @@
-protocol VisionDelegate
+protocol PrimeDelegate
 {
-    func youAreAt(location:String)
     func letsWalk()
     func filterLocationInput(filterInput:String)
+    func whereAmI()
 }
