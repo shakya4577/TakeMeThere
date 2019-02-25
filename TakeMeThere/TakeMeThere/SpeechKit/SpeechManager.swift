@@ -94,11 +94,11 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
         {
             let index = voiceInputMessage.index(voiceInputMessage.startIndex, offsetBy: 10)
             let isTakeMeCommand = voiceInputMessage[..<index]
+            let destination:String = String(voiceInputMessage[index...voiceInputMessage.endIndex])
             if (isTakeMeCommand == "Take me to")
             {
-                AppDelegate.homeViewController.takeMetoDestination();
+                AppDelegate.homeViewController.takeMetoDestination(destination: destination);
             }
-            
         }
     }
     
@@ -111,13 +111,12 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
             { timer in
                 self.voiceInteractorSemaphor = true
             }
-            AppDelegate.homeViewController.letsWalk()
+            AppDelegate.homeViewController.filterLocationTableSource(filterString: "Australia")
 //            voiceOutput(message: Constants.awakeMessage)
-//            sleep(4)
+//            sleep(2)
 //            voiceInput()
         }
     }
-    
     
     func voiceOutput(message:String)
     {
