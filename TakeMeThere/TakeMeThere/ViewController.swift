@@ -5,8 +5,6 @@ class ViewController: UIViewController,SFSpeechRecognizerDelegate {
    
     @IBOutlet weak var locationTableView: UITableView!
     @IBOutlet weak var mainView: UIImageView!
-    private var isWalkFlag = true;
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -21,17 +19,7 @@ class ViewController: UIViewController,SFSpeechRecognizerDelegate {
         RealmManager.saveUserDetail(userDetails: userDetailModel)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.destination is MyEyesARViewController
-        {
-            let arVC = segue.destination as? MyEyesARViewController
-            arVC?.isWalk = isWalkFlag
-            arVC?.destinationLat = 28.6825662
-            arVC?.destinationLong = 77.2321066
-            
-        }
-    }
+    
     
     @IBAction func longPressDetected(_ sender: UILongPressGestureRecognizer)
     {
@@ -45,13 +33,21 @@ class ViewController: UIViewController,SFSpeechRecognizerDelegate {
     
     func takeMetoDestination()
     {
-       isWalkFlag = true
-       performSegue(withIdentifier: "segueExplore", sender: Data())
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let exploreViewController = storyboard.instantiateViewController(withIdentifier: "ExplorerViewController") as? ExplorerViewController
+        exploreViewController?.isWalk = false
+        let navigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
+        navigationController.pushViewController(exploreViewController!, animated: true)
+       
     }
     
     func letsWalk()
     {
-       performSegue(withIdentifier: "segueExplore", sender: Data())
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let exploreViewController = storyboard.instantiateViewController(withIdentifier: "ExplorerViewController") as? ExplorerViewController
+        exploreViewController?.isWalk = true
+        let navigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
+        navigationController.pushViewController(exploreViewController!, animated: true)
     }
 }
 

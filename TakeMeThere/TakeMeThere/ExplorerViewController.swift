@@ -4,13 +4,14 @@ import SceneKit
 import CoreLocation
 import MapKit
 
-class MyEyesARViewController: UIViewController
+class ExplorerViewController: UIViewController
 {
     @IBOutlet weak var routeMap: MKMapView!
     @IBOutlet weak var lblInfoTwo: UILabel!
     @IBOutlet weak var lblInfoOne: UILabel!
     
-    @IBOutlet weak var arSceneHeightContraint: NSLayoutConstraint!
+   
+    @IBOutlet weak var arViewBottonConstraint: NSLayoutConstraint!
     var destinationLat:Double = Double()
     var destinationLong:Double = Double()
     var isWalk = Bool()
@@ -22,7 +23,8 @@ class MyEyesARViewController: UIViewController
         super.viewDidLoad()
         if(isWalk)
         {
-            arSceneHeightContraint.constant = self.view.frame.height
+            arViewBottonConstraint.constant = 0
+            routeMap.isHidden = true
         }
     }
     static func nextMove(step:String)
@@ -35,14 +37,11 @@ class MyEyesARViewController: UIViewController
         print(message)
     }
     
-    static func iAmAt(location:String)
+    func whereAmI(location:String)
     {
-        print(location)
-    }
-    
-    @IBAction func btnTestClick(_ sender: Any)
-    {
-        locationManager?.whereAmI()
+        locationManager!.getUserLocatoin { (location:String) in
+            AppDelegate.speechManager.voiceOutput(message: location)
+        }
     }
 }
 

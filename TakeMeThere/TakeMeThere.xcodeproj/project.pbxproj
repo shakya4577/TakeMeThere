@@ -26,7 +26,7 @@
 		B1F83E41221B0E2F00F19F2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1F83E3F221B0E2F00F19F2B /* LaunchScreen.storyboard */; };
 		B1F83E4C221B0E2F00F19F2B /* TakeMeThereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E4B221B0E2F00F19F2B /* TakeMeThereTests.swift */; };
 		B1F83E57221B0E2F00F19F2B /* TakeMeThereUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E56221B0E2F00F19F2B /* TakeMeThereUITests.swift */; };
-		B1F83E66221B136700F19F2B /* MyEyesARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E65221B136700F19F2B /* MyEyesARViewController.swift */; };
+		B1F83E66221B136700F19F2B /* ExplorerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E65221B136700F19F2B /* ExplorerViewController.swift */; };
 		B1F83E75221BB24700F19F2B /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F83E74221BB24600F19F2B /* ARKit.framework */; };
 		B1F83E76221BB24D00F19F2B /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F83E68221B1C3D00F19F2B /* SceneKit.framework */; };
 		B1F83E78221BBCF400F19F2B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F83E77221BBCF300F19F2B /* CoreLocation.framework */; };
@@ -81,7 +81,7 @@
 		B1F83E52221B0E2F00F19F2B /* TakeMeThereUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TakeMeThereUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F83E56221B0E2F00F19F2B /* TakeMeThereUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeMeThereUITests.swift; sourceTree = "<group>"; };
 		B1F83E58221B0E2F00F19F2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B1F83E65221B136700F19F2B /* MyEyesARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEyesARViewController.swift; sourceTree = "<group>"; };
+		B1F83E65221B136700F19F2B /* ExplorerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorerViewController.swift; sourceTree = "<group>"; };
 		B1F83E68221B1C3D00F19F2B /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
 		B1F83E70221BB1C100F19F2B /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		B1F83E72221BB1C800F19F2B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -217,7 +217,7 @@
 				B1F83E3D221B0E2F00F19F2B /* Assets.xcassets */,
 				B1F83E3F221B0E2F00F19F2B /* LaunchScreen.storyboard */,
 				B1F83E42221B0E2F00F19F2B /* Info.plist */,
-				B1F83E65221B136700F19F2B /* MyEyesARViewController.swift */,
+				B1F83E65221B136700F19F2B /* ExplorerViewController.swift */,
 				B104D7A422205C9400BA6D5A /* Constants.swift */,
 			);
 			path = TakeMeThere;
@@ -495,7 +495,7 @@
 			files = (
 				B1F83E39221B0E2200F19F2B /* ViewController.swift in Sources */,
 				B15AC78E221F1B7C00953F0E /* SpeechManager.swift in Sources */,
-				B1F83E66221B136700F19F2B /* MyEyesARViewController.swift in Sources */,
+				B1F83E66221B136700F19F2B /* ExplorerViewController.swift in Sources */,
 				B15AC70C221EB79E00953F0E /* UserDetailModel.swift in Sources */,
 				B1F83E37221B0E2200F19F2B /* AppDelegate.swift in Sources */,
 				B15AC740221EC36900953F0E /* LocationModel.swift in Sources */,

@@ -57,7 +57,7 @@
                     <connections>
                         <outlet property="locationTableView" destination="iv6-nH-X1O" id="aFe-jv-FTn"/>
                         <outlet property="mainView" destination="6Q0-ii-8oh" id="6Fw-PG-Cxf"/>
-                        <segue destination="p2M-Hi-Bvz" kind="show" identifier="segueExplore" id="09U-D5-Ve0"/>
+                        <segue destination="p2M-Hi-Bvz" kind="presentation" identifier="ExplorerSegue" id="Cwh-fv-tc8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -74,16 +74,16 @@
             </objects>
             <point key="canvasLocation" x="588" y="182.15892053973016"/>
         </scene>
-        <!--My EyesAR View Controller-->
+        <!--Explorer View Controller-->
         <scene sceneID="BkD-xx-oGj">
             <objects>
-                <viewController id="p2M-Hi-Bvz" customClass="MyEyesARViewController" customModule="TakeMeThere" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ExplorerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p2M-Hi-Bvz" customClass="ExplorerViewController" customModule="TakeMeThere" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lP9-oL-FzE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arscnView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EfE-sd-vhe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="317"/>
                                 <connections>
                                     <outlet property="delegate" destination="p2M-Hi-Bvz" id="7fJ-cv-rju"/>
                                 </connections>
@@ -102,28 +102,27 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dxF-Gd-XK2" firstAttribute="leading" secondItem="Wsq-aY-yN1" secondAttribute="leading" id="7eo-x1-B7T"/>
-                            <constraint firstItem="EfE-sd-vhe" firstAttribute="top" secondItem="lP9-oL-FzE" secondAttribute="top" id="ACi-FZ-xSg"/>
-                            <constraint firstItem="EfE-sd-vhe" firstAttribute="leading" secondItem="Wsq-aY-yN1" secondAttribute="leading" id="Aqh-r1-U76"/>
                             <constraint firstItem="dxF-Gd-XK2" firstAttribute="top" secondItem="FQ2-hF-hCJ" secondAttribute="bottom" constant="19" id="BS0-6m-p26"/>
+                            <constraint firstItem="EfE-sd-vhe" firstAttribute="top" secondItem="lP9-oL-FzE" secondAttribute="top" id="De9-l1-6xf"/>
                             <constraint firstItem="Wsq-aY-yN1" firstAttribute="bottom" secondItem="dxF-Gd-XK2" secondAttribute="bottom" id="Des-1W-Ahi"/>
-                            <constraint firstItem="EfE-sd-vhe" firstAttribute="height" secondItem="lP9-oL-FzE" secondAttribute="height" multiplier="0.45" id="Gzb-1X-eGc"/>
+                            <constraint firstItem="Wsq-aY-yN1" firstAttribute="bottom" secondItem="EfE-sd-vhe" secondAttribute="bottom" constant="350" id="Gfw-FO-X8c"/>
                             <constraint firstItem="Wsq-aY-yN1" firstAttribute="trailing" secondItem="dxF-Gd-XK2" secondAttribute="trailing" id="PPn-9S-6B4"/>
                             <constraint firstItem="dxF-Gd-XK2" firstAttribute="height" secondItem="lP9-oL-FzE" secondAttribute="height" multiplier="0.45" id="Xmd-M2-qfQ"/>
-                            <constraint firstItem="EfE-sd-vhe" firstAttribute="trailing" secondItem="Wsq-aY-yN1" secondAttribute="trailing" id="btW-s5-Dij"/>
+                            <constraint firstItem="EfE-sd-vhe" firstAttribute="leading" secondItem="Wsq-aY-yN1" secondAttribute="leading" id="bcF-4b-ljx"/>
+                            <constraint firstItem="EfE-sd-vhe" firstAttribute="trailing" secondItem="Wsq-aY-yN1" secondAttribute="trailing" id="bda-A4-BtD"/>
                             <constraint firstItem="Wsq-aY-yN1" firstAttribute="trailing" secondItem="FQ2-hF-hCJ" secondAttribute="trailing" constant="165" id="mtq-id-fox"/>
-                            <constraint firstItem="FQ2-hF-hCJ" firstAttribute="top" secondItem="EfE-sd-vhe" secondAttribute="bottom" constant="18" id="qGI-Ew-Aea"/>
                             <constraint firstItem="FQ2-hF-hCJ" firstAttribute="leading" secondItem="Wsq-aY-yN1" secondAttribute="leading" constant="164" id="rCd-IH-b47"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wsq-aY-yN1"/>
                     </view>
                     <connections>
-                        <outlet property="arSceneHeightContraint" destination="Gzb-1X-eGc" id="5c9-uB-GBb"/>
+                        <outlet property="arViewBottonConstraint" destination="Gfw-FO-X8c" id="Vyi-ng-XNM"/>
                         <outlet property="routeMap" destination="dxF-Gd-XK2" id="5al-B7-unC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jLA-QC-zQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1569" y="202"/>
+            <point key="canvasLocation" x="1568.8" y="201.94902548725639"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="egm-QN-nLD">

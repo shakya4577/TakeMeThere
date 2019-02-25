@@ -90,12 +90,14 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
         {
            AppDelegate.homeViewController.letsWalk()
         }
-        else if (voiceInputMessage == "Take me to")
-        {
-            AppDelegate.homeViewController.takeMetoDestination();
-        }
         else
         {
+            let index = voiceInputMessage.index(voiceInputMessage.startIndex, offsetBy: 10)
+            let isTakeMeCommand = voiceInputMessage[..<index]
+            if (isTakeMeCommand == "Take me to")
+            {
+                AppDelegate.homeViewController.takeMetoDestination();
+            }
             
         }
     }
@@ -109,9 +111,10 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
             { timer in
                 self.voiceInteractorSemaphor = true
             }
-            voiceOutput(message: Constants.awakeMessage)
-            sleep(4)
-            voiceInput()
+            AppDelegate.homeViewController.letsWalk()
+//            voiceOutput(message: Constants.awakeMessage)
+//            sleep(4)
+//            voiceInput()
         }
     }
     
@@ -123,4 +126,12 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
         let synth = AVSpeechSynthesizer()
         synth.speak(utterance)
     }
+    
+//    func getUserCommand(completion: @escaping (_ isWalk:Bool, _ destination: String) -> Void)
+//    {
+//       self.awakeVoiceInteractor()
+//        completion(isWalk,voiceInputMessage)
+//    }
+    
+    
 }

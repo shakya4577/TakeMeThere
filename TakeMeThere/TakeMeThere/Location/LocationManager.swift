@@ -44,7 +44,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
     {
-       MyEyesARViewController.nextMove(step: "I lost my sense. I am sorry")
+       ExplorerViewController.nextMove(step: "I lost my sense. I am sorry")
     }
     
     func mapView(_ mapView: MKMapView, rendererFor
@@ -85,7 +85,6 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     }
     
     func takeMeThere() {
-        
         request.source = MKMapItem.forCurrentLocation()
         let desitnationPlaceMark = MKPlacemark.init(coordinate: destinationCoordinate)
         request.destination = MKMapItem.init(placemark: desitnationPlaceMark)
@@ -127,13 +126,12 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
                    print("distance:-  \(route.steps[counter].distance)")
                    counter = counter+1;
                 }
-                MyEyesARViewController.nextMove(step: audioMessage)
+                ExplorerViewController.nextMove(step: audioMessage)
             }
-            
         }
     }
     
-    func whereAmI()
+   func getUserLocatoin(completion: @escaping (_ location: String) -> Void)
     {
         geocoder.reverseGeocodeLocation(currentLocation) { (placemarksArray, error) in
             if (placemarksArray?.count)! > 0 {
@@ -154,10 +152,9 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
                 if pm.postalCode != nil {
                     self.addressString = self.addressString + pm.postalCode! + " "
                 }
-                MyEyesARViewController.iAmAt(location:self.addressString);
+                completion(self.addressString);
             }
-         }
-       
+        }
     }
     
 }
