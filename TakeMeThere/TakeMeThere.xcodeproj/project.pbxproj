@@ -19,6 +19,7 @@
 		B15AC78C221F16AD00953F0E /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15AC78B221F16AD00953F0E /* Speech.framework */; };
 		B15AC78E221F1B7C00953F0E /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15AC78D221F1B7C00953F0E /* SpeechManager.swift */; };
 		B18945672223CF6A005F2833 /* LocationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18945662223CF6A005F2833 /* LocationTableCell.swift */; };
+		B189456B2223E060005F2833 /* VisionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B189456A2223E060005F2833 /* VisionDelegate.swift */; };
 		B1CA9186221D2CF6004B4CAB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CA9185221D2CF6004B4CAB /* LocationManager.swift */; };
 		B1F83E37221B0E2200F19F2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E36221B0E2200F19F2B /* AppDelegate.swift */; };
 		B1F83E39221B0E2200F19F2B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E38221B0E2200F19F2B /* HomeViewController.swift */; };
@@ -68,6 +69,7 @@
 		B15AC78B221F16AD00953F0E /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		B15AC78D221F1B7C00953F0E /* SpeechManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
 		B18945662223CF6A005F2833 /* LocationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableCell.swift; sourceTree = "<group>"; };
+		B189456A2223E060005F2833 /* VisionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionDelegate.swift; sourceTree = "<group>"; };
 		B1CA9185221D2CF6004B4CAB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B1CA9187221E5B49004B4CAB /* TakeMeThere.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TakeMeThere.entitlements; sourceTree = "<group>"; };
 		B1F83E33221B0E2100F19F2B /* TakeMeThere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TakeMeThere.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,6 +224,7 @@
 				B1F83E3F221B0E2F00F19F2B /* LaunchScreen.storyboard */,
 				B1F83E42221B0E2F00F19F2B /* Info.plist */,
 				B104D7A422205C9400BA6D5A /* Constants.swift */,
+				B189456A2223E060005F2833 /* VisionDelegate.swift */,
 			);
 			path = TakeMeThere;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1F83E39221B0E2200F19F2B /* HomeViewController.swift in Sources */,
+				B189456B2223E060005F2833 /* VisionDelegate.swift in Sources */,
 				B15AC78E221F1B7C00953F0E /* SpeechManager.swift in Sources */,
 				B1F83E66221B136700F19F2B /* ExplorerViewController.swift in Sources */,
 				B15AC70C221EB79E00953F0E /* UserDetailModel.swift in Sources */,

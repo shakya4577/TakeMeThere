@@ -1,17 +1,16 @@
 import UIKit
 import Speech
-class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableViewDelegate,UITableViewDataSource {
-   
+class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,VisionDelegate
+{
     @IBOutlet weak var locationTableView: UITableView!
     @IBOutlet weak var mainView: UIImageView!
-    private var tempDataSource = ["Australia","Australia one","Australia two","Australia three","four Australia me","France","France one","France two","France three","USA","South Africa","Canada","India"]
-    private var filteredDataSource:[String] = [String]()
+    private var localLocationList = ["Australia","Australia one","Australia two","Australia three","four Australia me","France","France one","France two","France three","USA","South Africa","Canada","India"]
    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationTableView.delegate = self
         locationTableView.dataSource = self
-        filteredDataSource = tempDataSource
+        AppDelegate.visioinDelegate = self
     }
     
     func testRealm()
@@ -34,37 +33,37 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         
     }
     
-    func filterLocationTableSource(filterString:String)
-    {
-      filteredDataSource = tempDataSource.filter { $0.contains(filterString) }
-      locationTableView.reloadData()
+    func youAreAt(location: String) {
+        
     }
+    
+    func letsWalk() {
+        let exploreViewController = self.storyboard!.instantiateViewController(withIdentifier: "ExplorerViewController") as? ExplorerViewController
+        exploreViewController?.isWalk = true
+        navigationController!.pushViewController(exploreViewController!, animated: true)
+    }
+    
+    func filterLocationInput(filterInput: String)
+    {
+        localLocationList = localLocationList.filter { $0.contains(filterInput) }
+        locationTableView.reloadData()
+    }
+    
     
     func takeMetoDestination(destination:String)
     {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let exploreViewController = storyboard.instantiateViewController(withIdentifier: "ExplorerViewController") as? ExplorerViewController
+        let exploreViewController = self.storyboard!.instantiateViewController(withIdentifier: "ExplorerViewController") as? ExplorerViewController
         exploreViewController?.isWalk = false
-        let navigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
-        navigationController.pushViewController(exploreViewController!, animated: true)
-    }
-    
-    func letsWalk()
-    {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let exploreViewController = storyboard.instantiateViewController(withIdentifier: "ExplorerViewController") as? ExplorerViewController
-        exploreViewController?.isWalk = true
-        let navigationController = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
-        navigationController.pushViewController(exploreViewController!, animated: true)
+        navigationController!.pushViewController(exploreViewController!, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredDataSource.count
+        return localLocationList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:LocationTableCell = tableView.dequeueReusableCell(withIdentifier: "DestinationCell", for: indexPath) as! LocationTableCell
-        cell.initCell(locName: filteredDataSource[indexPath.row])
+        cell.initCell(locName: localLocationList[indexPath.row])
         return cell
     }
     

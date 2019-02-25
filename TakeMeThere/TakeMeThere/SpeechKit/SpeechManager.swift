@@ -12,6 +12,7 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
     private var voiceInteractorSemaphor = true
     private var listeningSempahor = true
     private var voiceInputMessage = String()
+    
     override init()
     {
         super.init()
@@ -88,7 +89,7 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
       
         if(voiceInputMessage == "Let's walk")
         {
-           AppDelegate.homeViewController.letsWalk()
+            AppDelegate.visioinDelegate!.letsWalk()
         }
         else
         {
@@ -97,7 +98,7 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
             let destination:String = String(voiceInputMessage[index...voiceInputMessage.endIndex])
             if (isTakeMeCommand == "Take me to")
             {
-                AppDelegate.homeViewController.takeMetoDestination(destination: destination);
+                AppDelegate.visioinDelegate!.filterLocationInput(filterInput: destination)
             }
         }
     }
@@ -111,7 +112,7 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
             { timer in
                 self.voiceInteractorSemaphor = true
             }
-            AppDelegate.homeViewController.filterLocationTableSource(filterString: "Australia")
+            AppDelegate.visioinDelegate!.filterLocationInput(filterInput: "Aus")
 //            voiceOutput(message: Constants.awakeMessage)
 //            sleep(2)
 //            voiceInput()
