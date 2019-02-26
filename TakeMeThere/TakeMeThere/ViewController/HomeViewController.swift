@@ -19,43 +19,23 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         txtLocationSearch.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: .editingChanged)
        // testRealm()
         localLocationList = RealmManager.getLocationList()
-        print(UserDefaults.standard.string(forKey: Constants.UserNameKey)!)
+       
         AppDelegate.speechManager.voiceOutput(message: "Hi " + UserDefaults.standard.string(forKey: Constants.UserNameKey)!)
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
     }
     
-    func testRealm()
+    @objc func dismissKeyboard()
     {
-        let loc1:LocationModel = LocationModel()
-        loc1.locationName = "Loc1"
-        loc1.locatoinLatitude = 30.484872
-        loc1.locationLongitude = 49.0092393
-        RealmManager.saveLocation(locationDetails: loc1)
-        
-        let loc2:LocationModel = LocationModel()
-        loc2.locationName = "Loc2"
-        loc2.locatoinLatitude = 70.484872
-        loc2.locationLongitude = 59.0092393
-        RealmManager.saveLocation(locationDetails: loc2)
-        
-        let loc3:LocationModel = LocationModel()
-        loc3.locationName = "Loc2"
-        loc3.locatoinLatitude = 40.484872
-        loc3.locationLongitude = 69.0092393
-        RealmManager.saveLocation(locationDetails: loc3)
-        
-        let loc4:LocationModel = LocationModel()
-        loc4.locationName = "Loc3"
-        loc4.locatoinLatitude = 10.484872
-        loc4.locationLongitude = 39.0092393
-        RealmManager.saveLocation(locationDetails: loc4)
+        view.endEditing(true)
+        resignFirstResponder()
     }
-    
+   
     @IBAction func longPressDetected(_ sender: UILongPressGestureRecognizer)
     {
         AppDelegate.speechManager.awakeVoiceInteractor()
     }
     
-   
     @IBAction func swipeDetected(_ sender: UISwipeGestureRecognizer)
     {
         if(sender.direction == .up && !isSelection)
@@ -66,6 +46,8 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         {
             locationSelectionCounter = locationSelectionCounter - 1
             selectDestination()
+            let indexPath = NSIndexPath(item: locationSelectionCounter, section: 0)
+            locationTableView.scrollToRow(at: indexPath as IndexPath, at: UITableView.ScrollPosition.top, animated: true)
         }
         else if(sender.direction == .right && !isSelection)
         {
@@ -79,6 +61,8 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         {
             locationSelectionCounter = locationSelectionCounter + 1
             selectDestination()
+            let indexPath = NSIndexPath(item: locationSelectionCounter, section: 0)
+            locationTableView.scrollToRow(at: indexPath as IndexPath, at: UITableView.ScrollPosition.top, animated: true)
         }
     }
     
@@ -118,15 +102,25 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
             return
         }
         localLocationList = localLocationList.filter { $0.locationName.contains(filterInput) }
+        if(localLocationList.count==0)
+        {
+            
+        }
         locationTableView.reloadData()
         selectDestination()
     }
+    
+//    func searchLocationOnMap(locationInput:String)->[LocationModel]
+//    {
+//        
+//    }
     
     func selectDestination()
     {
         if(locationSelectionCounter<0 || locationSelectionCounter>localLocationList.count-1)
         {
             AppDelegate.speechManager.voiceOutput(message: "No more location available")
+            locationSelectionCounter=0
             return
         }
         AppDelegate.speechManager.voiceOutput(message: localLocationList[locationSelectionCounter].locationName)
@@ -165,5 +159,37 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         cell.initCell(locName: localLocationList[indexPath.row].locationName)
         return cell
     }
+    
 }
 
+
+
+
+
+//
+//func testRealm()
+//{
+//    let loc1:LocationModel = LocationModel()
+//    loc1.locationName = "Loc1"
+//    loc1.locatoinLatitude = 30.484872
+//    loc1.locationLongitude = 49.0092393
+//    RealmManager.saveLocation(locationDetails: loc1)
+//    
+//    let loc2:LocationModel = LocationModel()
+//    loc2.locationName = "Loc2"
+//    loc2.locatoinLatitude = 70.484872
+//    loc2.locationLongitude = 59.0092393
+//    RealmManager.saveLocation(locationDetails: loc2)
+//    
+//    let loc3:LocationModel = LocationModel()
+//    loc3.locationName = "Loc2"
+//    loc3.locatoinLatitude = 40.484872
+//    loc3.locationLongitude = 69.0092393
+//    RealmManager.saveLocation(locationDetails: loc3)
+//    
+//    let loc4:LocationModel = LocationModel()
+//    loc4.locationName = "Loc3"
+//    loc4.locatoinLatitude = 10.484872
+//    loc4.locationLongitude = 39.0092393
+//    RealmManager.saveLocation(locationDetails: loc4)
+//}

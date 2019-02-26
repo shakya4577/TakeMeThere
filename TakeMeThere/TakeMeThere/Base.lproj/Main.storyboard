@@ -193,15 +193,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iv6-nH-X1O">
-                                <rect key="frame" x="0.0" y="80" width="375" height="587"/>
+                            <tableView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iv6-nH-X1O">
+                                <rect key="frame" x="16" y="99" width="343" height="548"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DestinationCell" rowHeight="79" id="DkC-Id-XMH" customClass="LocationTableCell" customModule="TakeMeThere" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="79"/>
+                                        <rect key="frame" x="0.0" y="28" width="343" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DkC-Id-XMH" id="MmV-tz-JQb">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="78.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="78.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZP-BS-u1q">
@@ -245,19 +245,19 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.27450980392156865" green="0.48627450980392156" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="iv6-nH-X1O" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0Iv-fh-NGU"/>
-                            <constraint firstItem="iv6-nH-X1O" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0Wy-nc-z4U"/>
+                            <constraint firstItem="iv6-nH-X1O" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-16" id="0Iv-fh-NGU"/>
+                            <constraint firstItem="iv6-nH-X1O" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="0Wy-nc-z4U"/>
                             <constraint firstItem="6Q0-ii-8oh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="I1G-hh-z51"/>
                             <constraint firstItem="CVD-lq-4pF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="K7x-E2-3qg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CVD-lq-4pF" secondAttribute="trailing" constant="20" id="LgO-ID-8up"/>
-                            <constraint firstItem="iv6-nH-X1O" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="R5R-sY-40o"/>
+                            <constraint firstItem="iv6-nH-X1O" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-20" id="R5R-sY-40o"/>
                             <constraint firstItem="CVD-lq-4pF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Vg8-7d-iEH"/>
                             <constraint firstItem="6Q0-ii-8oh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xzm-UY-DUW"/>
                             <constraint firstItem="6Q0-ii-8oh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bg7-JV-Ll6"/>
                             <constraint firstItem="6Q0-ii-8oh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="uWb-Fh-LkD"/>
-                            <constraint firstItem="iv6-nH-X1O" firstAttribute="top" secondItem="CVD-lq-4pF" secondAttribute="bottom" constant="10" id="wzQ-aD-jvA"/>
+                            <constraint firstItem="iv6-nH-X1O" firstAttribute="top" secondItem="CVD-lq-4pF" secondAttribute="bottom" constant="29" id="wzQ-aD-jvA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -301,7 +301,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1727" y="183"/>
+            <point key="canvasLocation" x="1725.5999999999999" y="182.15892053973016"/>
         </scene>
         <!--Vision View Controller-->
         <scene sceneID="BkD-xx-oGj">
