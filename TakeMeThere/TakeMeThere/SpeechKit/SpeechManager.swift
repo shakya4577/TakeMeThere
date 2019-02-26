@@ -102,7 +102,7 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
             let destination:String = String(voiceInputMessage[index...voiceInputMessage.endIndex])
             if (isTakeMeCommand == "Take me to")
             {
-                AppDelegate.primeDelegate!.filterLocationInput(filterInput: destination)
+                AppDelegate.primeDelegate!.filterLocationList(filterInput: destination)
             }
         }
     }

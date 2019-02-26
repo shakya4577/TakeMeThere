@@ -12,14 +12,13 @@ class VisionViewController: UIViewController
     
    
     @IBOutlet weak var arViewBottonConstraint: NSLayoutConstraint!
-    var destinationLat:Double = Double()
-    var destinationLong:Double = Double()
+    var destinationLocation:LocationModel = LocationModel()
     var isWalk = Bool()
     var locationManager:LocationManager? = nil
     
     override func viewDidLoad()
     {
-        locationManager = LocationManager(iRouteMap: routeMap, iDestLat: destinationLat, iDestLong: destinationLong)
+        locationManager = LocationManager(iRouteMap: routeMap, iDestLat: destinationLocation.locatoinLatitude, iDestLong: destinationLocation.locationLongitude)
         super.viewDidLoad()
         if(isWalk)
         {

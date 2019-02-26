@@ -5,27 +5,49 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     @IBOutlet weak var locationTableView: UITableView!
     @IBOutlet weak var mainView: UIImageView!
     
-    private var localLocationList = ["Australia","Australia one","Australia two","Australia three","four Australia me","France","France one","France two","France three","USA","South Africa","Canada","India"]
+    //private var localLocationList = ["Australia","Australia one","Australia two","Australia three","four Australia me","France","France one","France two","France three","USA","South Africa","Canada","India"]
     
+    private var localLocationList = [LocationModel]()
     private var isWalkMode = true
     private var isSelection = false
+    private var locationSelectionCounter = 0
     @IBOutlet weak var txtLocationSearch: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationTableView.delegate = self
         locationTableView.dataSource = self
         AppDelegate.primeDelegate = self
         txtLocationSearch.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: .editingChanged)
+       // testRealm()
+        localLocationList = RealmManager.getLocationList()
     }
     
     func testRealm()
     {
-        let userDetailModel:UserDetailModel = UserDetailModel()
-        userDetailModel.userName = "Test User"
-        userDetailModel.userEmergencyNumber = "11111"
-        userDetailModel.userNumber = "2222"
-        userDetailModel.userAddress = "Test Address"
-        RealmManager.saveUserDetail(userDetails: userDetailModel)
+        let loc1:LocationModel = LocationModel()
+        loc1.locationName = "Loc1"
+        loc1.locatoinLatitude = 30.484872
+        loc1.locationLongitude = 49.0092393
+        RealmManager.saveLocation(locationDetails: loc1)
+        
+        let loc2:LocationModel = LocationModel()
+        loc2.locationName = "Loc2"
+        loc2.locatoinLatitude = 70.484872
+        loc2.locationLongitude = 59.0092393
+        RealmManager.saveLocation(locationDetails: loc2)
+        
+        let loc3:LocationModel = LocationModel()
+        loc3.locationName = "Loc2"
+        loc3.locatoinLatitude = 40.484872
+        loc3.locationLongitude = 69.0092393
+        RealmManager.saveLocation(locationDetails: loc3)
+        
+        let loc4:LocationModel = LocationModel()
+        loc4.locationName = "Loc3"
+        loc4.locatoinLatitude = 10.484872
+        loc4.locationLongitude = 39.0092393
+        RealmManager.saveLocation(locationDetails: loc4)
     }
     
     @IBAction func longPressDetected(_ sender: UILongPressGestureRecognizer)
@@ -38,19 +60,25 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     {
         if(sender.direction == .up && !isSelection)
         {
-            filterLocationInput()
+            filterLocationList(filterInput: "")
         }
         else if(sender.direction == .up && isSelection)
         {
-            
+            locationSelectionCounter = locationSelectionCounter - 1
+            selectDestination()
         }
-        else if(sender.direction == .right)
+        else if(sender.direction == .right && !isSelection)
         {
             letsWalk()
         }
+        else if(sender.direction == .right && isSelection)
+        {
+           takeMetoDestination()
+        }
         else if(sender.direction == .down && isSelection)
         {
-            
+            locationSelectionCounter = locationSelectionCounter + 1
+            selectDestination()
         }
     }
     
@@ -76,37 +104,53 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         {
             return
         }
-        localLocationList = localLocationList.filter { $0.contains(searchText) }
+        localLocationList = localLocationList.filter { $0.locationName.contains(searchText) }
         locationTableView.reloadData()
     }
     
-    func filterLocationInput(filterInput: String="")
+    func filterLocationList(filterInput: String)
     {
-        localLocationList = localLocationList.filter { $0.contains(filterInput) }
+        isSelection = true
+        if (filterInput == "")
+        {
+            return
+        }
+        localLocationList = localLocationList.filter { $0.locationName.contains(filterInput) }
         locationTableView.reloadData()
+        selectDestination()
     }
     
-   func letsWalk() {
+    func selectDestination()
+    {
+        if(locationSelectionCounter<0 || locationSelectionCounter>localLocationList.count)
+        {
+            AppDelegate.speechManager.voiceOutput(message: "No more location available")
+            return
+        }
+        AppDelegate.speechManager.voiceOutput(message: localLocationList[locationSelectionCounter].locationName)
+     }
+    
+    func letsWalk() {
         isWalkMode = true
         performSegue(withIdentifier: "VisionSegue", sender: Data())
     }
     
-    func takeMetoDestination(destination:String)
+    func takeMetoDestination()
     {
-        isSelection = true
         isWalkMode = false
         performSegue(withIdentifier: "VisionSegue", sender: Data())
     }
-    
-    
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if segue.destination is VisionViewController
         {
             let visionViewController = segue.destination as? VisionViewController
             visionViewController?.isWalk = isWalkMode
-            visionViewController?.destinationLat = 28.6825662
-            visionViewController?.destinationLong = 77.2321066
+            if(!isWalkMode)
+            {
+                visionViewController?.destinationLocation = RealmManager.getLocationModel(id: locationSelectionCounter)
+            }
         }
     }
     
@@ -116,10 +160,8 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:LocationTableCell = tableView.dequeueReusableCell(withIdentifier: "DestinationCell", for: indexPath) as! LocationTableCell
-        cell.initCell(locName: localLocationList[indexPath.row])
+        cell.initCell(locName: localLocationList[indexPath.row].locationName)
         return cell
     }
-    
-    
 }
 

@@ -1,6 +1,6 @@
 protocol PrimeDelegate
 {
     func letsWalk()
-    func filterLocationInput(filterInput:String)
+    func filterLocationList(filterInput:String)
     func whereAmI()
 }

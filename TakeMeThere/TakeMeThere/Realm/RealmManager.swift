@@ -29,9 +29,15 @@ class RealmManager: NSObject
         }
     }
     
-    static func getUserDetail()->LocationModel
+    static func getLocationModel(id:Int)->LocationModel
     {
-        let locationModel = realmDelegate.objects(LocationModel.self)
-        return locationModel.first!
+        let locationModel = realmDelegate.object(ofType:LocationModel.self, forPrimaryKey: index)
+        return locationModel!
+    }
+    
+    static func getLocationList()->[LocationModel]
+    {
+        let locationList = realmDelegate.objects(LocationModel.self)
+        return Array(locationList)
     }
 }
