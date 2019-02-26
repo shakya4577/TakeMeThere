@@ -15,7 +15,7 @@ class VisionViewController: UIViewController
     var destinationLocation:LocationModel = LocationModel()
     var isWalk = Bool()
     var locationManager:LocationManager? = nil
-    
+    static var sharedInstance = VisionViewController()
     override func viewDidLoad()
     {
         locationManager = LocationManager(iRouteMap: routeMap, iDestLat: destinationLocation.locatoinLatitude, iDestLong: destinationLocation.locationLongitude)

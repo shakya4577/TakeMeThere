@@ -6,7 +6,7 @@ import MapKit
 class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
 {
     var locationManager = CLLocationManager()
-    weak var routeMap: MKMapView!
+    weak var appleMap: MKMapView!
     var currentLocation:CLLocation = CLLocation();
     var moveCount:Int = Int.max
     var messageToSiri:String = String()
@@ -19,7 +19,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     init(iRouteMap:MKMapView, iDestLat:Double,iDestLong:Double)
     {
         super.init()
-        self.routeMap = iRouteMap
+        self.appleMap = iRouteMap
         self.destinationCoordinate = CLLocationCoordinate2D(latitude: iDestLat, longitude: iDestLong)
         isMapAvailable = true
         self.configureLocationManager()
@@ -44,8 +44,8 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     
     func configureMap()
     {
-        routeMap.delegate = self
-        routeMap.showsUserLocation = true
+        appleMap.delegate = self
+        appleMap.showsUserLocation = true
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
@@ -97,7 +97,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     {
         let centre = currentLocation.coordinate
         let region = MKCoordinateRegion(center: centre, span: MKCoordinateSpan(latitudeDelta: 0.0001, longitudeDelta: 0.0))
-        self.routeMap.setRegion(region, animated: true)
+        self.appleMap.setRegion(region, animated: true)
     }
     
     func takeMeThere() {
@@ -124,7 +124,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
         var audioMessage:String = String();
         for route in response.routes {
             
-            routeMap.addOverlay(route.polyline,
+            appleMap.addOverlay(route.polyline,
                                 level: MKOverlayLevel.aboveRoads)
             
             print("move count \(moveCount)")
@@ -172,5 +172,53 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
             }
         }
     }
+    func searchLocationList(locationInput:String,completion: @escaping (_ locationList: [LocationModel]) -> Void)
+    {
+        var locationSearchList = [LocationModel]()
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = locationInput
+        request.region =  appleMap.region
+        let search = MKLocalSearch(request: request)
+        search.start { response, _ in
+            guard let response = response else {
+                return
+            }
+            for mapItem in response.mapItems
+            {
+                let locationModelObj = LocationModel()
+                locationModelObj.locationName = mapItem.name!
+                locationModelObj.locationPlacemark = mapItem.placemark.title!
+                locationModelObj.locatoinLatitude = mapItem.placemark.coordinate.latitude
+                locationModelObj.locationLongitude = mapItem.placemark.coordinate.longitude
+                locationSearchList.append(locationModelObj)
+            }
+            completion(locationSearchList)
+            print( response.mapItems)
+        }
+    }
+//    func searchLocationOnMap(locationInput:String)->[LocationModel]
+//    {
+//        var locationSearchList = [LocationModel]()
+//        let request = MKLocalSearch.Request()
+//        request.naturalLanguageQuery = locationInput
+//        request.region =  appleMap.region
+//        let search = MKLocalSearch(request: request)
+//        search.start { response, _ in
+//            guard let response = response else {
+//                return
+//            }
+//            for mapItem in response.mapItems
+//            {
+//                var locationModelObj = LocationModel()
+//                locationModelObj.locationName = mapItem.name!
+//                locationModelObj.locationPlacemark = mapItem.placemark.title!
+//                locationModelObj.locatoinLatitude = mapItem.placemark.coordinate.latitude
+//                locationModelObj.locationLongitude = mapItem.placemark.coordinate.longitude
+//            }
+//            print( response.mapItems)
+//
+//            // self.tableView.reloadData()
+//        }
+//    }
     
 }

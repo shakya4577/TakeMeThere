@@ -1,5 +1,6 @@
 import UIKit
 import Speech
+import MapKit
 class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,PrimeDelegate
 {
     @IBOutlet weak var locationTableView: UITableView!
@@ -11,11 +12,13 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     private var locationSelectionCounter = 0
     @IBOutlet weak var txtLocationSearch: UITextField!
     
+    @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
         locationTableView.delegate = self
         locationTableView.dataSource = self
         AppDelegate.primeDelegate = self
+        AppDelegate.locationManager.appleMap = mapView
         txtLocationSearch.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: .editingChanged)
        // testRealm()
         localLocationList = RealmManager.getLocationList()
@@ -23,6 +26,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         AppDelegate.speechManager.voiceOutput(message: "Hi " + UserDefaults.standard.string(forKey: Constants.UserNameKey)!)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
+        //testRealm()
     }
     
     @objc func dismissKeyboard()
@@ -90,7 +94,17 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
             localLocationList = localLocationList.filter { $0.locationName.contains(searchText) }
             
         }
-        locationTableView.reloadData()
+        if(localLocationList.count==0)
+        {
+            AppDelegate.locationManager.searchLocationList(locationInput: textField.text!) {
+                (returnedlocationList:[LocationModel])
+                in
+                self.localLocationList = returnedlocationList
+                self.locationTableView.reloadData()
+            }
+           // AppDelegate.locationManager.searchLocationOnMap(locationInput: textField.text!)
+        }
+        
     }
     
     func filterLocationList(filterInput: String)
@@ -109,11 +123,6 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         locationTableView.reloadData()
         selectDestination()
     }
-    
-//    func searchLocationOnMap(locationInput:String)->[LocationModel]
-//    {
-//        
-//    }
     
     func selectDestination()
     {
@@ -167,29 +176,29 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
 
 
 //
-//func testRealm()
-//{
-//    let loc1:LocationModel = LocationModel()
-//    loc1.locationName = "Loc1"
-//    loc1.locatoinLatitude = 30.484872
-//    loc1.locationLongitude = 49.0092393
-//    RealmManager.saveLocation(locationDetails: loc1)
-//    
-//    let loc2:LocationModel = LocationModel()
-//    loc2.locationName = "Loc2"
-//    loc2.locatoinLatitude = 70.484872
-//    loc2.locationLongitude = 59.0092393
-//    RealmManager.saveLocation(locationDetails: loc2)
-//    
-//    let loc3:LocationModel = LocationModel()
-//    loc3.locationName = "Loc2"
-//    loc3.locatoinLatitude = 40.484872
-//    loc3.locationLongitude = 69.0092393
-//    RealmManager.saveLocation(locationDetails: loc3)
-//    
-//    let loc4:LocationModel = LocationModel()
-//    loc4.locationName = "Loc3"
-//    loc4.locatoinLatitude = 10.484872
-//    loc4.locationLongitude = 39.0092393
-//    RealmManager.saveLocation(locationDetails: loc4)
-//}
+func testRealm()
+{
+    let loc1:LocationModel = LocationModel()
+    loc1.locationName = "Loc1"
+    loc1.locatoinLatitude = 30.484872
+    loc1.locationLongitude = 49.0092393
+    RealmManager.saveLocation(locationDetails: loc1)
+    
+    let loc2:LocationModel = LocationModel()
+    loc2.locationName = "Loc2"
+    loc2.locatoinLatitude = 70.484872
+    loc2.locationLongitude = 59.0092393
+    RealmManager.saveLocation(locationDetails: loc2)
+    
+    let loc3:LocationModel = LocationModel()
+    loc3.locationName = "Loc2"
+    loc3.locatoinLatitude = 40.484872
+    loc3.locationLongitude = 69.0092393
+    RealmManager.saveLocation(locationDetails: loc3)
+    
+    let loc4:LocationModel = LocationModel()
+    loc4.locationName = "Loc3"
+    loc4.locatoinLatitude = 10.484872
+    loc4.locationLongitude = 39.0092393
+    RealmManager.saveLocation(locationDetails: loc4)
+}

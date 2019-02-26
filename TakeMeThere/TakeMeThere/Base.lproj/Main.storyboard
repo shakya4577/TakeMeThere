@@ -244,18 +244,25 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zpp-cM-3yT">
+                                <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="0.27450980392156865" green="0.48627450980392156" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="iv6-nH-X1O" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-16" id="0Iv-fh-NGU"/>
                             <constraint firstItem="iv6-nH-X1O" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="0Wy-nc-z4U"/>
+                            <constraint firstItem="zpp-cM-3yT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="6PT-Sl-f7f"/>
                             <constraint firstItem="6Q0-ii-8oh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="I1G-hh-z51"/>
                             <constraint firstItem="CVD-lq-4pF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="K7x-E2-3qg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CVD-lq-4pF" secondAttribute="trailing" constant="20" id="LgO-ID-8up"/>
+                            <constraint firstItem="zpp-cM-3yT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ORm-O2-5mj"/>
                             <constraint firstItem="iv6-nH-X1O" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-20" id="R5R-sY-40o"/>
+                            <constraint firstItem="zpp-cM-3yT" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="UfT-XG-Rdg"/>
                             <constraint firstItem="CVD-lq-4pF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Vg8-7d-iEH"/>
                             <constraint firstItem="6Q0-ii-8oh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xzm-UY-DUW"/>
                             <constraint firstItem="6Q0-ii-8oh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bg7-JV-Ll6"/>
+                            <constraint firstItem="zpp-cM-3yT" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="jKV-Rt-k0A"/>
                             <constraint firstItem="6Q0-ii-8oh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="uWb-Fh-LkD"/>
                             <constraint firstItem="iv6-nH-X1O" firstAttribute="top" secondItem="CVD-lq-4pF" secondAttribute="bottom" constant="29" id="wzQ-aD-jvA"/>
                         </constraints>
@@ -265,6 +272,7 @@
                     <connections>
                         <outlet property="locationTableView" destination="iv6-nH-X1O" id="aFe-jv-FTn"/>
                         <outlet property="mainView" destination="6Q0-ii-8oh" id="6Fw-PG-Cxf"/>
+                        <outlet property="mapView" destination="zpp-cM-3yT" id="vV2-XT-GY3"/>
                         <outlet property="txtLocationSearch" destination="CVD-lq-4pF" id="Zc4-zp-W7P"/>
                         <segue destination="p2M-Hi-Bvz" kind="presentation" identifier="VisionSegue" id="Cwh-fv-tc8"/>
                     </connections>
