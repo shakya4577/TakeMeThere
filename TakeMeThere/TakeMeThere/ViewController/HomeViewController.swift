@@ -5,8 +5,6 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     @IBOutlet weak var locationTableView: UITableView!
     @IBOutlet weak var mainView: UIImageView!
     
-    //private var localLocationList = ["Australia","Australia one","Australia two","Australia three","four Australia me","France","France one","France two","France three","USA","South Africa","Canada","India"]
-    
     private var localLocationList = [LocationModel]()
     private var isWalkMode = true
     private var isSelection = false
@@ -100,11 +98,12 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     @objc func textFieldDidChange(textField: UITextField)
     {
         let searchText = textField.text!
-        if(textField.text == "")
+        localLocationList = RealmManager.getLocationList()
+        if(searchText != "")
         {
-            return
+            localLocationList = localLocationList.filter { $0.locationName.contains(searchText) }
+            
         }
-        localLocationList = localLocationList.filter { $0.locationName.contains(searchText) }
         locationTableView.reloadData()
     }
     
@@ -113,6 +112,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         isSelection = true
         if (filterInput == "")
         {
+            selectDestination()
             return
         }
         localLocationList = localLocationList.filter { $0.locationName.contains(filterInput) }
@@ -122,7 +122,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     
     func selectDestination()
     {
-        if(locationSelectionCounter<0 || locationSelectionCounter>localLocationList.count)
+        if(locationSelectionCounter<0 || locationSelectionCounter>localLocationList.count-1)
         {
             AppDelegate.speechManager.voiceOutput(message: "No more location available")
             return
@@ -149,7 +149,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
             visionViewController?.isWalk = isWalkMode
             if(!isWalkMode)
             {
-                visionViewController?.destinationLocation = RealmManager.getLocationModel(id: locationSelectionCounter)
+                visionViewController?.destinationLocation = localLocationList[locationSelectionCounter]
             }
         }
     }

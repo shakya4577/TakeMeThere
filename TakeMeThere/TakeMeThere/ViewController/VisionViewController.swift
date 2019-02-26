@@ -20,12 +20,14 @@ class VisionViewController: UIViewController
     {
         locationManager = LocationManager(iRouteMap: routeMap, iDestLat: destinationLocation.locatoinLatitude, iDestLong: destinationLocation.locationLongitude)
         super.viewDidLoad()
+        self.navigationController?.title = destinationLocation.locationName
         if(isWalk)
         {
             arViewBottonConstraint.constant = 0
             routeMap.isHidden = true
         }
     }
+    
     static func nextMove(step:String)
     {
        AppDelegate.speechManager.voiceOutput(message: step)
