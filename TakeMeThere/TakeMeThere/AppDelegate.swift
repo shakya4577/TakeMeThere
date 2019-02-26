@@ -17,8 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static var primeDelegate:PrimeDelegate?
     static var visionDelegate:VisionDelegate?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
+    {
+        print(UserDefaults.standard.bool(forKey: Constants.userRegisterDone))
+        if(!UserDefaults.standard.bool(forKey: Constants.userRegisterDone))
+        {
+            let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+            let newUserViewController = mainStoryBoard.instantiateViewController(withIdentifier: "NewUserViewController") as! NewUserViewController
+            self.window?.rootViewController = newUserViewController
+        }
         return true
     }
 
