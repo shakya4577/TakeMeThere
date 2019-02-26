@@ -19,6 +19,8 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         txtLocationSearch.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: .editingChanged)
        // testRealm()
         localLocationList = RealmManager.getLocationList()
+        print(UserDefaults.standard.string(forKey: Constants.UserNameKey)!)
+        AppDelegate.speechManager.voiceOutput(message: "Hi " + UserDefaults.standard.string(forKey: Constants.UserNameKey)!)
     }
     
     func testRealm()

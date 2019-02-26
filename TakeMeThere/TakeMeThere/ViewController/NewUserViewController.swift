@@ -102,9 +102,7 @@ class NewUserViewController: UIViewController
                 stepCounter = stepCounter+1
                 UserDefaults.standard.set(stepCounter, forKey: Constants.userRegisterStepCounterKey)
                  UserDefaults.standard.set(true, forKey: Constants.userRegisterDone)
-                print(UserDefaults.standard.bool(forKey: Constants.userRegisterDone))
                 performSegue(withIdentifier: "LetsWalkSegue", sender: Data())
-                
             }
         }
     }
