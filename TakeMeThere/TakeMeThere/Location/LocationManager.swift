@@ -60,7 +60,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
     {
-       VisionViewController.nextMove(step: "I lost my sense. I am sorry")
+        AppDelegate.visionDelegate?.nextMove(step:"I lost my sense. I am sorry")
     }
     
     func mapView(_ mapView: MKMapView, rendererFor
@@ -142,7 +142,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
                    print("distance:-  \(route.steps[counter].distance)")
                    counter = counter+1;
                 }
-                VisionViewController.nextMove(step: audioMessage)
+                AppDelegate.visionDelegate?.nextMove(step:audioMessage)
             }
         }
     }
@@ -172,6 +172,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
             }
         }
     }
+    
     func searchLocationList(locationInput:String,completion: @escaping (_ locationList: [LocationModel]) -> Void)
     {
         var locationSearchList = [LocationModel]()

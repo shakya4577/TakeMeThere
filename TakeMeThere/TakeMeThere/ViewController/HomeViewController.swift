@@ -21,9 +21,11 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         AppDelegate.locationManager.appleMap = mapView
         txtLocationSearch.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: .editingChanged)
        // testRealm()
+       
         localLocationList = RealmManager.getLocationList()
        
         AppDelegate.speechManager.voiceOutput(message: "Hi " + UserDefaults.standard.string(forKey: Constants.UserNameKey)!)
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
         //testRealm()
@@ -77,9 +79,8 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     
     func whereAmI()
     {
-        let locationManager = LocationManager()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-            locationManager.getUserLocatoin { (location: String) in
+            AppDelegate.locationManager.getUserLocatoin { (location: String) in
                 AppDelegate.speechManager.voiceOutput(message:"You are at " + location)
             }
         })

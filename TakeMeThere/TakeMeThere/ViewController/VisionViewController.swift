@@ -4,7 +4,7 @@ import SceneKit
 import CoreLocation
 import MapKit
 
-class VisionViewController: UIViewController
+class VisionViewController: UIViewController,VisionDelegate
 {
     @IBOutlet weak var routeMap: MKMapView!
     @IBOutlet weak var lblInfoTwo: UILabel!
@@ -16,8 +16,10 @@ class VisionViewController: UIViewController
     var isWalk = Bool()
     var locationManager:LocationManager? = nil
     static var sharedInstance = VisionViewController()
+   
     override func viewDidLoad()
     {
+        AppDelegate.visionDelegate = self
         locationManager = LocationManager(iRouteMap: routeMap, iDestLat: destinationLocation.locatoinLatitude, iDestLong: destinationLocation.locationLongitude)
         super.viewDidLoad()
         self.navigationController?.title = destinationLocation.locationName
@@ -28,14 +30,13 @@ class VisionViewController: UIViewController
         }
     }
     
-    static func nextMove(step:String)
-    {
-       AppDelegate.speechManager.voiceOutput(message: step)
+    func nextMove(step:String){
+        AppDelegate.speechManager.voiceOutput(message: step)
     }
     
     func whereAmI(location:String)
     {
-        locationManager!.getUserLocatoin { (location:String) in
+        AppDelegate.locationManager.getUserLocatoin { (location:String) in
             AppDelegate.speechManager.voiceOutput(message: location)
         }
     }

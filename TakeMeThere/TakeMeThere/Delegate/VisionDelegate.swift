@@ -1,4 +1,3 @@
 protocol VisionDelegate {
-    func whereAmI()
-    func nextMove()
+    func nextMove(step:String)
 }
