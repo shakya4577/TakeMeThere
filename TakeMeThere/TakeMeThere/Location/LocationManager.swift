@@ -14,19 +14,26 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     var destinationCoordinate:CLLocationCoordinate2D = CLLocationCoordinate2D()
     var addressString : String = ""
     let geocoder = CLGeocoder()
-    var isStartLocationMarked:Bool=false
+    var isMapAvailable = false;
+    
     init(iRouteMap:MKMapView, iDestLat:Double,iDestLong:Double)
     {
         super.init()
-        
         self.routeMap = iRouteMap
         self.destinationCoordinate = CLLocationCoordinate2D(latitude: iDestLat, longitude: iDestLong)
-        self.configuration()
+        isMapAvailable = true
+        self.configureLocationManager()
+        self.configureMap()
     }
     
-    func configuration() {
-        routeMap.delegate = self
-        routeMap.showsUserLocation = true
+    override init()
+    {
+        super.init()
+        self.configureLocationManager()
+    }
+    
+    func configureLocationManager()
+    {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
@@ -35,16 +42,25 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
         }
     }
     
+    func configureMap()
+    {
+        routeMap.delegate = self
+        routeMap.showsUserLocation = true
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         currentLocation = locations[0] as CLLocation
-        takeMeThere()
-        markMe()
+        if(isMapAvailable)
+        {
+            takeMeThere()
+            markMe()
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
     {
-       MyEyesARViewController.nextMove(step: "I lost my sense. I am sorry")
+       VisionViewController.nextMove(step: "I lost my sense. I am sorry")
     }
     
     func mapView(_ mapView: MKMapView, rendererFor
@@ -85,7 +101,6 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     }
     
     func takeMeThere() {
-        
         request.source = MKMapItem.forCurrentLocation()
         let desitnationPlaceMark = MKPlacemark.init(coordinate: destinationCoordinate)
         request.destination = MKMapItem.init(placemark: desitnationPlaceMark)
@@ -127,13 +142,12 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
                    print("distance:-  \(route.steps[counter].distance)")
                    counter = counter+1;
                 }
-                MyEyesARViewController.nextMove(step: audioMessage)
+                VisionViewController.nextMove(step: audioMessage)
             }
-            
         }
     }
     
-    func whereAmI()
+   func getUserLocatoin(completion: @escaping (_ location: String) -> Void)
     {
         geocoder.reverseGeocodeLocation(currentLocation) { (placemarksArray, error) in
             if (placemarksArray?.count)! > 0 {
@@ -154,10 +168,9 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
                 if pm.postalCode != nil {
                     self.addressString = self.addressString + pm.postalCode! + " "
                 }
-                MyEyesARViewController.iAmAt(location:self.addressString);
+                completion(self.addressString);
             }
-         }
-       
+        }
     }
     
 }
