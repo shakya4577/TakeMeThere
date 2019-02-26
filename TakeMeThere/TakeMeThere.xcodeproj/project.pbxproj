@@ -19,6 +19,10 @@
 		B15AC742221EC3FF00953F0E /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15AC741221EC3FF00953F0E /* RealmManager.swift */; };
 		B15AC78C221F16AD00953F0E /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15AC78B221F16AD00953F0E /* Speech.framework */; };
 		B15AC78E221F1B7C00953F0E /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15AC78D221F1B7C00953F0E /* SpeechManager.swift */; };
+		B16EC5CA2225202300E30532 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16EC5C92225202300E30532 /* NewUserViewController.swift */; };
+		B16EC5CD2225238600E30532 /* maleLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = B16EC5CC2225238600E30532 /* maleLogo.png */; };
+		B16EC5CF2225239200E30532 /* femaleLogo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = B16EC5CE2225239200E30532 /* femaleLogo.jpeg */; };
+		B16EC5D12225384500E30532 /* nextArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = B16EC5D02225384500E30532 /* nextArrow.png */; };
 		B18945672223CF6A005F2833 /* LocationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18945662223CF6A005F2833 /* LocationTableCell.swift */; };
 		B189456B2223E060005F2833 /* PrimeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B189456A2223E060005F2833 /* PrimeDelegate.swift */; };
 		B1CA9186221D2CF6004B4CAB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CA9185221D2CF6004B4CAB /* LocationManager.swift */; };
@@ -70,6 +74,10 @@
 		B15AC741221EC3FF00953F0E /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		B15AC78B221F16AD00953F0E /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		B15AC78D221F1B7C00953F0E /* SpeechManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
+		B16EC5C92225202300E30532 /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
+		B16EC5CC2225238600E30532 /* maleLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maleLogo.png; sourceTree = "<group>"; };
+		B16EC5CE2225239200E30532 /* femaleLogo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = femaleLogo.jpeg; sourceTree = "<group>"; };
+		B16EC5D02225384500E30532 /* nextArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextArrow.png; sourceTree = "<group>"; };
 		B18945662223CF6A005F2833 /* LocationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableCell.swift; sourceTree = "<group>"; };
 		B189456A2223E060005F2833 /* PrimeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeDelegate.swift; sourceTree = "<group>"; };
 		B1CA9185221D2CF6004B4CAB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -165,12 +173,23 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
+		B16EC5CB2225233F00E30532 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B16EC5CE2225239200E30532 /* femaleLogo.jpeg */,
+				B16EC5CC2225238600E30532 /* maleLogo.png */,
+				B16EC5D02225384500E30532 /* nextArrow.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		B1CA917F221D2BD5004B4CAB /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				B1F83E38221B0E2200F19F2B /* HomeViewController.swift */,
 				B1F83E65221B136700F19F2B /* VisionViewController.swift */,
 				B18945662223CF6A005F2833 /* LocationTableCell.swift */,
+				B16EC5C92225202300E30532 /* NewUserViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -223,6 +242,7 @@
 		B1F83E35221B0E2200F19F2B /* TakeMeThere */ = {
 			isa = PBXGroup;
 			children = (
+				B16EC5CB2225233F00E30532 /* Resources */,
 				B1CA9187221E5B49004B4CAB /* TakeMeThere.entitlements */,
 				B15AC70A221EB78100953F0E /* Realm */,
 				B1CA9182221D2C5A004B4CAB /* SpeechKit */,
@@ -390,8 +410,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B16EC5D12225384500E30532 /* nextArrow.png in Resources */,
 				B1F83E41221B0E2F00F19F2B /* LaunchScreen.storyboard in Resources */,
 				B1F83E3E221B0E2F00F19F2B /* Assets.xcassets in Resources */,
+				B16EC5CD2225238600E30532 /* maleLogo.png in Resources */,
+				B16EC5CF2225239200E30532 /* femaleLogo.jpeg in Resources */,
 				B1F83E3C221B0E2200F19F2B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -511,6 +534,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B1F83E39221B0E2200F19F2B /* HomeViewController.swift in Sources */,
+				B16EC5CA2225202300E30532 /* NewUserViewController.swift in Sources */,
 				B189456B2223E060005F2833 /* PrimeDelegate.swift in Sources */,
 				B15AC78E221F1B7C00953F0E /* SpeechManager.swift in Sources */,
 				B1F83E66221B136700F19F2B /* VisionViewController.swift in Sources */,
