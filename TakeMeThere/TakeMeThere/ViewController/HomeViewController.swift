@@ -92,19 +92,21 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         if(searchText != "")
         {
             localLocationList = localLocationList.filter { $0.locationName.contains(searchText) }
-            
-        }
-        if(localLocationList.count==0)
-        {
-            AppDelegate.locationManager.searchLocationList(locationInput: textField.text!) {
-                (returnedlocationList:[LocationModel])
-                in
-                self.localLocationList = returnedlocationList
-                self.locationTableView.reloadData()
+            if(localLocationList.count==0)
+            {
+                AppDelegate.locationManager.searchLocationList(locationInput: textField.text!) {
+                    (returnedlocationList:[LocationModel])
+                    in
+                    self.localLocationList = returnedlocationList
+                    self.locationTableView.reloadData()
+                }
             }
-           // AppDelegate.locationManager.searchLocationOnMap(locationInput: textField.text!)
         }
-        
+        else
+        {
+            localLocationList = RealmManager.getLocationList()
+        }
+        locationTableView.reloadData()
     }
     
     func filterLocationList(filterInput: String)
@@ -115,13 +117,26 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
             selectDestination()
             return
         }
-        localLocationList = localLocationList.filter { $0.locationName.contains(filterInput) }
-        if(localLocationList.count==0)
+        else
         {
-            
+             localLocationList = localLocationList.filter { $0.locationName.contains(filterInput) }
+            if(localLocationList.count==0)
+            {
+                AppDelegate.locationManager.searchLocationList(locationInput: filterInput) {
+                    (returnedlocationList:[LocationModel])
+                    in
+                    self.localLocationList = returnedlocationList
+                    self.locationTableView.reloadData()
+                    self.selectDestination()
+                }
+            }
+            else
+            {
+                locationTableView.reloadData()
+                selectDestination()
+            }
         }
-        locationTableView.reloadData()
-        selectDestination()
+       
     }
     
     func selectDestination()
