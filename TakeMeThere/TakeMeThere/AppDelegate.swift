@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     static let speechManager:SpeechManager = SpeechManager()
+    static let locationManager:LocationManager = LocationManager()
     static let homeViewController:HomeViewController = HomeViewController()
     static var primeDelegate:PrimeDelegate?
     static var visionDelegate:VisionDelegate?

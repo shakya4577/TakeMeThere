@@ -99,10 +99,13 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
         {
             let index = voiceInputMessage.index(voiceInputMessage.startIndex, offsetBy: 10)
             let isTakeMeCommand = voiceInputMessage[..<index]
-            let destination:String = String(voiceInputMessage[index...voiceInputMessage.endIndex])
+            print(String(isTakeMeCommand))
+            //let destination = voiceInputMessage.substring(from: index)
+            let destination = voiceInputMessage[index...]
+            print(String(destination))
             if (isTakeMeCommand == "Take me to")
             {
-                AppDelegate.primeDelegate!.filterLocationList(filterInput: destination)
+                AppDelegate.primeDelegate!.filterLocationList(filterInput: String(destination))
             }
         }
     }

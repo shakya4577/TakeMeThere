@@ -6,25 +6,38 @@ import MapKit
 class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
 {
     var locationManager = CLLocationManager()
-    weak var routeMap: MKMapView!
+    var map:MKMapView = MKMapView()
+    weak var appleMap: MKMapView!
+        {
+        set {
+            map = newValue
+            self.configureMap()
+        }
+        get
+        {
+            return map
+        }
+    }
     var currentLocation:CLLocation = CLLocation();
     var moveCount:Int = Int.max
     var messageToSiri:String = String()
     let request = MKDirections.Request()
-    var destinationCoordinate:CLLocationCoordinate2D = CLLocationCoordinate2D()
+    var coordinates:CLLocationCoordinate2D = CLLocationCoordinate2D()
+    var destinationCoordinate:CLLocationCoordinate2D
+    {
+        set
+        {
+            coordinates = newValue
+            isMapAvailable = true
+        }
+        get
+        {
+            return coordinates
+        }
+    }
     var addressString : String = ""
     let geocoder = CLGeocoder()
     var isMapAvailable = false;
-    
-    init(iRouteMap:MKMapView, iDestLat:Double,iDestLong:Double)
-    {
-        super.init()
-        self.routeMap = iRouteMap
-        self.destinationCoordinate = CLLocationCoordinate2D(latitude: iDestLat, longitude: iDestLong)
-        isMapAvailable = true
-        self.configureLocationManager()
-        self.configureMap()
-    }
     
     override init()
     {
@@ -44,8 +57,8 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     
     func configureMap()
     {
-        routeMap.delegate = self
-        routeMap.showsUserLocation = true
+        appleMap.delegate = self
+        appleMap.showsUserLocation = true
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
@@ -60,7 +73,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
     {
-       VisionViewController.nextMove(step: "I lost my sense. I am sorry")
+        AppDelegate.visionDelegate?.nextMove(step:"I lost my sense. I am sorry")
     }
     
     func mapView(_ mapView: MKMapView, rendererFor
@@ -97,7 +110,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     {
         let centre = currentLocation.coordinate
         let region = MKCoordinateRegion(center: centre, span: MKCoordinateSpan(latitudeDelta: 0.0001, longitudeDelta: 0.0))
-        self.routeMap.setRegion(region, animated: true)
+        self.appleMap.setRegion(region, animated: true)
     }
     
     func takeMeThere() {
@@ -124,7 +137,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
         var audioMessage:String = String();
         for route in response.routes {
             
-            routeMap.addOverlay(route.polyline,
+            appleMap.addOverlay(route.polyline,
                                 level: MKOverlayLevel.aboveRoads)
             
             print("move count \(moveCount)")
@@ -142,7 +155,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
                    print("distance:-  \(route.steps[counter].distance)")
                    counter = counter+1;
                 }
-                VisionViewController.nextMove(step: audioMessage)
+                AppDelegate.visionDelegate?.nextMove(step:audioMessage)
             }
         }
     }
@@ -172,5 +185,54 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
             }
         }
     }
+    
+    func searchLocationList(locationInput:String,completion: @escaping (_ locationList: [LocationModel]) -> Void)
+    {
+        var locationSearchList = [LocationModel]()
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = locationInput
+        request.region =  appleMap.region
+        let search = MKLocalSearch(request: request)
+        search.start { response, _ in
+            guard let response = response else {
+                return
+            }
+            for mapItem in response.mapItems
+            {
+                let locationModelObj = LocationModel()
+                locationModelObj.locationName = mapItem.name!
+                locationModelObj.locationPlacemark = mapItem.placemark.title!
+                locationModelObj.locatoinLatitude = mapItem.placemark.coordinate.latitude
+                locationModelObj.locationLongitude = mapItem.placemark.coordinate.longitude
+                locationSearchList.append(locationModelObj)
+            }
+            completion(locationSearchList)
+            print( response.mapItems)
+        }
+    }
+//    func searchLocationOnMap(locationInput:String)->[LocationModel]
+//    {
+//        var locationSearchList = [LocationModel]()
+//        let request = MKLocalSearch.Request()
+//        request.naturalLanguageQuery = locationInput
+//        request.region =  appleMap.region
+//        let search = MKLocalSearch(request: request)
+//        search.start { response, _ in
+//            guard let response = response else {
+//                return
+//            }
+//            for mapItem in response.mapItems
+//            {
+//                var locationModelObj = LocationModel()
+//                locationModelObj.locationName = mapItem.name!
+//                locationModelObj.locationPlacemark = mapItem.placemark.title!
+//                locationModelObj.locatoinLatitude = mapItem.placemark.coordinate.latitude
+//                locationModelObj.locationLongitude = mapItem.placemark.coordinate.longitude
+//            }
+//            print( response.mapItems)
+//
+//            // self.tableView.reloadData()
+//        }
+//    }
     
 }

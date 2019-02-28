@@ -1,5 +1,6 @@
 import UIKit
 import Speech
+import MapKit
 class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,PrimeDelegate
 {
     @IBOutlet weak var locationTableView: UITableView!
@@ -11,51 +12,36 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     private var locationSelectionCounter = 0
     @IBOutlet weak var txtLocationSearch: UITextField!
     
+    @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
         locationTableView.delegate = self
         locationTableView.dataSource = self
         AppDelegate.primeDelegate = self
+        AppDelegate.locationManager.appleMap = mapView
         txtLocationSearch.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: .editingChanged)
        // testRealm()
+       
         localLocationList = RealmManager.getLocationList()
-        print(UserDefaults.standard.string(forKey: Constants.UserNameKey)!)
-        AppDelegate.speechManager.voiceOutput(message: "Hi " + UserDefaults.standard.string(forKey: Constants.UserNameKey)!)
+       
+    //    AppDelegate.speechManager.voiceOutput(message: "Hi " + UserDefaults.standard.string(forKey: Constants.UserNameKey)!)
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
+        //testRealm()
     }
     
-    func testRealm()
+    @objc func dismissKeyboard()
     {
-        let loc1:LocationModel = LocationModel()
-        loc1.locationName = "Loc1"
-        loc1.locatoinLatitude = 30.484872
-        loc1.locationLongitude = 49.0092393
-        RealmManager.saveLocation(locationDetails: loc1)
-        
-        let loc2:LocationModel = LocationModel()
-        loc2.locationName = "Loc2"
-        loc2.locatoinLatitude = 70.484872
-        loc2.locationLongitude = 59.0092393
-        RealmManager.saveLocation(locationDetails: loc2)
-        
-        let loc3:LocationModel = LocationModel()
-        loc3.locationName = "Loc2"
-        loc3.locatoinLatitude = 40.484872
-        loc3.locationLongitude = 69.0092393
-        RealmManager.saveLocation(locationDetails: loc3)
-        
-        let loc4:LocationModel = LocationModel()
-        loc4.locationName = "Loc3"
-        loc4.locatoinLatitude = 10.484872
-        loc4.locationLongitude = 39.0092393
-        RealmManager.saveLocation(locationDetails: loc4)
+        view.endEditing(true)
+        resignFirstResponder()
     }
-    
+   
     @IBAction func longPressDetected(_ sender: UILongPressGestureRecognizer)
     {
         AppDelegate.speechManager.awakeVoiceInteractor()
     }
     
-   
     @IBAction func swipeDetected(_ sender: UISwipeGestureRecognizer)
     {
         if(sender.direction == .up && !isSelection)
@@ -66,6 +52,8 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         {
             locationSelectionCounter = locationSelectionCounter - 1
             selectDestination()
+            let indexPath = NSIndexPath(item: locationSelectionCounter, section: 0)
+            locationTableView.scrollToRow(at: indexPath as IndexPath, at: UITableView.ScrollPosition.top, animated: true)
         }
         else if(sender.direction == .right && !isSelection)
         {
@@ -79,6 +67,8 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         {
             locationSelectionCounter = locationSelectionCounter + 1
             selectDestination()
+            let indexPath = NSIndexPath(item: locationSelectionCounter, section: 0)
+            locationTableView.scrollToRow(at: indexPath as IndexPath, at: UITableView.ScrollPosition.top, animated: true)
         }
     }
     
@@ -89,9 +79,8 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     
     func whereAmI()
     {
-        let locationManager = LocationManager()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-            locationManager.getUserLocatoin { (location: String) in
+            AppDelegate.locationManager.getUserLocatoin { (location: String) in
                 AppDelegate.speechManager.voiceOutput(message:"You are at " + location)
             }
         })
@@ -104,7 +93,19 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         if(searchText != "")
         {
             localLocationList = localLocationList.filter { $0.locationName.contains(searchText) }
-            
+            if(localLocationList.count==0)
+            {
+                AppDelegate.locationManager.searchLocationList(locationInput: textField.text!) {
+                    (returnedlocationList:[LocationModel])
+                    in
+                    self.localLocationList = returnedlocationList
+                    self.locationTableView.reloadData()
+                }
+            }
+        }
+        else
+        {
+            localLocationList = RealmManager.getLocationList()
         }
         locationTableView.reloadData()
     }
@@ -117,9 +118,26 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
             selectDestination()
             return
         }
-        localLocationList = localLocationList.filter { $0.locationName.contains(filterInput) }
-        locationTableView.reloadData()
-        selectDestination()
+        else
+        {
+             localLocationList = localLocationList.filter { $0.locationName.contains(filterInput) }
+            if(localLocationList.count==0)
+            {
+                AppDelegate.locationManager.searchLocationList(locationInput: filterInput) {
+                    (returnedlocationList:[LocationModel])
+                    in
+                    self.localLocationList = returnedlocationList
+                    self.locationTableView.reloadData()
+                    self.selectDestination()
+                }
+            }
+            else
+            {
+                locationTableView.reloadData()
+                selectDestination()
+            }
+        }
+       
     }
     
     func selectDestination()
@@ -127,6 +145,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         if(locationSelectionCounter<0 || locationSelectionCounter>localLocationList.count-1)
         {
             AppDelegate.speechManager.voiceOutput(message: "No more location available")
+            locationSelectionCounter=0
             return
         }
         AppDelegate.speechManager.voiceOutput(message: localLocationList[locationSelectionCounter].locationName)
@@ -165,5 +184,37 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         cell.initCell(locName: localLocationList[indexPath.row].locationName)
         return cell
     }
+    
 }
 
+
+
+
+
+//
+func testRealm()
+{
+    let loc1:LocationModel = LocationModel()
+    loc1.locationName = "Loc1"
+    loc1.locatoinLatitude = 30.484872
+    loc1.locationLongitude = 49.0092393
+    RealmManager.saveLocation(locationDetails: loc1)
+    
+    let loc2:LocationModel = LocationModel()
+    loc2.locationName = "Loc2"
+    loc2.locatoinLatitude = 70.484872
+    loc2.locationLongitude = 59.0092393
+    RealmManager.saveLocation(locationDetails: loc2)
+    
+    let loc3:LocationModel = LocationModel()
+    loc3.locationName = "Loc2"
+    loc3.locatoinLatitude = 40.484872
+    loc3.locationLongitude = 69.0092393
+    RealmManager.saveLocation(locationDetails: loc3)
+    
+    let loc4:LocationModel = LocationModel()
+    loc4.locationName = "Loc3"
+    loc4.locatoinLatitude = 10.484872
+    loc4.locationLongitude = 39.0092393
+    RealmManager.saveLocation(locationDetails: loc4)
+}
