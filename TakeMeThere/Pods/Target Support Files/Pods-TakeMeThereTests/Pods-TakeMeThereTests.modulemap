@@ -1,6 +1,0 @@
-framework module Pods_TakeMeThereTests {
-  umbrella header "Pods-TakeMeThereTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
