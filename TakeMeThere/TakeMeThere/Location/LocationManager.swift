@@ -6,25 +6,38 @@ import MapKit
 class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
 {
     var locationManager = CLLocationManager()
+    var map:MKMapView = MKMapView()
     weak var appleMap: MKMapView!
+        {
+        set {
+            map = newValue
+            self.configureMap()
+        }
+        get
+        {
+            return map
+        }
+    }
     var currentLocation:CLLocation = CLLocation();
     var moveCount:Int = Int.max
     var messageToSiri:String = String()
     let request = MKDirections.Request()
-    var destinationCoordinate:CLLocationCoordinate2D = CLLocationCoordinate2D()
+    var coordinates:CLLocationCoordinate2D = CLLocationCoordinate2D()
+    var destinationCoordinate:CLLocationCoordinate2D
+    {
+        set
+        {
+            coordinates = newValue
+            isMapAvailable = true
+        }
+        get
+        {
+            return coordinates
+        }
+    }
     var addressString : String = ""
     let geocoder = CLGeocoder()
     var isMapAvailable = false;
-    
-    init(iRouteMap:MKMapView, iDestLat:Double,iDestLong:Double)
-    {
-        super.init()
-        self.appleMap = iRouteMap
-        self.destinationCoordinate = CLLocationCoordinate2D(latitude: iDestLat, longitude: iDestLong)
-        isMapAvailable = true
-        self.configureLocationManager()
-        self.configureMap()
-    }
     
     override init()
     {

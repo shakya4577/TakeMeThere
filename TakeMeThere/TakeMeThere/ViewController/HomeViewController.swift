@@ -24,7 +24,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
        
         localLocationList = RealmManager.getLocationList()
        
-        AppDelegate.speechManager.voiceOutput(message: "Hi " + UserDefaults.standard.string(forKey: Constants.UserNameKey)!)
+    //    AppDelegate.speechManager.voiceOutput(message: "Hi " + UserDefaults.standard.string(forKey: Constants.UserNameKey)!)
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
