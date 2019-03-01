@@ -8,8 +8,8 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     
     private var localLocationList = [LocationModel]()
     private var isWalkMode = true
-    private var isSelection = false
-    private var locationSelectionCounter = 0
+    internal var isSelection = false
+    internal var locationSelectionCounter = 0
     @IBOutlet weak var txtLocationSearch: UITextField!
     
     @IBOutlet weak var mapView: MKMapView!
@@ -20,15 +20,9 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         AppDelegate.primeDelegate = self
         AppDelegate.locationManager.appleMap = mapView
         txtLocationSearch.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: .editingChanged)
-       //testRealm()
-       
-        localLocationList = RealmManager.getLocationList()
-       
-    //    AppDelegate.speechManager.voiceOutput(message: "Hi " + UserDefaults.standard.string(forKey: Constants.UserNameKey)!)
-        
+       localLocationList = RealmManager.getLocationList()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
-        //testRealm()
     }
     
     @objc func dismissKeyboard()
@@ -37,46 +31,6 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         resignFirstResponder()
     }
    
-    @IBAction func longPressDetected(_ sender: UILongPressGestureRecognizer)
-    {
-        AppDelegate.speechManager.awakeVoiceInteractor()
-    }
-    
-    @IBAction func swipeDetected(_ sender: UISwipeGestureRecognizer)
-    {
-        if(sender.direction == .up && !isSelection)
-        {
-            filterLocationList(filterInput: "")
-        }
-        else if(sender.direction == .up && isSelection)
-        {
-            locationSelectionCounter = locationSelectionCounter - 1
-            selectDestination()
-            let indexPath = NSIndexPath(item: locationSelectionCounter, section: 0)
-            locationTableView.scrollToRow(at: indexPath as IndexPath, at: UITableView.ScrollPosition.top, animated: true)
-        }
-        else if(sender.direction == .right && !isSelection)
-        {
-            letsWalk()
-        }
-        else if(sender.direction == .right && isSelection)
-        {
-           takeMetoDestination()
-        }
-        else if(sender.direction == .down && isSelection)
-        {
-            locationSelectionCounter = locationSelectionCounter + 1
-            selectDestination()
-            let indexPath = NSIndexPath(item: locationSelectionCounter, section: 0)
-            locationTableView.scrollToRow(at: indexPath as IndexPath, at: UITableView.ScrollPosition.top, animated: true)
-        }
-    }
-    
-    @IBAction func tapDetected(_ sender: UITapGestureRecognizer)
-    {
-        whereAmI()
-    }
-    
     func whereAmI()
     {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
