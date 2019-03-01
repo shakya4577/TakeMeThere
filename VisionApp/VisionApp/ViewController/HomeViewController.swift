@@ -3,6 +3,10 @@ import Speech
 import MapKit
 class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,PrimeDelegate
 {
+    func saveThisLocation() {
+        
+    }
+    
     @IBOutlet weak var locationTableView: UITableView!
     @IBOutlet weak var mainView: UIImageView!
     

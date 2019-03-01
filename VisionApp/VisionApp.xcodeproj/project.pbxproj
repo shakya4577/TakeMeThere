@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C87078A2419EFA743581726 /* Pods_VisionApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3227C3B1474E531FFF9C48F8 /* Pods_VisionApp.framework */; };
-		B101C8440E242B9E0E8A8330 /* Pods_VisionAppApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 814665737FCED0F777469852 /* Pods_VisionAppApp.framework */; };
+		B101C8440E242B9E0E8A8330 /* Pods_VisionApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 814665737FCED0F777469852 /* Pods_VisionApp.framework */; };
 		B104D7A522205C9400BA6D5A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B104D7A422205C9400BA6D5A /* Constants.swift */; };
 		B11A902F222795C400E4C3D9 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = B11A902E222795C400E4C3D9 /* art.scnassets */; };
 		B11CFC322224410700F222C3 /* VisionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11CFC312224410700F222C3 /* VisionDelegate.swift */; };
@@ -33,8 +33,6 @@
 		B1F83E3C221B0E2200F19F2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1F83E3A221B0E2200F19F2B /* Main.storyboard */; };
 		B1F83E3E221B0E2F00F19F2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1F83E3D221B0E2F00F19F2B /* Assets.xcassets */; };
 		B1F83E41221B0E2F00F19F2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1F83E3F221B0E2F00F19F2B /* LaunchScreen.storyboard */; };
-		B1F83E4C221B0E2F00F19F2B /* VisionAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E4B221B0E2F00F19F2B /* VisionAppTests.swift */; };
-		B1F83E57221B0E2F00F19F2B /* VisionAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E56221B0E2F00F19F2B /* VisionAppUITests.swift */; };
 		B1F83E66221B136700F19F2B /* VisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E65221B136700F19F2B /* VisionViewController.swift */; };
 		B1F83E75221BB24700F19F2B /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F83E74221BB24600F19F2B /* ARKit.framework */; };
 		B1F83E76221BB24D00F19F2B /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F83E68221B1C3D00F19F2B /* SceneKit.framework */; };
@@ -61,9 +59,9 @@
 
 /* Begin PBXFileReference section */
 		1F15D0897348A429D38A9BAB /* Pods-VisionApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionApp.debug.xcconfig"; path = "Target Support Files/Pods-VisionApp/Pods-VisionApp.debug.xcconfig"; sourceTree = "<group>"; };
-		2BA5E386CA6C41F46A24ADC2 /* Pods-VisionAppApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionAppApp.release.xcconfig"; path = "Target Support Files/Pods-VisionAppApp/Pods-VisionAppApp.release.xcconfig"; sourceTree = "<group>"; };
+		2BA5E386CA6C41F46A24ADC2 /* Pods-VisionApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionApp.release.xcconfig"; path = "Target Support Files/Pods-VisionApp/Pods-VisionApp.release.xcconfig"; sourceTree = "<group>"; };
 		3227C3B1474E531FFF9C48F8 /* Pods_VisionApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisionApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		814665737FCED0F777469852 /* Pods_VisionAppApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisionAppApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		814665737FCED0F777469852 /* Pods_VisionApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisionApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E860CEACD657ECA41F80844 /* Pods_VisionAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisionAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B104D7A422205C9400BA6D5A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B11A902E222795C400E4C3D9 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -83,20 +81,18 @@
 		B189456A2223E060005F2833 /* PrimeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeDelegate.swift; sourceTree = "<group>"; };
 		B19BFCA72228EA8C00FC9599 /* HomeViewController+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Gesture.swift"; sourceTree = "<group>"; };
 		B19BFCA92228EC2600FC9599 /* VisionViewController+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VisionViewController+Gesture.swift"; sourceTree = "<group>"; };
-		B1C8C1B722294B3A000BE0D6 /* VisionAppApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VisionAppApp.entitlements; sourceTree = "<group>"; };
+		B1C8C1B722294B3A000BE0D6 /* VisionApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VisionApp.entitlements; sourceTree = "<group>"; };
 		B1CA9185221D2CF6004B4CAB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		B1F83E33221B0E2100F19F2B /* VisionAppApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionAppApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1F83E33221B0E2100F19F2B /* VisionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F83E36221B0E2200F19F2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1F83E38221B0E2200F19F2B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B1F83E3B221B0E2200F19F2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B1F83E3D221B0E2F00F19F2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1F83E40221B0E2F00F19F2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B1F83E42221B0E2F00F19F2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B1F83E47221B0E2F00F19F2B /* VisionAppAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VisionAppAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1F83E4B221B0E2F00F19F2B /* VisionAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionAppTests.swift; sourceTree = "<group>"; };
+		B1F83E47221B0E2F00F19F2B /* VisionAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VisionAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F83E4D221B0E2F00F19F2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B1F83E52221B0E2F00F19F2B /* VisionAppAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VisionAppAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B1F83E56221B0E2F00F19F2B /* VisionAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionAppUITests.swift; sourceTree = "<group>"; };
+		B1F83E52221B0E2F00F19F2B /* VisionAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VisionAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F83E58221B0E2F00F19F2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1F83E65221B136700F19F2B /* VisionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionViewController.swift; sourceTree = "<group>"; };
 		B1F83E68221B1C3D00F19F2B /* SceneKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SceneKit.framework; path = System/Library/Frameworks/SceneKit.framework; sourceTree = SDKROOT; };
@@ -106,7 +102,7 @@
 		B1F83E77221BBCF300F19F2B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B1F83E7A221BC21A00F19F2B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DA26907386F52C057FBE2799 /* Pods-VisionApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionApp.release.xcconfig"; path = "Target Support Files/Pods-VisionApp/Pods-VisionApp.release.xcconfig"; sourceTree = "<group>"; };
-		F4660B8FE67DA9E7358B5238 /* Pods-VisionAppApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionAppApp.debug.xcconfig"; path = "Target Support Files/Pods-VisionAppApp/Pods-VisionAppApp.debug.xcconfig"; sourceTree = "<group>"; };
+		F4660B8FE67DA9E7358B5238 /* Pods-VisionApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionApp.debug.xcconfig"; path = "Target Support Files/Pods-VisionApp/Pods-VisionApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F9ADDC25CD6592A076A85E43 /* Pods_VisionAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisionAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -123,7 +119,7 @@
 				B1F83E76221BB24D00F19F2B /* SceneKit.framework in Frameworks */,
 				B1F83E75221BB24700F19F2B /* ARKit.framework in Frameworks */,
 				2C87078A2419EFA743581726 /* Pods_VisionApp.framework in Frameworks */,
-				B101C8440E242B9E0E8A8330 /* Pods_VisionAppApp.framework in Frameworks */,
+				B101C8440E242B9E0E8A8330 /* Pods_VisionApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +208,7 @@
 		B1F83E2A221B0E2100F19F2B = {
 			isa = PBXGroup;
 			children = (
-				B1C8C1B722294B3A000BE0D6 /* VisionAppApp.entitlements */,
+				B1C8C1B722294B3A000BE0D6 /* VisionApp.entitlements */,
 				B1F83E35221B0E2200F19F2B /* VisionApp */,
 				B1F83E4A221B0E2F00F19F2B /* VisionAppTests */,
 				B1F83E55221B0E2F00F19F2B /* VisionAppUITests */,
@@ -225,9 +221,9 @@
 		B1F83E34221B0E2100F19F2B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B1F83E33221B0E2100F19F2B /* VisionAppApp.app */,
-				B1F83E47221B0E2F00F19F2B /* VisionAppAppTests.xctest */,
-				B1F83E52221B0E2F00F19F2B /* VisionAppAppUITests.xctest */,
+				B1F83E33221B0E2100F19F2B /* VisionApp.app */,
+				B1F83E47221B0E2F00F19F2B /* VisionAppTests.xctest */,
+				B1F83E52221B0E2F00F19F2B /* VisionAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -256,7 +252,6 @@
 		B1F83E4A221B0E2F00F19F2B /* VisionAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				B1F83E4B221B0E2F00F19F2B /* VisionAppTests.swift */,
 				B1F83E4D221B0E2F00F19F2B /* Info.plist */,
 			);
 			path = VisionAppTests;
@@ -265,7 +260,6 @@
 		B1F83E55221B0E2F00F19F2B /* VisionAppUITests */ = {
 			isa = PBXGroup;
 			children = (
-				B1F83E56221B0E2F00F19F2B /* VisionAppUITests.swift */,
 				B1F83E58221B0E2F00F19F2B /* Info.plist */,
 			);
 			path = VisionAppUITests;
@@ -286,7 +280,7 @@
 				3227C3B1474E531FFF9C48F8 /* Pods_VisionApp.framework */,
 				9E860CEACD657ECA41F80844 /* Pods_VisionAppTests.framework */,
 				F9ADDC25CD6592A076A85E43 /* Pods_VisionAppUITests.framework */,
-				814665737FCED0F777469852 /* Pods_VisionAppApp.framework */,
+				814665737FCED0F777469852 /* Pods_VisionApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -296,8 +290,8 @@
 			children = (
 				1F15D0897348A429D38A9BAB /* Pods-VisionApp.debug.xcconfig */,
 				DA26907386F52C057FBE2799 /* Pods-VisionApp.release.xcconfig */,
-				F4660B8FE67DA9E7358B5238 /* Pods-VisionAppApp.debug.xcconfig */,
-				2BA5E386CA6C41F46A24ADC2 /* Pods-VisionAppApp.release.xcconfig */,
+				F4660B8FE67DA9E7358B5238 /* Pods-VisionApp.debug.xcconfig */,
+				2BA5E386CA6C41F46A24ADC2 /* Pods-VisionApp.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -305,9 +299,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B1F83E32221B0E2100F19F2B /* VisionAppApp */ = {
+		B1F83E32221B0E2100F19F2B /* VisionApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B1F83E5B221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "VisionAppApp" */;
+			buildConfigurationList = B1F83E5B221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "VisionApp" */;
 			buildPhases = (
 				6363CA708E577A9FE90CD3FF /* [CP] Check Pods Manifest.lock */,
 				B1F83E2F221B0E2100F19F2B /* Sources */,
@@ -319,14 +313,14 @@
 			);
 			dependencies = (
 			);
-			name = VisionAppApp;
+			name = VisionApp;
 			productName = VisionApp;
-			productReference = B1F83E33221B0E2100F19F2B /* VisionAppApp.app */;
+			productReference = B1F83E33221B0E2100F19F2B /* VisionApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B1F83E46221B0E2F00F19F2B /* VisionAppAppTests */ = {
+		B1F83E46221B0E2F00F19F2B /* VisionAppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B1F83E5E221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "VisionAppAppTests" */;
+			buildConfigurationList = B1F83E5E221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "VisionAppTests" */;
 			buildPhases = (
 				B1F83E43221B0E2F00F19F2B /* Sources */,
 				B1F83E44221B0E2F00F19F2B /* Frameworks */,
@@ -337,14 +331,14 @@
 			dependencies = (
 				B1F83E49221B0E2F00F19F2B /* PBXTargetDependency */,
 			);
-			name = VisionAppAppTests;
+			name = VisionAppTests;
 			productName = VisionAppTests;
-			productReference = B1F83E47221B0E2F00F19F2B /* VisionAppAppTests.xctest */;
+			productReference = B1F83E47221B0E2F00F19F2B /* VisionAppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		B1F83E51221B0E2F00F19F2B /* VisionAppAppUITests */ = {
+		B1F83E51221B0E2F00F19F2B /* VisionAppUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B1F83E61221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "VisionAppAppUITests" */;
+			buildConfigurationList = B1F83E61221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "VisionAppUITests" */;
 			buildPhases = (
 				B1F83E4E221B0E2F00F19F2B /* Sources */,
 				B1F83E4F221B0E2F00F19F2B /* Frameworks */,
@@ -355,9 +349,9 @@
 			dependencies = (
 				B1F83E54221B0E2F00F19F2B /* PBXTargetDependency */,
 			);
-			name = VisionAppAppUITests;
+			name = VisionAppUITests;
 			productName = VisionAppUITests;
-			productReference = B1F83E52221B0E2F00F19F2B /* VisionAppAppUITests.xctest */;
+			productReference = B1F83E52221B0E2F00F19F2B /* VisionAppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -401,9 +395,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B1F83E32221B0E2100F19F2B /* VisionAppApp */,
-				B1F83E46221B0E2F00F19F2B /* VisionAppAppTests */,
-				B1F83E51221B0E2F00F19F2B /* VisionAppAppUITests */,
+				B1F83E32221B0E2100F19F2B /* VisionApp */,
+				B1F83E46221B0E2F00F19F2B /* VisionAppTests */,
+				B1F83E51221B0E2F00F19F2B /* VisionAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -455,7 +449,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VisionAppApp-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-VisionApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -470,7 +464,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VisionAppApp/Pods-VisionAppApp-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-VisionApp/Pods-VisionApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
@@ -483,7 +477,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VisionAppApp/Pods-VisionAppApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VisionApp/Pods-VisionApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -515,7 +509,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1F83E4C221B0E2F00F19F2B /* VisionAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,7 +516,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1F83E57221B0E2F00F19F2B /* VisionAppUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,12 +524,12 @@
 /* Begin PBXTargetDependency section */
 		B1F83E49221B0E2F00F19F2B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B1F83E32221B0E2100F19F2B /* VisionAppApp */;
+			target = B1F83E32221B0E2100F19F2B /* VisionApp */;
 			targetProxy = B1F83E48221B0E2F00F19F2B /* PBXContainerItemProxy */;
 		};
 		B1F83E54221B0E2F00F19F2B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B1F83E32221B0E2100F19F2B /* VisionAppApp */;
+			target = B1F83E32221B0E2100F19F2B /* VisionApp */;
 			targetProxy = B1F83E53221B0E2F00F19F2B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -680,10 +672,10 @@
 		};
 		B1F83E5C221B0E2F00F19F2B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4660B8FE67DA9E7358B5238 /* Pods-VisionAppApp.debug.xcconfig */;
+			baseConfigurationReference = F4660B8FE67DA9E7358B5238 /* Pods-VisionApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = VisionAppApp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VisionApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R7UP227U2D;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -704,10 +696,10 @@
 		};
 		B1F83E5D221B0E2F00F19F2B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2BA5E386CA6C41F46A24ADC2 /* Pods-VisionAppApp.release.xcconfig */;
+			baseConfigurationReference = 2BA5E386CA6C41F46A24ADC2 /* Pods-VisionApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = VisionAppApp.entitlements;
+				CODE_SIGN_ENTITLEMENTS = VisionApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R7UP227U2D;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -742,7 +734,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VisionAppApp.app/VisionAppApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VisionApp.app/VisionApp";
 			};
 			name = Debug;
 		};
@@ -762,7 +754,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VisionAppApp.app/VisionAppApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VisionApp.app/VisionApp";
 			};
 			name = Release;
 		};
@@ -816,7 +808,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B1F83E5B221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "VisionAppApp" */ = {
+		B1F83E5B221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "VisionApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B1F83E5C221B0E2F00F19F2B /* Debug */,
@@ -825,7 +817,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B1F83E5E221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "VisionAppAppTests" */ = {
+		B1F83E5E221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "VisionAppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B1F83E5F221B0E2F00F19F2B /* Debug */,
@@ -834,7 +826,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B1F83E61221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "VisionAppAppUITests" */ = {
+		B1F83E61221B0E2F00F19F2B /* Build configuration list for PBXNativeTarget "VisionAppUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B1F83E62221B0E2F00F19F2B /* Debug */,
