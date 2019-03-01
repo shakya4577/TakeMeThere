@@ -12,6 +12,34 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
     private var voiceInteractorSemaphor = true
     private var listeningSempahor = true
     private var voiceInputMessage = String()
+    private var locName = String()
+     private var locPlacemark = String()
+    private var locationName:String
+    {
+        set
+        {
+            locName = newValue
+            voiceOutput(message: "Enter the placemark")
+            sleep(2)
+            voiceInput(isLocationSave: true)
+        }
+        get
+        {
+            return locName
+        }
+    }
+    private var locationPlacemark:String
+    {
+        set
+        {
+          locPlacemark = newValue
+        }
+        get
+        {
+            return locPlacemark
+        }
+    }
+    
     
     override init()
     {
@@ -24,10 +52,6 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
         speechRecognizer!.delegate = self
         SFSpeechRecognizer.requestAuthorization { (authStatus) in
         }
-    }
-    
-    func voiceInput() {
-        
         if recognitionTask != nil {
             recognitionTask?.cancel()
             recognitionTask = nil
@@ -40,27 +64,41 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
         } catch {
             print("audioSession properties weren't set because of an error.")
         }
-        
+    }
+    
+    func voiceInput(isLocationSave:Bool=false)
+    {
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
-        
-        let inputNode = audioEngine!.inputNode
-        
         guard let recognitionRequest = recognitionRequest else {
             fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
         }
-        
+        let inputNode = audioEngine!.inputNode
         recognitionRequest.shouldReportPartialResults = true
-        
-        recognitionTask = speechRecognizer!.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
+         recognitionTask = speechRecognizer!.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
             
-            if result != nil {
-                self.voiceInputMessage = (result?.bestTranscription.formattedString)!
-                if(self.listeningSempahor)
+            if result != nil
+            {
+                if(!isLocationSave)
                 {
-                  self.listeningSempahor = false
-                    Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.voiceInputAction), userInfo: nil, repeats: false)
+                    self.voiceInputMessage = (result?.bestTranscription.formattedString)!
+                    if(self.listeningSempahor)
+                    {
+                        self.listeningSempahor = false
+                        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.voiceInputAction), userInfo: nil, repeats: false)
+                    }
                 }
-                //print(self.voiceInputMessage)
+                else
+                {
+                    if(self.locationName.isEmpty)
+                    {
+                      self.locationName = (result?.bestTranscription.formattedString)!
+                    }
+                    else
+                    {
+                      self.locationPlacemark = (result?.bestTranscription.formattedString)!
+                    }
+                }
+                
             }
             if error != nil  {
                 self.audioEngine!.stop()
@@ -133,11 +171,11 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
         synth.speak(utterance)
     }
     
-//    func getUserCommand(completion: @escaping (_ isWalk:Bool, _ destination: String) -> Void)
-//    {
-//       self.awakeVoiceInteractor()
-//        completion(isWalk,voiceInputMessage)
-//    }
-    
-    
+    func saveLocationInput()->(String,String)
+    {
+        voiceOutput(message: "What is the location name")
+        sleep(2)
+        voiceInput(isLocationSave: true)
+        return (locationName,locationPlacemark)
+    }
 }

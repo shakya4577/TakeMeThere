@@ -24,6 +24,8 @@
 		B16EC5D12225384500E30532 /* nextArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = B16EC5D02225384500E30532 /* nextArrow.png */; };
 		B18945672223CF6A005F2833 /* LocationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18945662223CF6A005F2833 /* LocationTableCell.swift */; };
 		B189456B2223E060005F2833 /* PrimeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B189456A2223E060005F2833 /* PrimeDelegate.swift */; };
+		B19BFCA82228EA8C00FC9599 /* HomeViewController+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19BFCA72228EA8C00FC9599 /* HomeViewController+Gesture.swift */; };
+		B19BFCAA2228EC2700FC9599 /* VisionViewController+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19BFCA92228EC2600FC9599 /* VisionViewController+Gesture.swift */; };
 		B1CA9186221D2CF6004B4CAB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CA9185221D2CF6004B4CAB /* LocationManager.swift */; };
 		B1F83E37221B0E2200F19F2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E36221B0E2200F19F2B /* AppDelegate.swift */; };
 		B1F83E39221B0E2200F19F2B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E38221B0E2200F19F2B /* HomeViewController.swift */; };
@@ -76,6 +78,8 @@
 		B16EC5D02225384500E30532 /* nextArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextArrow.png; sourceTree = "<group>"; };
 		B18945662223CF6A005F2833 /* LocationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableCell.swift; sourceTree = "<group>"; };
 		B189456A2223E060005F2833 /* PrimeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeDelegate.swift; sourceTree = "<group>"; };
+		B19BFCA72228EA8C00FC9599 /* HomeViewController+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Gesture.swift"; sourceTree = "<group>"; };
+		B19BFCA92228EC2600FC9599 /* VisionViewController+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VisionViewController+Gesture.swift"; sourceTree = "<group>"; };
 		B1C8C1B32227BAFA000BE0D6 /* Vision.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vision.entitlements; sourceTree = "<group>"; };
 		B1CA9185221D2CF6004B4CAB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		B1F83E33221B0E2100F19F2B /* Vision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vision.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,7 +172,9 @@
 			isa = PBXGroup;
 			children = (
 				B1F83E38221B0E2200F19F2B /* HomeViewController.swift */,
+				B19BFCA72228EA8C00FC9599 /* HomeViewController+Gesture.swift */,
 				B1F83E65221B136700F19F2B /* VisionViewController.swift */,
+				B19BFCA92228EC2600FC9599 /* VisionViewController+Gesture.swift */,
 				B18945662223CF6A005F2833 /* LocationTableCell.swift */,
 				B16EC5C92225202300E30532 /* NewUserViewController.swift */,
 			);
@@ -479,6 +485,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B19BFCA82228EA8C00FC9599 /* HomeViewController+Gesture.swift in Sources */,
 				B1F83E39221B0E2200F19F2B /* HomeViewController.swift in Sources */,
 				B16EC5CA2225202300E30532 /* NewUserViewController.swift in Sources */,
 				B189456B2223E060005F2833 /* PrimeDelegate.swift in Sources */,
@@ -487,6 +494,7 @@
 				B15AC70C221EB79E00953F0E /* UserDetailModel.swift in Sources */,
 				B1F83E37221B0E2200F19F2B /* AppDelegate.swift in Sources */,
 				B11CFC322224410700F222C3 /* VisionDelegate.swift in Sources */,
+				B19BFCAA2228EC2700FC9599 /* VisionViewController+Gesture.swift in Sources */,
 				B18945672223CF6A005F2833 /* LocationTableCell.swift in Sources */,
 				B15AC740221EC36900953F0E /* LocationModel.swift in Sources */,
 				B15AC742221EC3FF00953F0E /* RealmManager.swift in Sources */,

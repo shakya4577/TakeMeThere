@@ -210,6 +210,21 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
             print( response.mapItems)
         }
     }
+    
+    func saveCurrentLocation(completion:@escaping (_ isSuccess:Bool)-> Void)
+    {
+            let locInput =   AppDelegate.speechManager.saveLocationInput()
+            let newLocation = LocationModel()
+            newLocation.locationName = locInput.0
+            newLocation.locationPlacemark = locInput.1
+            newLocation.locatoinLatitude = currentLocation.coordinate.latitude
+            newLocation.locationLongitude = currentLocation.coordinate.longitude
+            RealmManager.saveLocation(locationDetails: newLocation)
+            completion(true)
+    }
+    
+    
+    
 //    func searchLocationOnMap(locationInput:String)->[LocationModel]
 //    {
 //        var locationSearchList = [LocationModel]()
