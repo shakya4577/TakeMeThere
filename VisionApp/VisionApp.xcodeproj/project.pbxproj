@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C87078A2419EFA743581726 /* Pods_VisionApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3227C3B1474E531FFF9C48F8 /* Pods_VisionApp.framework */; };
+		B101C8440E242B9E0E8A8330 /* Pods_VisionAppApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 814665737FCED0F777469852 /* Pods_VisionAppApp.framework */; };
 		B104D7A522205C9400BA6D5A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B104D7A422205C9400BA6D5A /* Constants.swift */; };
 		B11A902F222795C400E4C3D9 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = B11A902E222795C400E4C3D9 /* art.scnassets */; };
 		B11CFC322224410700F222C3 /* VisionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11CFC312224410700F222C3 /* VisionDelegate.swift */; };
@@ -60,7 +61,9 @@
 
 /* Begin PBXFileReference section */
 		1F15D0897348A429D38A9BAB /* Pods-VisionApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionApp.debug.xcconfig"; path = "Target Support Files/Pods-VisionApp/Pods-VisionApp.debug.xcconfig"; sourceTree = "<group>"; };
+		2BA5E386CA6C41F46A24ADC2 /* Pods-VisionAppApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionAppApp.release.xcconfig"; path = "Target Support Files/Pods-VisionAppApp/Pods-VisionAppApp.release.xcconfig"; sourceTree = "<group>"; };
 		3227C3B1474E531FFF9C48F8 /* Pods_VisionApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisionApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		814665737FCED0F777469852 /* Pods_VisionAppApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisionAppApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E860CEACD657ECA41F80844 /* Pods_VisionAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisionAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B104D7A422205C9400BA6D5A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B11A902E222795C400E4C3D9 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
@@ -103,6 +106,7 @@
 		B1F83E77221BBCF300F19F2B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B1F83E7A221BC21A00F19F2B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		DA26907386F52C057FBE2799 /* Pods-VisionApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionApp.release.xcconfig"; path = "Target Support Files/Pods-VisionApp/Pods-VisionApp.release.xcconfig"; sourceTree = "<group>"; };
+		F4660B8FE67DA9E7358B5238 /* Pods-VisionAppApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionAppApp.debug.xcconfig"; path = "Target Support Files/Pods-VisionAppApp/Pods-VisionAppApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F9ADDC25CD6592A076A85E43 /* Pods_VisionAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisionAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -119,6 +123,7 @@
 				B1F83E76221BB24D00F19F2B /* SceneKit.framework in Frameworks */,
 				B1F83E75221BB24700F19F2B /* ARKit.framework in Frameworks */,
 				2C87078A2419EFA743581726 /* Pods_VisionApp.framework in Frameworks */,
+				B101C8440E242B9E0E8A8330 /* Pods_VisionAppApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +286,7 @@
 				3227C3B1474E531FFF9C48F8 /* Pods_VisionApp.framework */,
 				9E860CEACD657ECA41F80844 /* Pods_VisionAppTests.framework */,
 				F9ADDC25CD6592A076A85E43 /* Pods_VisionAppUITests.framework */,
+				814665737FCED0F777469852 /* Pods_VisionAppApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -290,6 +296,8 @@
 			children = (
 				1F15D0897348A429D38A9BAB /* Pods-VisionApp.debug.xcconfig */,
 				DA26907386F52C057FBE2799 /* Pods-VisionApp.release.xcconfig */,
+				F4660B8FE67DA9E7358B5238 /* Pods-VisionAppApp.debug.xcconfig */,
+				2BA5E386CA6C41F46A24ADC2 /* Pods-VisionAppApp.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -447,7 +455,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VisionApp-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-VisionAppApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -462,7 +470,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VisionApp/Pods-VisionApp-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-VisionAppApp/Pods-VisionAppApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
@@ -475,7 +483,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VisionApp/Pods-VisionApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VisionAppApp/Pods-VisionAppApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -672,7 +680,7 @@
 		};
 		B1F83E5C221B0E2F00F19F2B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1F15D0897348A429D38A9BAB /* Pods-VisionApp.debug.xcconfig */;
+			baseConfigurationReference = F4660B8FE67DA9E7358B5238 /* Pods-VisionAppApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VisionAppApp.entitlements;
@@ -696,7 +704,7 @@
 		};
 		B1F83E5D221B0E2F00F19F2B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA26907386F52C057FBE2799 /* Pods-VisionApp.release.xcconfig */;
+			baseConfigurationReference = 2BA5E386CA6C41F46A24ADC2 /* Pods-VisionAppApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = VisionAppApp.entitlements;
