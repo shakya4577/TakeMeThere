@@ -19,7 +19,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
-       //testRealm()
+     //  testRealm()
         locationTableView.delegate = self
         locationTableView.dataSource = self
         AppDelegate.primeDelegate = self
@@ -117,13 +117,12 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
      }
     
     func letsWalk() {
-        visionViewController.isWalk = true
         self.navigationController?.pushViewController(visionViewController, animated: true)
     }
     
     func takeMetoDestination()
     {
-        visionViewController.isWalk = false
+        visionViewController.isLocalDestination = RealmManager.isLocationExists(locationName:  localLocationList[locationSelectionCounter].locationName  )
         self.navigationController?.pushViewController(visionViewController, animated: true)
     }
    

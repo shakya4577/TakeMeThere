@@ -40,4 +40,15 @@ class RealmManager: NSObject
         let locationList = realmDelegate.objects(LocationModel.self)
         return Array(locationList)
     }
+    static func isLocationExists(locationName:String)->Bool
+    {
+        let object = realmDelegate.objects(LocationModel.self).filter("locationName = %@", locationName).first
+        if((object) != nil)
+        {
+            return true
+        }
+        else {
+            return false
+        }
+    }
 }

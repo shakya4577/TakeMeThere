@@ -17,23 +17,16 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
     
     @IBOutlet weak var sceneView: ARSKView!
     var destinationLocation:LocationModel = LocationModel()
-    var isWalk = Bool()
+    var isLocalDestination:Bool?
     var locationManager:LocationManager? = nil
     static var sharedInstance = VisionViewController()
    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.title = destinationLocation.locationName
         AppDelegate.visionDelegate = self
         AppDelegate.locationManager.appleMap = routeMap
         AppDelegate.locationManager.destinationCoordinate = CLLocationCoordinate2D(latitude: destinationLocation.locatoinLatitude, longitude: destinationLocation.locationLongitude)
-        if(isWalk)
-        {
-            self.title = "Walking"
-            sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
-            routeMap.isHidden = true
-        }
         let overlayScene = SKScene()
         overlayScene.scaleMode = .aspectFill
         sceneView.delegate = self
@@ -45,11 +38,24 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        
-        // Create a session configuration
+        if let isLocalDestination :Bool = isLocalDestination!
+        {
+            if(isLocalDestination)
+            {
+                self.title = "Local Destination"
+            }
+            else
+            {
+                self.title = "Global Destination"
+            }
+        }
+        else
+        {
+            self.title = "Walking"
+            sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
+            routeMap.isHidden = true
+        }
         let configuration = ARWorldTrackingConfiguration()
-        
-        // Run the view's session
         sceneView.session.run(configuration)
     }
     
