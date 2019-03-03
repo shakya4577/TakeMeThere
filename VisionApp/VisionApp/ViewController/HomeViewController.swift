@@ -122,7 +122,8 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     
     func takeMetoDestination()
     {
-        visionViewController.isLocalDestination = RealmManager.isLocationExists(locationName:  localLocationList[locationSelectionCounter].locationName  )
+        visionViewController.isLocalDestination = RealmManager.isLocationExists(locationName:  localLocationList[locationSelectionCounter].locationName)
+        visionViewController.destinationLocation = localLocationList[locationSelectionCounter];
         self.navigationController?.pushViewController(visionViewController, animated: true)
     }
    

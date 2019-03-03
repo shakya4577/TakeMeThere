@@ -13,14 +13,12 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
     @IBOutlet weak var lblInfoTwo: UILabel!
     @IBOutlet weak var sceneViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var lblInfoOne: UILabel!
-    
-    
     @IBOutlet weak var sceneView: ARSKView!
     var destinationLocation:LocationModel = LocationModel()
     var isLocalDestination:Bool?
-    var locationManager:LocationManager? = nil
     static var sharedInstance = VisionViewController()
    
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -42,18 +40,18 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         {
             if(isLocalDestination)
             {
-                self.title = "Local Destination"
+                self.title = destinationLocation.locationName
+                sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
+                routeMap.isHidden = true
             }
             else
             {
-                self.title = "Global Destination"
+                self.title = destinationLocation.locationName
             }
         }
         else
         {
             self.title = "Walking"
-            sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
-            routeMap.isHidden = true
         }
         let configuration = ARWorldTrackingConfiguration()
         sceneView.session.run(configuration)
