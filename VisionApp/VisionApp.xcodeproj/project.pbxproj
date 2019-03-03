@@ -215,13 +215,6 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
-		B1CA9181221D2BF0004B4CAB /* Augumented Reality */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Augumented Reality";
-			sourceTree = "<group>";
-		};
 		B1CA9182221D2C5A004B4CAB /* SpeechKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,7 +253,6 @@
 				B16EC5CB2225233F00E30532 /* Resources */,
 				B15AC70A221EB78100953F0E /* Realm */,
 				B1CA9182221D2C5A004B4CAB /* SpeechKit */,
-				B1CA9181221D2BF0004B4CAB /* Augumented Reality */,
 				B1CA9180221D2BE2004B4CAB /* Location */,
 				B11CFC30222440AE00F222C3 /* Delegate */,
 				B1CA917F221D2BD5004B4CAB /* ViewController */,
