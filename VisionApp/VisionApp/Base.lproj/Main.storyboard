@@ -13,7 +13,7 @@
         <!--New User View Controller-->
         <scene sceneID="8XH-cU-sHZ">
             <objects>
-                <viewController storyboardIdentifier="NewUserViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="j3k-7C-LyF" customClass="NewUserViewController" customModule="TakeMeThere" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewUserViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="j3k-7C-LyF" customClass="NewUserViewController" customModule="VisionApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="07Y-GV-zge">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -188,7 +188,7 @@
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="HomeViewController" customModule="TakeMeThere" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="HomeViewController" customModule="VisionApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -197,7 +197,7 @@
                                 <rect key="frame" x="16" y="99" width="343" height="548"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DestinationCell" rowHeight="79" id="DkC-Id-XMH" customClass="LocationTableCell" customModule="TakeMeThere" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DestinationCell" rowHeight="79" id="DkC-Id-XMH" customClass="LocationTableCell" customModule="VisionApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DkC-Id-XMH" id="MmV-tz-JQb">
@@ -314,30 +314,19 @@
         <!--Vision View Controller-->
         <scene sceneID="BkD-xx-oGj">
             <objects>
-                <viewController storyboardIdentifier="ExplorerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p2M-Hi-Bvz" customClass="VisionViewController" customModule="TakeMeThere" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="VisionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="p2M-Hi-Bvz" customClass="VisionViewController" customModule="VisionApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lP9-oL-FzE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <arscnView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EfE-sd-vhe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="317"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outlet property="delegate" destination="p2M-Hi-Bvz" id="7fJ-cv-rju"/>
-                                </connections>
-                            </arscnView>
+                            <arskView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ruT-Xv-scE">
+                                <rect key="frame" x="0.0" y="20" width="375" height="347"/>
+                            </arskView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dxF-Gd-XK2">
                                 <rect key="frame" x="0.0" y="367" width="375" height="300"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FQ2-hF-hCJ">
-                                <rect key="frame" x="164" y="318" width="46" height="30"/>
-                                <state key="normal" title="Test"/>
-                                <connections>
-                                    <action selector="btnTestClick:" destination="p2M-Hi-Bvz" eventType="touchUpInside" id="d7m-Cy-tF8"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s3q-Ga-pvj">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="jnD-ZX-knd" appends="YES" id="bCv-O0-OZ9"/>
@@ -349,28 +338,24 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dxF-Gd-XK2" firstAttribute="leading" secondItem="Wsq-aY-yN1" secondAttribute="leading" id="7eo-x1-B7T"/>
-                            <constraint firstItem="dxF-Gd-XK2" firstAttribute="top" secondItem="FQ2-hF-hCJ" secondAttribute="bottom" constant="19" id="BS0-6m-p26"/>
-                            <constraint firstItem="EfE-sd-vhe" firstAttribute="top" secondItem="lP9-oL-FzE" secondAttribute="top" id="De9-l1-6xf"/>
+                            <constraint firstItem="ruT-Xv-scE" firstAttribute="top" secondItem="Wsq-aY-yN1" secondAttribute="top" id="7rr-o9-G7j"/>
+                            <constraint firstItem="Wsq-aY-yN1" firstAttribute="trailing" secondItem="ruT-Xv-scE" secondAttribute="trailing" id="Aba-jU-i7z"/>
                             <constraint firstItem="Wsq-aY-yN1" firstAttribute="bottom" secondItem="dxF-Gd-XK2" secondAttribute="bottom" id="Des-1W-Ahi"/>
+                            <constraint firstItem="ruT-Xv-scE" firstAttribute="leading" secondItem="Wsq-aY-yN1" secondAttribute="leading" id="EBJ-Oa-1Uf"/>
                             <constraint firstItem="Wsq-aY-yN1" firstAttribute="bottom" secondItem="s3q-Ga-pvj" secondAttribute="bottom" id="Etu-iq-6sA"/>
-                            <constraint firstItem="Wsq-aY-yN1" firstAttribute="bottom" secondItem="EfE-sd-vhe" secondAttribute="bottom" constant="350" id="Gfw-FO-X8c"/>
                             <constraint firstItem="Wsq-aY-yN1" firstAttribute="trailing" secondItem="s3q-Ga-pvj" secondAttribute="trailing" id="IhI-fV-bCT"/>
+                            <constraint firstItem="dxF-Gd-XK2" firstAttribute="top" secondItem="ruT-Xv-scE" secondAttribute="bottom" id="MF8-Cb-neG"/>
                             <constraint firstItem="Wsq-aY-yN1" firstAttribute="trailing" secondItem="dxF-Gd-XK2" secondAttribute="trailing" id="PPn-9S-6B4"/>
                             <constraint firstItem="dxF-Gd-XK2" firstAttribute="height" secondItem="lP9-oL-FzE" secondAttribute="height" multiplier="0.45" id="Xmd-M2-qfQ"/>
-                            <constraint firstItem="EfE-sd-vhe" firstAttribute="leading" secondItem="Wsq-aY-yN1" secondAttribute="leading" id="bcF-4b-ljx"/>
-                            <constraint firstItem="EfE-sd-vhe" firstAttribute="trailing" secondItem="Wsq-aY-yN1" secondAttribute="trailing" id="bda-A4-BtD"/>
                             <constraint firstItem="s3q-Ga-pvj" firstAttribute="top" secondItem="Wsq-aY-yN1" secondAttribute="top" id="lmU-Sy-SDV"/>
-                            <constraint firstItem="Wsq-aY-yN1" firstAttribute="trailing" secondItem="FQ2-hF-hCJ" secondAttribute="trailing" constant="165" id="mtq-id-fox"/>
-                            <constraint firstItem="FQ2-hF-hCJ" firstAttribute="leading" secondItem="Wsq-aY-yN1" secondAttribute="leading" constant="164" id="rCd-IH-b47"/>
                             <constraint firstItem="s3q-Ga-pvj" firstAttribute="leading" secondItem="Wsq-aY-yN1" secondAttribute="leading" id="td5-Mm-eOs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wsq-aY-yN1"/>
                     </view>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="arSceneView" destination="EfE-sd-vhe" id="sJd-ig-ZDv"/>
-                        <outlet property="arViewBottonConstraint" destination="Gfw-FO-X8c" id="Vyi-ng-XNM"/>
                         <outlet property="routeMap" destination="dxF-Gd-XK2" id="5al-B7-unC"/>
+                        <outlet property="sceneView" destination="ruT-Xv-scE" id="87J-EZ-EMp"/>
+                        <outlet property="sceneViewBottomConstraint" destination="MF8-Cb-neG" id="i88-Ze-ghz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jLA-QC-zQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -402,6 +387,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="B5M-ST-BXf">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="j3k-7C-LyF" kind="relationship" relationship="rootViewController" id="nZ4-rY-WuL"/>
                     </connections>

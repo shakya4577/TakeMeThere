@@ -31,7 +31,7 @@ class RealmManager: NSObject
     
     static func getLocationModel(id:Int)->LocationModel
     {
-        let locationModel = realmDelegate.object(ofType:LocationModel.self, forPrimaryKey: index)
+        let locationModel = realmDelegate.object(ofType:LocationModel.self, forPrimaryKey: id)
         return locationModel!
     }
     

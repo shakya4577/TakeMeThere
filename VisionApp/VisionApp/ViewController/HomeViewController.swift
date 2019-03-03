@@ -1,6 +1,7 @@
 import UIKit
 import Speech
 import MapKit
+import Vision
 class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,PrimeDelegate
 {
     func saveThisLocation() {
@@ -19,6 +20,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
+       // testRealm()
         locationTableView.delegate = self
         locationTableView.dataSource = self
         AppDelegate.primeDelegate = self
@@ -27,6 +29,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
        localLocationList = RealmManager.getLocationList()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
+        
     }
     
     @objc func dismissKeyboard()
@@ -153,25 +156,25 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
 func testRealm()
 {
     let loc1:LocationModel = LocationModel()
-    loc1.locationName = "Loc1"
+    loc1.locationName = "Stairs"
     loc1.locatoinLatitude = 30.484872
     loc1.locationLongitude = 49.0092393
     RealmManager.saveLocation(locationDetails: loc1)
     
     let loc2:LocationModel = LocationModel()
-    loc2.locationName = "Loc2"
+    loc2.locationName = "Lobby"
     loc2.locatoinLatitude = 70.484872
     loc2.locationLongitude = 59.0092393
     RealmManager.saveLocation(locationDetails: loc2)
     
     let loc3:LocationModel = LocationModel()
-    loc3.locationName = "Loc2"
+    loc3.locationName = "Main door"
     loc3.locatoinLatitude = 40.484872
     loc3.locationLongitude = 69.0092393
     RealmManager.saveLocation(locationDetails: loc3)
     
     let loc4:LocationModel = LocationModel()
-    loc4.locationName = "Loc3"
+    loc4.locationName = "Office"
     loc4.locatoinLatitude = 10.484872
     loc4.locationLongitude = 39.0092393
     RealmManager.saveLocation(locationDetails: loc4)

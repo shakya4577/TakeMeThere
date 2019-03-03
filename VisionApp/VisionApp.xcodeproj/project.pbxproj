@@ -27,6 +27,7 @@
 		B19BFCA82228EA8C00FC9599 /* HomeViewController+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19BFCA72228EA8C00FC9599 /* HomeViewController+Gesture.swift */; };
 		B19BFCAA2228EC2700FC9599 /* VisionViewController+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19BFCA92228EC2600FC9599 /* VisionViewController+Gesture.swift */; };
 		B1CA9186221D2CF6004B4CAB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CA9185221D2CF6004B4CAB /* LocationManager.swift */; };
+		B1F1674C2229826E0057B3AB /* Vision.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F1674B2229826D0057B3AB /* Vision.framework */; };
 		B1F83E37221B0E2200F19F2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E36221B0E2200F19F2B /* AppDelegate.swift */; };
 		B1F83E39221B0E2200F19F2B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E38221B0E2200F19F2B /* HomeViewController.swift */; };
 		B1F83E3C221B0E2200F19F2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1F83E3A221B0E2200F19F2B /* Main.storyboard */; };
@@ -84,6 +85,7 @@
 		B19BFCA72228EA8C00FC9599 /* HomeViewController+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Gesture.swift"; sourceTree = "<group>"; };
 		B19BFCA92228EC2600FC9599 /* VisionViewController+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VisionViewController+Gesture.swift"; sourceTree = "<group>"; };
 		B1CA9185221D2CF6004B4CAB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		B1F1674B2229826D0057B3AB /* Vision.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Vision.framework; path = System/Library/Frameworks/Vision.framework; sourceTree = SDKROOT; };
 		B1F83E33221B0E2100F19F2B /* VisionApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1F83E36221B0E2200F19F2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1F83E38221B0E2200F19F2B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1F1674C2229826E0057B3AB /* Vision.framework in Frameworks */,
 				B15AC78C221F16AD00953F0E /* Speech.framework in Frameworks */,
 				B15AC73C221EC20F00953F0E /* Realm.framework in Frameworks */,
 				B15AC73E221EC20F00953F0E /* RealmSwift.framework in Frameworks */,
@@ -274,6 +277,7 @@
 		B1F83E67221B1C3C00F19F2B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B1F1674B2229826D0057B3AB /* Vision.framework */,
 				B15AC78B221F16AD00953F0E /* Speech.framework */,
 				B15AC73B221EC20F00953F0E /* Realm.framework */,
 				B15AC73D221EC20F00953F0E /* RealmSwift.framework */,

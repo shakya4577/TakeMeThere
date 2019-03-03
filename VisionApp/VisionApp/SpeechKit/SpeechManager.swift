@@ -57,13 +57,20 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
             recognitionTask = nil
         }
         
-        do {
-            try audioSession.setCategory(.record, mode: .default)
-            try audioSession.setMode(AVAudioSession.Mode.measurement)
-            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
-        } catch {
-            print("audioSession properties weren't set because of an error.")
-        }
+            let audioSession = AVAudioSession.sharedInstance()
+            do
+            {
+                try audioSession.setCategory(.playAndRecord, mode: .default)
+                try audioSession.setMode(AVAudioSession.Mode.measurement)
+                try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+                //try audioSession.setCategory(AVAudioSession.Category.playAndRecord)
+                
+            } catch
+                
+            {
+                    
+            }
+        
     }
     
     func voiceInput(isLocationSave:Bool=false)
@@ -135,6 +142,10 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
         }
         else
         {
+            if(voiceInputMessage.count<10)
+            {
+                return
+            }
             let index = voiceInputMessage.index(voiceInputMessage.startIndex, offsetBy: 10)
             let isTakeMeCommand = voiceInputMessage[..<index]
             print(String(isTakeMeCommand))
@@ -167,6 +178,7 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
     {
         let utterance = AVSpeechUtterance(string: message)
         utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        utterance.rate = 0.3
         let synth = AVSpeechSynthesizer()
         synth.speak(utterance)
     }
@@ -179,3 +191,4 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
         return (locationName,locationPlacemark)
     }
 }
+
