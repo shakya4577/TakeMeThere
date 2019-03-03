@@ -183,7 +183,7 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
         synth.speak(utterance)
     }
     
-    func saveLocationInput()->(String,String)
+    func inputsToSaveLocation()->(String,String)
     {
         voiceOutput(message: "What is the location name")
         sleep(2)
