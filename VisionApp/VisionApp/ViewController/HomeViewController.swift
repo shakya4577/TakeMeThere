@@ -14,6 +14,8 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     internal var locationSelectionCounter = 0
     @IBOutlet weak var txtLocationSearch: UITextField!
     
+    let visionViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VisionViewController") as! VisionViewController
+    
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +28,12 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
        localLocationList = RealmManager.getLocationList()
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     @objc func dismissKeyboard()
@@ -110,29 +117,16 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
      }
     
     func letsWalk() {
-        isWalkMode = true
-        performSegue(withIdentifier: "VisionSegue", sender: Data())
+        visionViewController.isWalk = true
+        self.navigationController?.pushViewController(visionViewController, animated: true)
     }
     
     func takeMetoDestination()
     {
-        isWalkMode = false
-        performSegue(withIdentifier: "VisionSegue", sender: Data())
+        visionViewController.isWalk = false
+        self.navigationController?.pushViewController(visionViewController, animated: true)
     }
    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.destination is VisionViewController
-        {
-            let visionViewController = segue.destination as? VisionViewController
-            visionViewController?.isWalk = isWalkMode
-            if(!isWalkMode)
-            {
-                visionViewController?.destinationLocation = localLocationList[locationSelectionCounter]
-            }
-        }
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return localLocationList.count
     }

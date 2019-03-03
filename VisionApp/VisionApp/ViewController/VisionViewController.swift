@@ -24,12 +24,13 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.navigationController?.title = destinationLocation.locationName
+        self.title = destinationLocation.locationName
         AppDelegate.visionDelegate = self
         AppDelegate.locationManager.appleMap = routeMap
         AppDelegate.locationManager.destinationCoordinate = CLLocationCoordinate2D(latitude: destinationLocation.locatoinLatitude, longitude: destinationLocation.locationLongitude)
         if(isWalk)
         {
+            self.title = "Walking"
             sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
             routeMap.isHidden = true
         }
@@ -43,6 +44,7 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
