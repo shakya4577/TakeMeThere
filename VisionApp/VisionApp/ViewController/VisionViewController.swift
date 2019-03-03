@@ -13,26 +13,18 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
     @IBOutlet weak var lblInfoTwo: UILabel!
     @IBOutlet weak var sceneViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var lblInfoOne: UILabel!
-    
-    
     @IBOutlet weak var sceneView: ARSKView!
     var destinationLocation:LocationModel = LocationModel()
-    var isWalk = Bool()
-    var locationManager:LocationManager? = nil
+    var isLocalDestination:Bool?
     static var sharedInstance = VisionViewController()
    
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.navigationController?.title = destinationLocation.locationName
         AppDelegate.visionDelegate = self
         AppDelegate.locationManager.appleMap = routeMap
         AppDelegate.locationManager.destinationCoordinate = CLLocationCoordinate2D(latitude: destinationLocation.locatoinLatitude, longitude: destinationLocation.locationLongitude)
-        if(isWalk)
-        {
-            sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
-            routeMap.isHidden = true
-        }
         let overlayScene = SKScene()
         overlayScene.scaleMode = .aspectFill
         sceneView.delegate = self
@@ -43,11 +35,25 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // Create a session configuration
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        if let isLocalDestination :Bool = isLocalDestination!
+        {
+            if(isLocalDestination)
+            {
+                self.title = destinationLocation.locationName
+                sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
+                routeMap.isHidden = true
+            }
+            else
+            {
+                self.title = destinationLocation.locationName
+            }
+        }
+        else
+        {
+            self.title = "Walking"
+        }
         let configuration = ARWorldTrackingConfiguration()
-        
-        // Run the view's session
         sceneView.session.run(configuration)
     }
     
