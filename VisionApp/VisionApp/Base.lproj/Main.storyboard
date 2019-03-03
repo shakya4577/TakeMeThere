@@ -332,6 +332,7 @@
                                     <outletCollection property="gestureRecognizers" destination="jnD-ZX-knd" appends="YES" id="bCv-O0-OZ9"/>
                                     <outletCollection property="gestureRecognizers" destination="I5f-GD-tve" appends="YES" id="wAy-Tb-oJF"/>
                                     <outletCollection property="gestureRecognizers" destination="9bB-ad-cZv" appends="YES" id="zth-O9-N0p"/>
+                                    <outletCollection property="gestureRecognizers" destination="t5D-5b-XLb" appends="YES" id="mic-df-cAD"/>
                                 </connections>
                             </view>
                         </subviews>
@@ -374,6 +375,11 @@
                         <action selector="longPressDetected:" destination="p2M-Hi-Bvz" id="mxx-KI-92v"/>
                     </connections>
                 </pongPressGestureRecognizer>
+                <swipeGestureRecognizer direction="down" id="t5D-5b-XLb">
+                    <connections>
+                        <action selector="swipeDetected:" destination="p2M-Hi-Bvz" id="Lfm-Iq-l6I"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2508" y="201.94902548725639"/>
         </scene>

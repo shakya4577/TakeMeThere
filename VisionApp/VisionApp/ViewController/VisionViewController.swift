@@ -72,7 +72,14 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
     func saveThisLocation()
     {
         AppDelegate.locationManager.saveCurrentLocation { (isSuccess:Bool) in
-            AppDelegate.speechManager.voiceOutput(message: "Saved location successfully")
+            if(isSuccess)
+            {
+                AppDelegate.speechManager.voiceOutput(message: "Location Saved successfully ")
+            }
+            else
+            {
+                AppDelegate.speechManager.voiceOutput(message: "Couldn't save location")
+            }
         }
     }
     
@@ -153,6 +160,7 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         let detectedMessage = String(format: "Detected \(self.identifierString)")
         AppDelegate.speechManager.voiceOutput(message: detectedMessage)
     }
+    
 }
 
 

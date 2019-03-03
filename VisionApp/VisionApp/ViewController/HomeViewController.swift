@@ -146,7 +146,14 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     func saveThisLocation()
     {
         AppDelegate.locationManager.saveCurrentLocation { (isSuccess:Bool) in
-            AppDelegate.speechManager.voiceOutput(message: "Saved location successfully")
+            if(isSuccess)
+            {
+                AppDelegate.speechManager.voiceOutput(message: "Location Saved successfully ")
+            }
+            else
+            {
+                AppDelegate.speechManager.voiceOutput(message: "Couldn't save location")
+            }
         }
     }
 }
