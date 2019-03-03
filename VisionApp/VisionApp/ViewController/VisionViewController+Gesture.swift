@@ -4,9 +4,16 @@ extension VisionViewController
 {
     @IBAction func swipeDetected(_ sender: UISwipeGestureRecognizer)
     {
-        AppDelegate.speechManager.voiceOutput(message: "Taking you to home Screen")
-        sleep(2)
-        navigationController?.popViewController(animated: false)
+        if(sender.direction == .down)
+        {
+            saveThisLocation()
+        }
+        if(sender.direction == .left)
+        {
+            AppDelegate.speechManager.voiceOutput(message: "Taking you to home Screen")
+            sleep(2)
+            navigationController?.popViewController(animated: false)
+        }
     }
     
     @IBAction func tapDetected(_ sender: UITapGestureRecognizer)

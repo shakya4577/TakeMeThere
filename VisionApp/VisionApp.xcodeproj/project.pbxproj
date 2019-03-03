@@ -11,6 +11,9 @@
 		B104D7A522205C9400BA6D5A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B104D7A422205C9400BA6D5A /* Constants.swift */; };
 		B11A902F222795C400E4C3D9 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = B11A902E222795C400E4C3D9 /* art.scnassets */; };
 		B11CFC322224410700F222C3 /* VisionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11CFC312224410700F222C3 /* VisionDelegate.swift */; };
+		B14E7D0C222C1A29001177F8 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B14E7D0B222C1A29001177F8 /* SpriteKit.framework */; };
+		B14E7D0F222C1A7B001177F8 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B14E7D0D222C1A7A001177F8 /* Inceptionv3.mlmodel */; };
+		B14E7D10222C1A7B001177F8 /* LabelScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B14E7D0E222C1A7A001177F8 /* LabelScene.sks */; };
 		B15AC70C221EB79E00953F0E /* UserDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15AC70B221EB79E00953F0E /* UserDetailModel.swift */; };
 		B15AC73C221EC20F00953F0E /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15AC73B221EC20F00953F0E /* Realm.framework */; };
 		B15AC73E221EC20F00953F0E /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15AC73D221EC20F00953F0E /* RealmSwift.framework */; };
@@ -37,7 +40,6 @@
 		B1F83E57221B0E2F00F19F2B /* VisionAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E56221B0E2F00F19F2B /* VisionAppUITests.swift */; };
 		B1F83E66221B136700F19F2B /* VisionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F83E65221B136700F19F2B /* VisionViewController.swift */; };
 		B1F83E75221BB24700F19F2B /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F83E74221BB24600F19F2B /* ARKit.framework */; };
-		B1F83E76221BB24D00F19F2B /* SceneKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F83E68221B1C3D00F19F2B /* SceneKit.framework */; };
 		B1F83E78221BBCF400F19F2B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F83E77221BBCF300F19F2B /* CoreLocation.framework */; };
 		B1F83E7B221BC21A00F19F2B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1F83E7A221BC21A00F19F2B /* MapKit.framework */; };
 		E126C7706D3412B80D46E656 /* Pods_VisionApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C9B82F48A595C779A1F47F /* Pods_VisionApp.framework */; };
@@ -68,6 +70,9 @@
 		B104D7A422205C9400BA6D5A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B11A902E222795C400E4C3D9 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		B11CFC312224410700F222C3 /* VisionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionDelegate.swift; sourceTree = "<group>"; };
+		B14E7D0B222C1A29001177F8 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		B14E7D0D222C1A7A001177F8 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
+		B14E7D0E222C1A7A001177F8 /* LabelScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LabelScene.sks; sourceTree = "<group>"; };
 		B15AC70B221EB79E00953F0E /* UserDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailModel.swift; sourceTree = "<group>"; };
 		B15AC73B221EC20F00953F0E /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B15AC73D221EC20F00953F0E /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,13 +122,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B14E7D0C222C1A29001177F8 /* SpriteKit.framework in Frameworks */,
 				B1F1674C2229826E0057B3AB /* Vision.framework in Frameworks */,
 				B15AC78C221F16AD00953F0E /* Speech.framework in Frameworks */,
 				B15AC73C221EC20F00953F0E /* Realm.framework in Frameworks */,
 				B15AC73E221EC20F00953F0E /* RealmSwift.framework in Frameworks */,
 				B1F83E7B221BC21A00F19F2B /* MapKit.framework in Frameworks */,
 				B1F83E78221BBCF400F19F2B /* CoreLocation.framework in Frameworks */,
-				B1F83E76221BB24D00F19F2B /* SceneKit.framework in Frameworks */,
 				B1F83E75221BB24700F19F2B /* ARKit.framework in Frameworks */,
 				2C87078A2419EFA743581726 /* Pods_VisionApp.framework in Frameworks */,
 				E126C7706D3412B80D46E656 /* Pods_VisionApp.framework in Frameworks */,
@@ -156,6 +161,13 @@
 			path = Delegate;
 			sourceTree = "<group>";
 		};
+		B14E7D0A222C1992001177F8 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 		B15AC70A221EB78100953F0E /* Realm */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +181,8 @@
 		B16EC5CB2225233F00E30532 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B14E7D0D222C1A7A001177F8 /* Inceptionv3.mlmodel */,
+				B14E7D0E222C1A7A001177F8 /* LabelScene.sks */,
 				B16EC5CE2225239200E30532 /* femaleLogo.jpeg */,
 				B16EC5CC2225238600E30532 /* maleLogo.png */,
 				B16EC5D02225384500E30532 /* nextArrow.png */,
@@ -237,6 +251,7 @@
 		B1F83E35221B0E2200F19F2B /* VisionApp */ = {
 			isa = PBXGroup;
 			children = (
+				B14E7D0A222C1992001177F8 /* Support */,
 				B1838D5722295F23002AEFF0 /* VisionApp.entitlements */,
 				B11A902E222795C400E4C3D9 /* art.scnassets */,
 				B16EC5CB2225233F00E30532 /* Resources */,
@@ -277,6 +292,7 @@
 		B1F83E67221B1C3C00F19F2B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B14E7D0B222C1A29001177F8 /* SpriteKit.framework */,
 				B1F1674B2229826D0057B3AB /* Vision.framework */,
 				B15AC78B221F16AD00953F0E /* Speech.framework */,
 				B15AC73B221EC20F00953F0E /* Realm.framework */,
@@ -420,6 +436,7 @@
 				B16EC5D12225384500E30532 /* nextArrow.png in Resources */,
 				B1F83E41221B0E2F00F19F2B /* LaunchScreen.storyboard in Resources */,
 				B1F83E3E221B0E2F00F19F2B /* Assets.xcassets in Resources */,
+				B14E7D10222C1A7B001177F8 /* LabelScene.sks in Resources */,
 				B11A902F222795C400E4C3D9 /* art.scnassets in Resources */,
 				B16EC5CD2225238600E30532 /* maleLogo.png in Resources */,
 				B16EC5CF2225239200E30532 /* femaleLogo.jpeg in Resources */,
@@ -510,6 +527,7 @@
 				B18945672223CF6A005F2833 /* LocationTableCell.swift in Sources */,
 				B15AC740221EC36900953F0E /* LocationModel.swift in Sources */,
 				B15AC742221EC3FF00953F0E /* RealmManager.swift in Sources */,
+				B14E7D0F222C1A7B001177F8 /* Inceptionv3.mlmodel in Sources */,
 				B1CA9186221D2CF6004B4CAB /* LocationManager.swift in Sources */,
 				B104D7A522205C9400BA6D5A /* Constants.swift in Sources */,
 			);

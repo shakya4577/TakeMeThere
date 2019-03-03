@@ -4,9 +4,6 @@ import MapKit
 import Vision
 class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,PrimeDelegate
 {
-    func saveThisLocation() {
-        
-    }
     
     @IBOutlet weak var locationTableView: UITableView!
     @IBOutlet weak var mainView: UIImageView!
@@ -20,7 +17,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
-       // testRealm()
+       //testRealm()
         locationTableView.delegate = self
         locationTableView.dataSource = self
         AppDelegate.primeDelegate = self
@@ -146,6 +143,19 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         return cell
     }
     
+    func saveThisLocation()
+    {
+        AppDelegate.locationManager.saveCurrentLocation { (isSuccess:Bool) in
+            if(isSuccess)
+            {
+                AppDelegate.speechManager.voiceOutput(message: "Location Saved successfully ")
+            }
+            else
+            {
+                AppDelegate.speechManager.voiceOutput(message: "Couldn't save location")
+            }
+        }
+    }
 }
 
 

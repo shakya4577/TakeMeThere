@@ -109,7 +109,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     func markMe()
     {
         let centre = currentLocation.coordinate
-        let region = MKCoordinateRegion(center: centre, span: MKCoordinateSpan(latitudeDelta: 0.0001, longitudeDelta: 0.0))
+        let region = MKCoordinateRegion(center: centre, span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.0))
         self.appleMap.setRegion(region, animated: true)
     }
     
@@ -141,7 +141,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
                                 level: MKOverlayLevel.aboveRoads)
             
             print("move count \(moveCount)")
-            print("Steo count \(route.steps.count)")
+            print("Step count \(route.steps.count)")
             if (moveCount>route.steps.count || moveCount<route.steps.count)
             {
                 moveCount = route.steps.count
@@ -213,7 +213,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     
     func saveCurrentLocation(completion:@escaping (_ isSuccess:Bool)-> Void)
     {
-            let locInput =   AppDelegate.speechManager.saveLocationInput()
+            let locInput =   AppDelegate.speechManager.inputsToSaveLocation()
             let newLocation = LocationModel()
             newLocation.locationName = locInput.0
             newLocation.locationPlacemark = locInput.1
