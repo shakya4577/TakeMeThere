@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		2C87078A2419EFA743581726 /* Pods_VisionApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3227C3B1474E531FFF9C48F8 /* Pods_VisionApp.framework */; };
 		B104D7A522205C9400BA6D5A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B104D7A422205C9400BA6D5A /* Constants.swift */; };
-		B11A902F222795C400E4C3D9 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = B11A902E222795C400E4C3D9 /* art.scnassets */; };
 		B11CFC322224410700F222C3 /* VisionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B11CFC312224410700F222C3 /* VisionDelegate.swift */; };
 		B14E7D0C222C1A29001177F8 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B14E7D0B222C1A29001177F8 /* SpriteKit.framework */; };
 		B14E7D0F222C1A7B001177F8 /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B14E7D0D222C1A7A001177F8 /* Inceptionv3.mlmodel */; };
 		B14E7D10222C1A7B001177F8 /* LabelScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B14E7D0E222C1A7A001177F8 /* LabelScene.sks */; };
+		B14E7D15222C2C3A001177F8 /* VisionLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = B14E7D13222C2C3A001177F8 /* VisionLogo.png */; };
+		B14E7D16222C2C3A001177F8 /* VisionSplash.png in Resources */ = {isa = PBXBuildFile; fileRef = B14E7D14222C2C3A001177F8 /* VisionSplash.png */; };
 		B15AC70C221EB79E00953F0E /* UserDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15AC70B221EB79E00953F0E /* UserDetailModel.swift */; };
 		B15AC73C221EC20F00953F0E /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15AC73B221EC20F00953F0E /* Realm.framework */; };
 		B15AC73E221EC20F00953F0E /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15AC73D221EC20F00953F0E /* RealmSwift.framework */; };
@@ -68,11 +69,12 @@
 		3227C3B1474E531FFF9C48F8 /* Pods_VisionApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisionApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E860CEACD657ECA41F80844 /* Pods_VisionAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisionAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B104D7A422205C9400BA6D5A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		B11A902E222795C400E4C3D9 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		B11CFC312224410700F222C3 /* VisionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionDelegate.swift; sourceTree = "<group>"; };
 		B14E7D0B222C1A29001177F8 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		B14E7D0D222C1A7A001177F8 /* Inceptionv3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Inceptionv3.mlmodel; sourceTree = "<group>"; };
 		B14E7D0E222C1A7A001177F8 /* LabelScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LabelScene.sks; sourceTree = "<group>"; };
+		B14E7D13222C2C3A001177F8 /* VisionLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VisionLogo.png; sourceTree = "<group>"; };
+		B14E7D14222C2C3A001177F8 /* VisionSplash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VisionSplash.png; sourceTree = "<group>"; };
 		B15AC70B221EB79E00953F0E /* UserDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailModel.swift; sourceTree = "<group>"; };
 		B15AC73B221EC20F00953F0E /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B15AC73D221EC20F00953F0E /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +183,8 @@
 		B16EC5CB2225233F00E30532 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B14E7D13222C2C3A001177F8 /* VisionLogo.png */,
+				B14E7D14222C2C3A001177F8 /* VisionSplash.png */,
 				B14E7D0D222C1A7A001177F8 /* Inceptionv3.mlmodel */,
 				B14E7D0E222C1A7A001177F8 /* LabelScene.sks */,
 				B16EC5CE2225239200E30532 /* femaleLogo.jpeg */,
@@ -253,7 +257,6 @@
 			children = (
 				B14E7D0A222C1992001177F8 /* Support */,
 				B1838D5722295F23002AEFF0 /* VisionApp.entitlements */,
-				B11A902E222795C400E4C3D9 /* art.scnassets */,
 				B16EC5CB2225233F00E30532 /* Resources */,
 				B15AC70A221EB78100953F0E /* Realm */,
 				B1CA9182221D2C5A004B4CAB /* SpeechKit */,
@@ -434,10 +437,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B16EC5D12225384500E30532 /* nextArrow.png in Resources */,
+				B14E7D15222C2C3A001177F8 /* VisionLogo.png in Resources */,
+				B14E7D16222C2C3A001177F8 /* VisionSplash.png in Resources */,
 				B1F83E41221B0E2F00F19F2B /* LaunchScreen.storyboard in Resources */,
 				B1F83E3E221B0E2F00F19F2B /* Assets.xcassets in Resources */,
 				B14E7D10222C1A7B001177F8 /* LabelScene.sks in Resources */,
-				B11A902F222795C400E4C3D9 /* art.scnassets in Resources */,
 				B16EC5CD2225238600E30532 /* maleLogo.png in Resources */,
 				B16EC5CF2225239200E30532 /* femaleLogo.jpeg in Resources */,
 				B1F83E3C221B0E2200F19F2B /* Main.storyboard in Resources */,
