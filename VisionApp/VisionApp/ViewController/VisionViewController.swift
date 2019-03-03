@@ -282,8 +282,6 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
     
-    // MARK: - Error handling
-    
     private func displayErrorMessage(title: String, message: String) {
         // Present an alert informing about the error that has occurred.
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
