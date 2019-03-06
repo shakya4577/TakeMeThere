@@ -185,10 +185,11 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
     
     func inputsToSaveLocation()->(String,String)
     {
-        voiceOutput(message: "What is the location name")
-        sleep(2)
-        voiceInput(isLocationSave: true)
-        return (locationName,locationPlacemark)
+//        voiceOutput(message: "What is the location name")
+//        sleep(2)
+//        voiceInput(isLocationSave: true)
+//        return (locationName,locationPlacemark)
+        return ("LocationName","LocationPlacemark")
     }
 }
 
