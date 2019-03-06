@@ -65,7 +65,6 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
         currentLocation = locations[0] as CLLocation
        if(getRoute)
        {
-         print("apple map is not nil")
          takeMeThere()
          markMe()
        }

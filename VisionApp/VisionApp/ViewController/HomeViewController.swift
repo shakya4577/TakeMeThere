@@ -7,7 +7,6 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     
     @IBOutlet weak var locationTableView: UITableView!
     @IBOutlet weak var mainView: UIImageView!
-    internal var voiceInteractorSemaphor = true
     private var localLocationList = [LocationModel]()
     private var isWalkMode = true
     internal var isSelection = false
@@ -19,7 +18,6 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
-     //  testRealm()
         locationTableView.delegate = self
         locationTableView.dataSource = self
         AppDelegate.primeDelegate = self
@@ -151,9 +149,9 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
             }
         }
     }
+    
 }
 
-//
 func testRealm()
 {
     let loc1:LocationModel = LocationModel()

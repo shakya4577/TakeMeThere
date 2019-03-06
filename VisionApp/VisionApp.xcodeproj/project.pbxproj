@@ -163,13 +163,6 @@
 			path = Delegate;
 			sourceTree = "<group>";
 		};
-		B14E7D0A222C1992001177F8 /* Support */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Support;
-			sourceTree = "<group>";
-		};
 		B15AC70A221EB78100953F0E /* Realm */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,7 +241,6 @@
 		B1F83E35221B0E2200F19F2B /* VisionApp */ = {
 			isa = PBXGroup;
 			children = (
-				B14E7D0A222C1992001177F8 /* Support */,
 				B1838D5722295F23002AEFF0 /* VisionApp.entitlements */,
 				B16EC5CB2225233F00E30532 /* Resources */,
 				B15AC70A221EB78100953F0E /* Realm */,

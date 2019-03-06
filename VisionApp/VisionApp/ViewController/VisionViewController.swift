@@ -72,9 +72,11 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
         routeMap.isHidden = true
-        if let dest = destinationLocation
+        
+        if (destinationLocation != nil)
         {
-            AppDelegate.locationManager.destinationCoordinate = CLLocationCoordinate2D(latitude: dest.locatoinLatitude, longitude: dest.locationLongitude)
+            AppDelegate.locationManager.getRoute = true
+            AppDelegate.locationManager.destinationCoordinate = CLLocationCoordinate2D(latitude: destinationLocation!.locatoinLatitude, longitude: destinationLocation!.locationLongitude)
         }
         else
         {
@@ -86,8 +88,6 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // Pause the view's session
         sceneView.session.pause()
     }
     

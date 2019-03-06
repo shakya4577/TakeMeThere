@@ -7,15 +7,16 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate,AVSpeechSynthesizerDel
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine:AVAudioEngine? = AVAudioEngine()
-    private let audioSession = AVAudioSession.sharedInstance()
+    private var audioSession = AVAudioSession.sharedInstance()
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
     let synthesizer = AVSpeechSynthesizer()
     private var listeningSempahor = true
     private var voiceInputMessage = String()
     private var locationName = String()
     private var locationPlacemark = String()
+    internal var voiceInteractorSemaphor = true
     var currentSpeechCommad:Constants.VoiceCommand = Constants.VoiceCommand.VoiceCommandInfo;
-    
+    let systemSoundID: SystemSoundID = 1322
     override init()
     {
         super.init()
@@ -32,21 +33,18 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate,AVSpeechSynthesizerDel
             recognitionTask?.cancel()
             recognitionTask = nil
         }
-        
-            let audioSession = AVAudioSession.sharedInstance()
-            do
-            {
-                try audioSession.setCategory(.playAndRecord, mode: .default)
-                try audioSession.setMode(AVAudioSession.Mode.measurement)
-                try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
-                //try audioSession.setCategory(AVAudioSession.Category.playAndRecord)
+         do
+        {
+            audioSession = AVAudioSession.sharedInstance()
+            try audioSession.setCategory(.playAndRecord, mode: .default)
+            try audioSession.setMode(AVAudioSession.Mode.measurement)
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+            //try audioSession.setCategory(AVAudioSession.Category.playAndRecord)
                 
-            } catch
-                
-            {
+        } catch
+        {
                     
-            }
-        
+        }
     }
     
     func voiceInput()
@@ -56,6 +54,7 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate,AVSpeechSynthesizerDel
             fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
         }
         let inputNode = audioEngine!.inputNode
+        inputNode.removeTap(onBus: 0)
         recognitionRequest.shouldReportPartialResults = true
          recognitionTask = speechRecognizer!.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
             
@@ -67,7 +66,6 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate,AVSpeechSynthesizerDel
                         self.listeningSempahor = false
                         Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.voiceInputAction), userInfo: nil, repeats: false)
                     }
-                
             }
             if error != nil  {
                 self.audioEngine!.stop()
@@ -81,7 +79,6 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate,AVSpeechSynthesizerDel
             self.recognitionRequest?.append(buffer)
         }
         audioEngine!.prepare()
-        
         do {
             try audioEngine!.start()
         } catch {
@@ -113,7 +110,6 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate,AVSpeechSynthesizerDel
                 let index = voiceInputMessage.index(voiceInputMessage.startIndex, offsetBy: 10)
                 let isTakeMeCommand = voiceInputMessage[..<index]
                 print(String(isTakeMeCommand))
-                //let destination = voiceInputMessage.substring(from: index)
                 let destination = voiceInputMessage[index...]
                 print(String(destination))
                 if (isTakeMeCommand == "Take me to")
@@ -136,17 +132,26 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate,AVSpeechSynthesizerDel
     
     func voiceOutput(message:String,commandType:Constants.VoiceCommand=Constants.VoiceCommand.VoiceCommandInfo)
     {
-        currentSpeechCommad = commandType
-        let utterance = AVSpeechUtterance(string: message)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        synthesizer.speak(utterance)
+        if(voiceInteractorSemaphor)
+        {
+            voiceInteractorSemaphor = false;
+            _ = Timer.scheduledTimer(withTimeInterval: 20, repeats: false)
+            { timer in
+                self.voiceInteractorSemaphor = true
+            }
+            currentSpeechCommad = commandType
+            let utterance = AVSpeechUtterance(string: message)
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+            synthesizer.speak(utterance)
+        }
     }
     
      public func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance)
      {
         if(currentSpeechCommad != Constants.VoiceCommand.VoiceCommandInfo)
         {
-            voiceInput()
+           AudioServicesPlaySystemSound (systemSoundID)
+           voiceInput()
         }
      }
     
