@@ -21,8 +21,9 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
               }
               if(newValue)
               {
-               sceneViewBottomConstraint.constant = 0
-               routeMap.isHidden = false
+                sceneViewBottomConstraint.constant = 0
+                routeMap.isHidden = false
+                AppDelegate.locationManager.getRoute = true
               }
         }
         get

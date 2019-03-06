@@ -2,7 +2,7 @@
 import UIKit
 import Speech
 
-class SpeechManager: NSObject, SFSpeechRecognizerDelegate
+class SpeechManager: NSObject, SFSpeechRecognizerDelegate,AVSpeechSynthesizerDelegate
 {
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
@@ -182,6 +182,10 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
         let synth = AVSpeechSynthesizer()
         synth.speak(utterance)
     }
+     public func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance)
+     {
+        
+     }
     
     func inputsToSaveLocation()->(String,String)
     {
