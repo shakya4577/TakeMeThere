@@ -10,11 +10,12 @@ import Vision
 class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, ARSessionDelegate
 {
     var tempNavAvailableFlag = Bool()
+    internal var voiceInteractorSemaphor = true
     var isNavigationAvailable: Bool
     {
         set
         {
-              tempNavAvailableFlag = newValue
+            tempNavAvailableFlag = newValue
               if let dest = destinationLocation
               {
                 self.title = dest.locationName

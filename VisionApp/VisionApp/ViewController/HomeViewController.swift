@@ -7,7 +7,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     
     @IBOutlet weak var locationTableView: UITableView!
     @IBOutlet weak var mainView: UIImageView!
-    
+    internal var voiceInteractorSemaphor = true
     private var localLocationList = [LocationModel]()
     private var isWalkMode = true
     internal var isSelection = false
@@ -46,7 +46,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
             AppDelegate.locationManager.getUserLocatoin { (location: String) in
-                AppDelegate.speechManager.voiceOutput(message:"You are at " + location)
+                AppDelegate.speechManager.voiceOutput(message:"You are at " + location,commandType:  Constants.VoiceCommand.VoiceCommandInfo)
             }
         })
     }
