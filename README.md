@@ -5,11 +5,12 @@ Lets walk is simply use to reach one location two other within premises. You kee
 Take me to is the second mode of operation. It is used when user has to go from one geo location to another. 
 Along with ARkit, App also takes advantage of Mapkit and tell user her next navigation move.
 You can save your current location in database for future use.
-SpeechFramework
-CoreLocation
-MapKit
-ARKit
-VisionFramework
-Realm
+Framework used are:-
+SpeechFramework,
+CoreLocation,
+MapKit,
+ARKit,
+VisionFramework,
+Realm,
 and other core iOS framework.
 
