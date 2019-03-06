@@ -4,4 +4,5 @@ protocol PrimeDelegate
     func filterLocationList(filterInput:String)
     func whereAmI()
     func saveThisLocation()
+    
 }

@@ -116,13 +116,14 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         AppDelegate.speechManager.voiceOutput(message: localLocationList[locationSelectionCounter].locationName)
      }
     
-    func letsWalk() {
+    func letsWalk()
+    {
+        visionViewController.destinationLocation = nil
         self.navigationController?.pushViewController(visionViewController, animated: true)
     }
     
     func takeMetoDestination()
     {
-        visionViewController.isLocalDestination = RealmManager.isLocationExists(locationName:  localLocationList[locationSelectionCounter].locationName)
         visionViewController.destinationLocation = localLocationList[locationSelectionCounter];
         self.navigationController?.pushViewController(visionViewController, animated: true)
     }

@@ -9,22 +9,48 @@ import Vision
 
 class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, ARSessionDelegate
 {
+    var tempNavAvailableFlag = Bool()
+    var isNavigationAvailable: Bool
+    {
+        set
+        {
+              tempNavAvailableFlag = newValue
+              if let dest = destinationLocation
+              {
+                self.title = dest.locationName
+              }
+              if(newValue)
+              {
+               sceneViewBottomConstraint.constant = 0
+               routeMap.isHidden = false
+              }
+        }
+        get
+        {
+            return tempNavAvailableFlag
+        }
+        
+    }
+    
     @IBOutlet weak var routeMap: MKMapView!
     @IBOutlet weak var lblInfoTwo: UILabel!
     @IBOutlet weak var sceneViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var lblInfoOne: UILabel!
     @IBOutlet weak var sceneView: ARSKView!
-    var destinationLocation:LocationModel = LocationModel()
+    var destinationLocation:LocationModel?
     var isLocalDestination:Bool?
     static var sharedInstance = VisionViewController()
-   
+
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         AppDelegate.visionDelegate = self
         AppDelegate.locationManager.appleMap = routeMap
-        AppDelegate.locationManager.destinationCoordinate = CLLocationCoordinate2D(latitude: destinationLocation.locatoinLatitude, longitude: destinationLocation.locationLongitude)
+        NotificationCenter.default.addObserver(self, selector: #selector(nextMoveSelector(_:)), name: Constants.nextMoveNotificationName, object: nil)
+        
+        AppDelegate.locationManager.destinationCoordinate = CLLocationCoordinate2D(latitude: destinationLocation!.locatoinLatitude, longitude: destinationLocation!.locationLongitude)
+        
         let overlayScene = SKScene()
         overlayScene.scaleMode = .aspectFill
         sceneView.delegate = self
@@ -33,23 +59,20 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         
     }
     
+    @objc func nextMoveSelector(_ notification:Notification)
+    {
+        if let data = notification.userInfo as? [String: String]
+        {
+            AppDelegate.speechManager.voiceOutput(message: data["NexStep"]!)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        if let isLocalDestination :Bool = isLocalDestination!
-        {
-            if(isLocalDestination)
-            {
-                self.title = destinationLocation.locationName
-                sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
-                routeMap.isHidden = true
-            }
-            else
-            {
-                self.title = destinationLocation.locationName
-            }
-        }
-        else
+        sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
+        routeMap.isHidden = true
+        if destinationLocation == nil
         {
             self.title = "Walking"
         }
@@ -62,10 +85,6 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         
         // Pause the view's session
         sceneView.session.pause()
-    }
-    
-    func nextMove(step:String){
-        AppDelegate.speechManager.voiceOutput(message: step)
     }
     
     func whereAmI(location:String)

@@ -28,7 +28,6 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
         set
         {
             coordinates = newValue
-            isMapAvailable = true
         }
         get
         {
@@ -37,7 +36,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     }
     var addressString : String = ""
     let geocoder = CLGeocoder()
-    var isMapAvailable = false;
+    var nextMove = [ "NexStep" : "No move available"]
     
     override init()
     {
@@ -64,16 +63,14 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         currentLocation = locations[0] as CLLocation
-        if(isMapAvailable)
-        {
-            takeMeThere()
-            markMe()
-        }
+        takeMeThere()
+        markMe()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
     {
-        AppDelegate.visionDelegate?.nextMove(step:"I lost my sense. I am sorry")
+        nextMove["NexStep"] = "I lost my sense. I am sorry"
+        NotificationCenter.default.post(name: Constants.nextMoveNotificationName, object: nil, userInfo: nextMove)
     }
     
     func mapView(_ mapView: MKMapView, rendererFor
@@ -93,9 +90,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
         let desitnationPlaceMark = MKPlacemark.init(coordinate: destinationCoordinate)
         request.destination = MKMapItem.init(placemark: desitnationPlaceMark)
         request.requestsAlternateRoutes = false
-        
         let directions = MKDirections(request: request)
-        
         directions.calculate(completionHandler: {(response, error) in
             
             if error != nil {
@@ -121,12 +116,15 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
         request.transportType = MKDirectionsTransportType.walking
         let directions = MKDirections(request: request)
         directions.calculate(completionHandler: {(response, error) in
-            
             if let error = error {
                 print(error.localizedDescription)
-            } else {
-                if let response = response {
-                    self.showRoute(response)
+                AppDelegate.visionDelegate?.isNavigationAvailable = false
+             }
+            else {
+                if let response = response
+                {
+                  AppDelegate.visionDelegate?.isNavigationAvailable = true
+                  self.showRoute(response)
                 }
             }
         })
@@ -155,7 +153,8 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
                    print("distance:-  \(route.steps[counter].distance)")
                    counter = counter+1;
                 }
-                AppDelegate.visionDelegate?.nextMove(step:audioMessage)
+                 nextMove["NexStep"] = audioMessage
+                 NotificationCenter.default.post(name: Constants.nextMoveNotificationName, object: nil, userInfo: nextMove)
             }
         }
     }

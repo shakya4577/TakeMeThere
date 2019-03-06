@@ -14,4 +14,5 @@ class Constants
     static var userRegisterDone = "UserRegisterDone"
     // Constant strings
     static var awakeMessage = "Hi! I am listening"
+    static var nextMoveNotificationName = Notification.Name(rawValue: "isNavigationAvailble")
 }

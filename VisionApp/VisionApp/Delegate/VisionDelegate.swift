@@ -1,4 +1,4 @@
 protocol VisionDelegate {
-    func nextMove(step:String)
     func saveThisLocation()
+    var isNavigationAvailable: Bool { get set }
 }
