@@ -48,9 +48,7 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         AppDelegate.visionDelegate = self
         AppDelegate.locationManager.appleMap = routeMap
         NotificationCenter.default.addObserver(self, selector: #selector(nextMoveSelector(_:)), name: Constants.nextMoveNotificationName, object: nil)
-        
-        AppDelegate.locationManager.destinationCoordinate = CLLocationCoordinate2D(latitude: destinationLocation!.locatoinLatitude, longitude: destinationLocation!.locationLongitude)
-        
+      
         let overlayScene = SKScene()
         overlayScene.scaleMode = .aspectFill
         sceneView.delegate = self
@@ -72,7 +70,11 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
         routeMap.isHidden = true
-        if destinationLocation == nil
+        if let dest = destinationLocation
+        {
+            AppDelegate.locationManager.destinationCoordinate = CLLocationCoordinate2D(latitude: dest.locatoinLatitude, longitude: dest.locationLongitude)
+        }
+        else
         {
             self.title = "Walking"
         }

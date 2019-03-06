@@ -153,10 +153,6 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     }
 }
 
-
-
-
-
 //
 func testRealm()
 {
