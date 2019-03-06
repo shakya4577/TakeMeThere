@@ -4,7 +4,6 @@ import MapKit
 import Vision
 class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,PrimeDelegate
 {
-    
     @IBOutlet weak var locationTableView: UITableView!
     @IBOutlet weak var mainView: UIImageView!
     
@@ -19,14 +18,13 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
-     //  testRealm()
+      // testRealm()
         locationTableView.delegate = self
         locationTableView.dataSource = self
         AppDelegate.primeDelegate = self
         AppDelegate.locationManager.appleMap = mapView
         txtLocationSearch.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: .editingChanged)
-       localLocationList = RealmManager.getLocationList()
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+       let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
     }
     
@@ -34,6 +32,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        localLocationList = RealmManager.getLocationList()
     }
     
     @objc func dismissKeyboard()
@@ -135,20 +134,6 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         let cell:LocationTableCell = tableView.dequeueReusableCell(withIdentifier: "DestinationCell", for: indexPath) as! LocationTableCell
         cell.initCell(locName: localLocationList[indexPath.row].locationName)
         return cell
-    }
-    
-    func saveThisLocation()
-    {
-        AppDelegate.locationManager.saveCurrentLocation { (isSuccess:Bool) in
-            if(isSuccess)
-            {
-                AppDelegate.speechManager.voiceOutput(message: "Location Saved successfully ")
-            }
-            else
-            {
-                AppDelegate.speechManager.voiceOutput(message: "Couldn't save location")
-            }
-        }
     }
 }
 

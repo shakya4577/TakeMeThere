@@ -14,8 +14,8 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
     @IBOutlet weak var sceneViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var lblInfoOne: UILabel!
     @IBOutlet weak var sceneView: ARSKView!
-    var destinationLocation:LocationModel = LocationModel()
-    var isLocalDestination:Bool?
+    var destinationLocation:LocationModel? = LocationModel()
+    var isLocalDestination:Bool? = Bool()
     static var sharedInstance = VisionViewController()
    
     
@@ -24,7 +24,7 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         super.viewDidLoad()
         AppDelegate.visionDelegate = self
         AppDelegate.locationManager.appleMap = routeMap
-        AppDelegate.locationManager.destinationCoordinate = CLLocationCoordinate2D(latitude: destinationLocation.locatoinLatitude, longitude: destinationLocation.locationLongitude)
+        
         let overlayScene = SKScene()
         overlayScene.scaleMode = .aspectFill
         sceneView.delegate = self
@@ -36,23 +36,30 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        if let isLocalDestination :Bool = isLocalDestination!
+        
+        if isLocalDestination!
         {
-            if(isLocalDestination)
+            
+            if(isLocalDestination!)
             {
-                self.title = destinationLocation.locationName
+                self.title = destinationLocation!.locationName
                 sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
                 routeMap.isHidden = true
             }
             else
             {
-                self.title = destinationLocation.locationName
+                self.title = destinationLocation?.locationName
+                AppDelegate.locationManager.isLocalDestination = false;
             }
+            AppDelegate.locationManager.destinationCoordinate = CLLocationCoordinate2D(latitude: destinationLocation!.locatoinLatitude, longitude: destinationLocation!.locationLongitude)
         }
         else
         {
-            self.title = "Walking"
+            sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
+            routeMap.isHidden = true
+             self.title = "Walking"
         }
+       
         let configuration = ARWorldTrackingConfiguration()
         sceneView.session.run(configuration)
     }
@@ -89,8 +96,8 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         }
     }
     
-    //Vision Framework//
     
+    //Vision Framework//
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         guard currentBuffer == nil, case .normal = frame.camera.trackingState else {
             return
@@ -165,6 +172,7 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         print(message)
         let detectedMessage = String(format: "Detected \(self.identifierString)")
         AppDelegate.speechManager.voiceOutput(message: detectedMessage)
+        print(detectedMessage)
     }
     
 }
