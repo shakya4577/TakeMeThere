@@ -39,8 +39,9 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
     @IBOutlet weak var sceneViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var lblInfoOne: UILabel!
     @IBOutlet weak var sceneView: ARSKView!
-    var destinationLocation:LocationModel?
-    var isLocalDestination:Bool?
+    var destinationLocation:LocationModel? = LocationModel()
+    var isLocalDestination:Bool? = Bool()
+
     static var sharedInstance = VisionViewController()
 
     
@@ -49,8 +50,10 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         super.viewDidLoad()
         AppDelegate.visionDelegate = self
         AppDelegate.locationManager.appleMap = routeMap
+
+
         NotificationCenter.default.addObserver(self, selector: #selector(nextMoveSelector(_:)), name: Constants.nextMoveNotificationName, object: nil)
-      
+
         let overlayScene = SKScene()
         overlayScene.scaleMode = .aspectFill
         sceneView.delegate = self
@@ -70,9 +73,25 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+
         sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
+        
         routeMap.isHidden = true
         
+        if isLocalDestination!
+        {
+            
+            if(isLocalDestination!)
+            {
+                self.title = destinationLocation!.locationName
+                sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
+                routeMap.isHidden = true
+            }
+            else
+            {
+                self.title = destinationLocation?.locationName
+                AppDelegate.locationManager.isLocalDestination = false;
+            }
         if (destinationLocation != nil)
         {
             AppDelegate.locationManager.getRoute = true
@@ -80,8 +99,11 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         }
         else
         {
-            self.title = "Walking"
+            sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
+            routeMap.isHidden = true
+             self.title = "Walking"
         }
+       
         let configuration = ARWorldTrackingConfiguration()
         sceneView.session.run(configuration)
     }
@@ -112,8 +134,8 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         }
     }
     
-    //Vision Framework//
     
+    //Vision Framework//
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         guard currentBuffer == nil, case .normal = frame.camera.trackingState else {
             return
@@ -188,6 +210,7 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         print(message)
         let detectedMessage = String(format: "Detected \(self.identifierString)")
         AppDelegate.speechManager.voiceOutput(message: detectedMessage)
+        print(detectedMessage)
     }
     
 }

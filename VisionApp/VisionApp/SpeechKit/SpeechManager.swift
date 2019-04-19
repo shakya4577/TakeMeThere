@@ -157,10 +157,16 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate,AVSpeechSynthesizerDel
     
     func inputsToSaveLocation()->(String,String)
     {
+
+//        voiceOutput(message: "What is the location name")
+//        sleep(2)
+//        voiceInput(isLocationSave: true)
+//        return (locationName,locationPlacemark)
         DispatchQueue.main.asyncAfter(deadline: .now() + 6.0, execute: {
             self.voiceOutput(message: "What is the location name",commandType: Constants.VoiceCommand.VoiceCommandLocationName)
         });
       return (locationName,locationPlacemark)
+
     }
 }
 

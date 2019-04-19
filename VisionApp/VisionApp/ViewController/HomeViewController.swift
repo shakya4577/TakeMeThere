@@ -4,7 +4,6 @@ import MapKit
 import Vision
 class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,PrimeDelegate
 {
-    
     @IBOutlet weak var locationTableView: UITableView!
     @IBOutlet weak var mainView: UIImageView!
     private var localLocationList = [LocationModel]()
@@ -18,13 +17,13 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
+
         locationTableView.delegate = self
         locationTableView.dataSource = self
         AppDelegate.primeDelegate = self
         AppDelegate.locationManager.appleMap = mapView
         txtLocationSearch.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: .editingChanged)
-       localLocationList = RealmManager.getLocationList()
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+       let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
     }
     
@@ -32,6 +31,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        localLocationList = RealmManager.getLocationList()
     }
     
     @objc func dismissKeyboard()
@@ -135,7 +135,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         cell.initCell(locName: localLocationList[indexPath.row].locationName)
         return cell
     }
-    
+
     func saveThisLocation()
     {
         AppDelegate.locationManager.saveCurrentLocation { (isSuccess:Bool) in
@@ -149,7 +149,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
             }
         }
     }
-    
+
 }
 
 func testRealm()

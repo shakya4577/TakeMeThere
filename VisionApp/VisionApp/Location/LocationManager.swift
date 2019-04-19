@@ -28,6 +28,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
         set
         {
             coordinates = newValue
+            isLocalDestination = true
         }
         get
         {
@@ -37,6 +38,8 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     var addressString : String = ""
     let geocoder = CLGeocoder()
     var nextMove = [ "NexStep" : "No move available"]
+
+    var isLocalDestination = true;
     var getRoute = false
     override init()
     {
@@ -63,6 +66,12 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         currentLocation = locations[0] as CLLocation
+
+        if(!isLocalDestination)
+        {
+            takeMeThere()
+            markMe()
+        }
        if(getRoute)
        {
          takeMeThere()
