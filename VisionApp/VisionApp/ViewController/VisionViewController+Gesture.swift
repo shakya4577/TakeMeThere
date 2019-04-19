@@ -25,6 +25,6 @@ extension VisionViewController
     
     func longPressDetected(_ sender: Any)
     {
-        AppDelegate.speechManager.awakeVoiceInteractor()
+       AppDelegate.speechManager.voiceOutput(message: "Hi I am Listening", commandType: Constants.VoiceCommand.VoiceCommandAwakeInteractor);
     }
 }

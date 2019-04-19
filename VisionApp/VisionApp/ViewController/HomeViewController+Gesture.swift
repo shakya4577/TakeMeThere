@@ -1,11 +1,10 @@
 import UIKit
-
 extension HomeViewController
-
 {
     @IBAction func longPressDetected(_ sender: UILongPressGestureRecognizer)
     {
-        AppDelegate.speechManager.awakeVoiceInteractor()
+       
+        AppDelegate.speechManager.voiceOutput(message: "Hi I am Listening", commandType: Constants.VoiceCommand.VoiceCommandAwakeInteractor);
     }
     
     @IBAction func swipeDetected(_ sender: UISwipeGestureRecognizer)

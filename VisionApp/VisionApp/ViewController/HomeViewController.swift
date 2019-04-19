@@ -6,7 +6,6 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
 {
     @IBOutlet weak var locationTableView: UITableView!
     @IBOutlet weak var mainView: UIImageView!
-    
     private var localLocationList = [LocationModel]()
     private var isWalkMode = true
     internal var isSelection = false
@@ -18,7 +17,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
-      // testRealm()
+
         locationTableView.delegate = self
         locationTableView.dataSource = self
         AppDelegate.primeDelegate = self
@@ -45,7 +44,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
     {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
             AppDelegate.locationManager.getUserLocatoin { (location: String) in
-                AppDelegate.speechManager.voiceOutput(message:"You are at " + location)
+                AppDelegate.speechManager.voiceOutput(message:"You are at " + location,commandType:  Constants.VoiceCommand.VoiceCommandInfo)
             }
         })
     }
@@ -136,9 +135,23 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         cell.initCell(locName: localLocationList[indexPath.row].locationName)
         return cell
     }
+
+    func saveThisLocation()
+    {
+        AppDelegate.locationManager.saveCurrentLocation { (isSuccess:Bool) in
+            if(isSuccess)
+            {
+                AppDelegate.speechManager.voiceOutput(message: "Location Saved successfully ")
+            }
+            else
+            {
+                AppDelegate.speechManager.voiceOutput(message: "Couldn't save location")
+            }
+        }
+    }
+
 }
 
-//
 func testRealm()
 {
     let loc1:LocationModel = LocationModel()

@@ -15,4 +15,12 @@ class Constants
     // Constant strings
     static var awakeMessage = "Hi! I am listening"
     static var nextMoveNotificationName = Notification.Name(rawValue: "isNavigationAvailble")
+  
+     public enum VoiceCommand
+     {
+        case VoiceCommandAwakeInteractor
+        case VoiceCommandLocationName
+        case VoiceCommandLocatoiPlacemark
+        case VoiceCommandInfo
+     }
 }
