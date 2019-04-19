@@ -2,45 +2,21 @@
 import UIKit
 import Speech
 
-class SpeechManager: NSObject, SFSpeechRecognizerDelegate
+class SpeechManager: NSObject, SFSpeechRecognizerDelegate,AVSpeechSynthesizerDelegate
 {
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine:AVAudioEngine? = AVAudioEngine()
-    private let audioSession = AVAudioSession.sharedInstance()
+    private var audioSession = AVAudioSession.sharedInstance()
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
-    private var voiceInteractorSemaphor = true
+    let synthesizer = AVSpeechSynthesizer()
     private var listeningSempahor = true
     private var voiceInputMessage = String()
-    private var locName = String()
-     private var locPlacemark = String()
-    private var locationName:String
-    {
-        set
-        {
-            locName = newValue
-            voiceOutput(message: "Enter the placemark")
-            sleep(2)
-            voiceInput(isLocationSave: true)
-        }
-        get
-        {
-            return locName
-        }
-    }
-    private var locationPlacemark:String
-    {
-        set
-        {
-          locPlacemark = newValue
-        }
-        get
-        {
-            return locPlacemark
-        }
-    }
-    
-    
+    private var locationName = String()
+    private var locationPlacemark = String()
+    internal var voiceInteractorSemaphor = true
+    var currentSpeechCommad:Constants.VoiceCommand = Constants.VoiceCommand.VoiceCommandInfo;
+    let systemSoundID: SystemSoundID = 1322
     override init()
     {
         super.init()
@@ -50,62 +26,46 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
      func setupSpeechKit()
     {
         speechRecognizer!.delegate = self
+        synthesizer.delegate = self
         SFSpeechRecognizer.requestAuthorization { (authStatus) in
         }
         if recognitionTask != nil {
             recognitionTask?.cancel()
             recognitionTask = nil
         }
-        
-            let audioSession = AVAudioSession.sharedInstance()
-            do
-            {
-                try audioSession.setCategory(.playAndRecord, mode: .default)
-                try audioSession.setMode(AVAudioSession.Mode.measurement)
-                try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
-                //try audioSession.setCategory(AVAudioSession.Category.playAndRecord)
+         do
+        {
+            audioSession = AVAudioSession.sharedInstance()
+            try audioSession.setCategory(.playAndRecord, mode: .default)
+            try audioSession.setMode(AVAudioSession.Mode.measurement)
+            try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
+            //try audioSession.setCategory(AVAudioSession.Category.playAndRecord)
                 
-            } catch
-                
-            {
+        } catch
+        {
                     
-            }
-        
+        }
     }
     
-    func voiceInput(isLocationSave:Bool=false)
+    func voiceInput()
     {
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         guard let recognitionRequest = recognitionRequest else {
             fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
         }
         let inputNode = audioEngine!.inputNode
+        inputNode.removeTap(onBus: 0)
         recognitionRequest.shouldReportPartialResults = true
          recognitionTask = speechRecognizer!.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
             
             if result != nil
             {
-                if(!isLocationSave)
-                {
-                    self.voiceInputMessage = (result?.bestTranscription.formattedString)!
+               self.voiceInputMessage = (result?.bestTranscription.formattedString)!
                     if(self.listeningSempahor)
                     {
                         self.listeningSempahor = false
                         Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.voiceInputAction), userInfo: nil, repeats: false)
                     }
-                }
-                else
-                {
-                    if(self.locationName.isEmpty)
-                    {
-                      self.locationName = (result?.bestTranscription.formattedString)!
-                    }
-                    else
-                    {
-                      self.locationPlacemark = (result?.bestTranscription.formattedString)!
-                    }
-                }
-                
             }
             if error != nil  {
                 self.audioEngine!.stop()
@@ -119,7 +79,6 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
             self.recognitionRequest?.append(buffer)
         }
         audioEngine!.prepare()
-        
         do {
             try audioEngine!.start()
         } catch {
@@ -131,35 +90,47 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
     {
         voiceInputMessage = voiceInputMessage.trimmingCharacters(in: .whitespacesAndNewlines)
         print(" final "+voiceInputMessage)
-      
-        if(voiceInputMessage == "Let's walk")
+        
+        if(currentSpeechCommad == Constants.VoiceCommand.VoiceCommandAwakeInteractor)
         {
-            AppDelegate.primeDelegate!.letsWalk()
-        }
-        else if(voiceInputMessage == "Where am I")
-        {
-            AppDelegate.primeDelegate!.whereAmI()
-        }
-        else
-        {
-            if(voiceInputMessage.count<10)
+            if(voiceInputMessage == "Let's walk")
             {
-                return
+                AppDelegate.primeDelegate!.letsWalk()
             }
-            let index = voiceInputMessage.index(voiceInputMessage.startIndex, offsetBy: 10)
-            let isTakeMeCommand = voiceInputMessage[..<index]
-            print(String(isTakeMeCommand))
-            //let destination = voiceInputMessage.substring(from: index)
-            let destination = voiceInputMessage[index...]
-            print(String(destination))
-            if (isTakeMeCommand == "Take me to")
+            else if(voiceInputMessage == "Where am I")
             {
-                AppDelegate.primeDelegate!.filterLocationList(filterInput: String(destination))
+                AppDelegate.primeDelegate!.whereAmI()
+            }
+            else
+            {
+                if(voiceInputMessage.count<10)
+                {
+                    return
+                }
+                let index = voiceInputMessage.index(voiceInputMessage.startIndex, offsetBy: 10)
+                let isTakeMeCommand = voiceInputMessage[..<index]
+                print(String(isTakeMeCommand))
+                let destination = voiceInputMessage[index...]
+                print(String(destination))
+                if (isTakeMeCommand == "Take me to")
+                {
+                    AppDelegate.primeDelegate!.filterLocationList(filterInput: String(destination))
+                }
             }
         }
+        else if(currentSpeechCommad == Constants.VoiceCommand.VoiceCommandLocationName)
+        {
+            locationName = voiceInputMessage
+            voiceOutput(message: "What is the placemark for this location", commandType: Constants.VoiceCommand.VoiceCommandLocatoiPlacemark)
+        }
+        else if(currentSpeechCommad == Constants.VoiceCommand.VoiceCommandLocatoiPlacemark)
+        {
+            locationPlacemark = voiceInputMessage
+        }
+        
     }
     
-    func awakeVoiceInteractor()
+    func voiceOutput(message:String,commandType:Constants.VoiceCommand=Constants.VoiceCommand.VoiceCommandInfo)
     {
         if(voiceInteractorSemaphor)
         {
@@ -168,27 +139,28 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate
             { timer in
                 self.voiceInteractorSemaphor = true
             }
-            voiceOutput(message: Constants.awakeMessage)
-            sleep(2)
-            voiceInput()
+            currentSpeechCommad = commandType
+            let utterance = AVSpeechUtterance(string: message)
+            utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+            synthesizer.speak(utterance)
         }
     }
     
-    func voiceOutput(message:String)
-    {
-        let utterance = AVSpeechUtterance(string: message)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        utterance.rate = 0.3
-        let synth = AVSpeechSynthesizer()
-        synth.speak(utterance)
-    }
+     public func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance)
+     {
+        if(currentSpeechCommad != Constants.VoiceCommand.VoiceCommandInfo)
+        {
+           AudioServicesPlaySystemSound (systemSoundID)
+           voiceInput()
+        }
+     }
     
     func inputsToSaveLocation()->(String,String)
     {
-        voiceOutput(message: "What is the location name")
-        sleep(2)
-        voiceInput(isLocationSave: true)
-        return (locationName,locationPlacemark)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 6.0, execute: {
+            self.voiceOutput(message: "What is the location name",commandType: Constants.VoiceCommand.VoiceCommandLocationName)
+        });
+      return (locationName,locationPlacemark)
     }
 }
 

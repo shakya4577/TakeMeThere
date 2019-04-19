@@ -37,7 +37,7 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     var addressString : String = ""
     let geocoder = CLGeocoder()
     var nextMove = [ "NexStep" : "No move available"]
-    
+    var getRoute = false
     override init()
     {
         super.init()
@@ -63,8 +63,11 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         currentLocation = locations[0] as CLLocation
-        takeMeThere()
-        markMe()
+       if(getRoute)
+       {
+         takeMeThere()
+         markMe()
+       }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)

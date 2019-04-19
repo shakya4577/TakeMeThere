@@ -10,19 +10,21 @@ import Vision
 class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, ARSessionDelegate
 {
     var tempNavAvailableFlag = Bool()
+    internal var voiceInteractorSemaphor = true
     var isNavigationAvailable: Bool
     {
         set
         {
-              tempNavAvailableFlag = newValue
+            tempNavAvailableFlag = newValue
               if let dest = destinationLocation
               {
                 self.title = dest.locationName
               }
               if(newValue)
               {
-               sceneViewBottomConstraint.constant = 0
-               routeMap.isHidden = false
+                sceneViewBottomConstraint.constant = 0
+                routeMap.isHidden = false
+                AppDelegate.locationManager.getRoute = true
               }
         }
         get
@@ -70,9 +72,11 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
         routeMap.isHidden = true
-        if let dest = destinationLocation
+        
+        if (destinationLocation != nil)
         {
-            AppDelegate.locationManager.destinationCoordinate = CLLocationCoordinate2D(latitude: dest.locatoinLatitude, longitude: dest.locationLongitude)
+            AppDelegate.locationManager.getRoute = true
+            AppDelegate.locationManager.destinationCoordinate = CLLocationCoordinate2D(latitude: destinationLocation!.locatoinLatitude, longitude: destinationLocation!.locationLongitude)
         }
         else
         {
@@ -84,8 +88,6 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // Pause the view's session
         sceneView.session.pause()
     }
     
