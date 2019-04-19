@@ -39,7 +39,7 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
     @IBOutlet weak var sceneView: ARSKView!
     var destinationLocation:LocationModel? = LocationModel()
     var isLocalDestination:Bool? = Bool()
-    
+
     static var sharedInstance = VisionViewController()
 
     
@@ -48,6 +48,7 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         super.viewDidLoad()
         AppDelegate.visionDelegate = self
         AppDelegate.locationManager.appleMap = routeMap
+
 
         NotificationCenter.default.addObserver(self, selector: #selector(nextMoveSelector(_:)), name: Constants.nextMoveNotificationName, object: nil)
 
@@ -74,7 +75,6 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
         
         routeMap.isHidden = true
-        
         
         if isLocalDestination!
         {
