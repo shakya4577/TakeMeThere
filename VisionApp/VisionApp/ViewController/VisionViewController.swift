@@ -10,22 +10,20 @@ import Vision
 class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, ARSessionDelegate
 {
     var tempNavAvailableFlag = Bool()
-    internal var voiceInteractorSemaphor = true
     var isNavigationAvailable: Bool
     {
         set
         {
             tempNavAvailableFlag = newValue
-              if let dest = destinationLocation
-              {
+            if let dest = destinationLocation
+            {
                 self.title = dest.locationName
-              }
-              if(newValue)
-              {
+            }
+            if(newValue)
+            {
                 sceneViewBottomConstraint.constant = 0
                 routeMap.isHidden = false
-                AppDelegate.locationManager.getRoute = true
-              }
+            }
         }
         get
         {
@@ -39,21 +37,18 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
     @IBOutlet weak var sceneViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var lblInfoOne: UILabel!
     @IBOutlet weak var sceneView: ARSKView!
-    var destinationLocation:LocationModel? = LocationModel()
-    var isLocalDestination:Bool? = Bool()
-
+    var destinationLocation:LocationModel?
+    var isLocalDestination:Bool?
     static var sharedInstance = VisionViewController()
-
+    
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         AppDelegate.visionDelegate = self
         AppDelegate.locationManager.appleMap = routeMap
-
-
         NotificationCenter.default.addObserver(self, selector: #selector(nextMoveSelector(_:)), name: Constants.nextMoveNotificationName, object: nil)
-
+        
         let overlayScene = SKScene()
         overlayScene.scaleMode = .aspectFill
         sceneView.delegate = self
@@ -73,43 +68,24 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-
         sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
-        
         routeMap.isHidden = true
-        
-        if isLocalDestination!
+        if let dest = destinationLocation
         {
-            
-            if(isLocalDestination!)
-            {
-                self.title = destinationLocation!.locationName
-                sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
-                routeMap.isHidden = true
-            }
-            else
-            {
-                self.title = destinationLocation?.locationName
-                AppDelegate.locationManager.isLocalDestination = false;
-            }
-        if (destinationLocation != nil)
-        {
-            AppDelegate.locationManager.getRoute = true
-            AppDelegate.locationManager.destinationCoordinate = CLLocationCoordinate2D(latitude: destinationLocation!.locatoinLatitude, longitude: destinationLocation!.locationLongitude)
+            AppDelegate.locationManager.destinationCoordinate = CLLocationCoordinate2D(latitude: dest.locatoinLatitude, longitude: dest.locationLongitude)
         }
         else
         {
-            sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
-            routeMap.isHidden = true
-             self.title = "Walking"
+            self.title = "Walking"
         }
-       
         let configuration = ARWorldTrackingConfiguration()
         sceneView.session.run(configuration)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        // Pause the view's session
         sceneView.session.pause()
     }
     
@@ -134,8 +110,8 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         }
     }
     
-    
     //Vision Framework//
+    
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         guard currentBuffer == nil, case .normal = frame.camera.trackingState else {
             return
@@ -152,7 +128,6 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
             })
             request.imageCropAndScaleOption = .centerCrop
             request.usesCPUOnly = true
-            
             return request
         } catch {
             fatalError("Failed to load Vision ML model: \(error)")
@@ -181,7 +156,7 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
     
     private var identifierString = ""
     private var confidence: VNConfidence = 0.0
-   
+    
     func processClassifications(for request: VNRequest, error: Error?) {
         guard let results = request.results else {
             print("Unable to classify image.\n\(error!.localizedDescription)")
@@ -210,7 +185,6 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         print(message)
         let detectedMessage = String(format: "Detected \(self.identifierString)")
         AppDelegate.speechManager.voiceOutput(message: detectedMessage)
-        print(detectedMessage)
     }
     
 }
