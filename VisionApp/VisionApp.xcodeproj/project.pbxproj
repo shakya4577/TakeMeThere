@@ -22,6 +22,10 @@
 		B15AC742221EC3FF00953F0E /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15AC741221EC3FF00953F0E /* RealmManager.swift */; };
 		B15AC78C221F16AD00953F0E /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15AC78B221F16AD00953F0E /* Speech.framework */; };
 		B15AC78E221F1B7C00953F0E /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15AC78D221F1B7C00953F0E /* SpeechManager.swift */; };
+		B16D38E2226B635900E2C767 /* NewUserViewController+UIHandlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16D38E1226B635900E2C767 /* NewUserViewController+UIHandlers.swift */; };
+		B16D38F2226B683F00E2C767 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B16D38EF226B683E00E2C767 /* GoogleSignIn.framework */; };
+		B16D38F3226B683F00E2C767 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B16D38F0226B683E00E2C767 /* GoogleSignIn.bundle */; };
+		B16D38F4226B683F00E2C767 /* GoogleSignInDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B16D38F1226B683F00E2C767 /* GoogleSignInDependencies.framework */; };
 		B16EC5CA2225202300E30532 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16EC5C92225202300E30532 /* NewUserViewController.swift */; };
 		B16EC5CD2225238600E30532 /* maleLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = B16EC5CC2225238600E30532 /* maleLogo.png */; };
 		B16EC5CF2225239200E30532 /* femaleLogo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = B16EC5CE2225239200E30532 /* femaleLogo.jpeg */; };
@@ -82,6 +86,14 @@
 		B15AC741221EC3FF00953F0E /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		B15AC78B221F16AD00953F0E /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		B15AC78D221F1B7C00953F0E /* SpeechManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
+		B16D38E1226B635900E2C767 /* NewUserViewController+UIHandlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewUserViewController+UIHandlers.swift"; sourceTree = "<group>"; };
+		B16D38E3226B656200E2C767 /* GoogleSignInDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSignInDependencies.framework; path = ../../google_signin_sdk_4_4_0/GoogleSignInDependencies.framework; sourceTree = "<group>"; };
+		B16D38E4226B656200E2C767 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleSignIn.bundle; path = ../../google_signin_sdk_4_4_0/GoogleSignIn.bundle; sourceTree = "<group>"; };
+		B16D38E5226B656200E2C767 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSignIn.framework; path = ../../google_signin_sdk_4_4_0/GoogleSignIn.framework; sourceTree = "<group>"; };
+		B16D38E9226B673F00E2C767 /* VisionApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VisionApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		B16D38EF226B683E00E2C767 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
+		B16D38F0226B683E00E2C767 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
+		B16D38F1226B683F00E2C767 /* GoogleSignInDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignInDependencies.framework; sourceTree = "<group>"; };
 		B16EC5C92225202300E30532 /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		B16EC5CC2225238600E30532 /* maleLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maleLogo.png; sourceTree = "<group>"; };
 		B16EC5CE2225239200E30532 /* femaleLogo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = femaleLogo.jpeg; sourceTree = "<group>"; };
@@ -126,9 +138,11 @@
 			files = (
 				B14E7D0C222C1A29001177F8 /* SpriteKit.framework in Frameworks */,
 				B1F1674C2229826E0057B3AB /* Vision.framework in Frameworks */,
+				B16D38F2226B683F00E2C767 /* GoogleSignIn.framework in Frameworks */,
 				B15AC78C221F16AD00953F0E /* Speech.framework in Frameworks */,
 				B15AC73C221EC20F00953F0E /* Realm.framework in Frameworks */,
 				B15AC73E221EC20F00953F0E /* RealmSwift.framework in Frameworks */,
+				B16D38F4226B683F00E2C767 /* GoogleSignInDependencies.framework in Frameworks */,
 				B1F83E7B221BC21A00F19F2B /* MapKit.framework in Frameworks */,
 				B1F83E78221BBCF400F19F2B /* CoreLocation.framework in Frameworks */,
 				B1F83E75221BB24700F19F2B /* ARKit.framework in Frameworks */,
@@ -176,6 +190,9 @@
 		B16EC5CB2225233F00E30532 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B16D38F0226B683E00E2C767 /* GoogleSignIn.bundle */,
+				B16D38EF226B683E00E2C767 /* GoogleSignIn.framework */,
+				B16D38F1226B683F00E2C767 /* GoogleSignInDependencies.framework */,
 				B14E7D13222C2C3A001177F8 /* VisionLogo.png */,
 				B14E7D14222C2C3A001177F8 /* VisionSplash.png */,
 				B14E7D0D222C1A7A001177F8 /* Inceptionv3.mlmodel */,
@@ -196,6 +213,7 @@
 				B19BFCA92228EC2600FC9599 /* VisionViewController+Gesture.swift */,
 				B18945662223CF6A005F2833 /* LocationTableCell.swift */,
 				B16EC5C92225202300E30532 /* NewUserViewController.swift */,
+				B16D38E1226B635900E2C767 /* NewUserViewController+UIHandlers.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -254,6 +272,7 @@
 				B1F83E3F221B0E2F00F19F2B /* LaunchScreen.storyboard */,
 				B1F83E42221B0E2F00F19F2B /* Info.plist */,
 				B104D7A422205C9400BA6D5A /* Constants.swift */,
+				B16D38E9226B673F00E2C767 /* VisionApp-Bridging-Header.h */,
 			);
 			path = VisionApp;
 			sourceTree = "<group>";
@@ -279,6 +298,9 @@
 		B1F83E67221B1C3C00F19F2B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B16D38E4226B656200E2C767 /* GoogleSignIn.bundle */,
+				B16D38E5226B656200E2C767 /* GoogleSignIn.framework */,
+				B16D38E3226B656200E2C767 /* GoogleSignInDependencies.framework */,
 				B14E7D0B222C1A29001177F8 /* SpriteKit.framework */,
 				B1F1674B2229826D0057B3AB /* Vision.framework */,
 				B15AC78B221F16AD00953F0E /* Speech.framework */,
@@ -379,6 +401,7 @@
 				TargetAttributes = {
 					B1F83E32221B0E2100F19F2B = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
@@ -426,6 +449,7 @@
 				B1F83E41221B0E2F00F19F2B /* LaunchScreen.storyboard in Resources */,
 				B1F83E3E221B0E2F00F19F2B /* Assets.xcassets in Resources */,
 				B14E7D10222C1A7B001177F8 /* LabelScene.sks in Resources */,
+				B16D38F3226B683F00E2C767 /* GoogleSignIn.bundle in Resources */,
 				B16EC5CD2225238600E30532 /* maleLogo.png in Resources */,
 				B16EC5CF2225239200E30532 /* femaleLogo.jpeg in Resources */,
 				B1F83E3C221B0E2200F19F2B /* Main.storyboard in Resources */,
@@ -505,6 +529,7 @@
 				B19BFCA82228EA8C00FC9599 /* HomeViewController+Gesture.swift in Sources */,
 				B1F83E39221B0E2200F19F2B /* HomeViewController.swift in Sources */,
 				B16EC5CA2225202300E30532 /* NewUserViewController.swift in Sources */,
+				B16D38E2226B635900E2C767 /* NewUserViewController+UIHandlers.swift in Sources */,
 				B189456B2223E060005F2833 /* PrimeDelegate.swift in Sources */,
 				B15AC78E221F1B7C00953F0E /* SpeechManager.swift in Sources */,
 				B1F83E66221B136700F19F2B /* VisionViewController.swift in Sources */,
@@ -693,12 +718,14 @@
 			baseConfigurationReference = F50E55A5C951E87248D109DF /* Pods-VisionApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = VisionApp/VisionApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VRGWW7P72C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/VisionApp/Resources",
 				);
 				INFOPLIST_FILE = VisionApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -707,6 +734,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = myAppShakya.VisionApp45;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VisionApp/VisionApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -717,12 +746,14 @@
 			baseConfigurationReference = 2B58ACC8E4A2D29BE369A34B /* Pods-VisionApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = VisionApp/VisionApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VRGWW7P72C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/VisionApp/Resources",
 				);
 				INFOPLIST_FILE = VisionApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -731,6 +762,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = myAppShakya.VisionApp45;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "VisionApp/VisionApp-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

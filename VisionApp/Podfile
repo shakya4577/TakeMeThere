@@ -6,5 +6,6 @@ target 'VisionApp' do
   use_frameworks!
 
   pod 'RealmSwift'
+ pod try GoogleSignIn
 
 end

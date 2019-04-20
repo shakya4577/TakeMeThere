@@ -1,15 +1,10 @@
-//
-//  AppDelegate.swift
-//  myEyes
-//
-//  Created by Wilson Kardam on 18/02/19.
-//  Copyright © 2019 Wilson Shakya. All rights reserved.
-//
+
 
 import UIKit
 
+
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,GIDSignInDelegate {
 
     var window: UIWindow?
     static let speechManager:SpeechManager = SpeechManager()
@@ -26,7 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
             let newUserViewController = mainStoryBoard.instantiateViewController(withIdentifier: "NewUserViewController") as! NewUserViewController
             self.window?.rootViewController = newUserViewController
+            GIDSignIn.sharedInstance().delegate = self
+            
         }
+        
         return true
     }
 
@@ -51,7 +49,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
+                withError error: NSError!) {
+        if (error == nil)
+        {
+            // Perform any operations on signed in user here.
+            // ...
+        } else
+        {
+            print("\(error.localizedDescription)")
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!)
+    {
+        if (error == nil)
+        {
+            // Perform any operations on signed in user here.
+            // ...
+        } else
+        {
+            print("\(error.localizedDescription)")
+        }
+        
+    }
 
 }
 
