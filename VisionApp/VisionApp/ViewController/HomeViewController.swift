@@ -25,6 +25,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         txtLocationSearch.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: .editingChanged)
        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
+        
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -134,20 +135,6 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         let cell:LocationTableCell = tableView.dequeueReusableCell(withIdentifier: "DestinationCell", for: indexPath) as! LocationTableCell
         cell.initCell(locName: localLocationList[indexPath.row].locationName)
         return cell
-    }
-
-    func saveThisLocation()
-    {
-        AppDelegate.locationManager.saveCurrentLocation { (isSuccess:Bool) in
-            if(isSuccess)
-            {
-                AppDelegate.speechManager.voiceOutput(message: "Location Saved successfully ")
-            }
-            else
-            {
-                AppDelegate.speechManager.voiceOutput(message: "Couldn't save location")
-            }
-        }
     }
 
 }

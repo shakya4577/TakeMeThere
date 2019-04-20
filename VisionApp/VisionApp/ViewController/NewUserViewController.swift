@@ -1,7 +1,7 @@
 
 import UIKit
 
-class NewUserViewController: UIViewController
+class NewUserViewController: UIViewController,UITextFieldDelegate,UITextViewDelegate
 {
     
     @IBOutlet weak var formView: UIView!
@@ -25,6 +25,7 @@ class NewUserViewController: UIViewController
         self.view.addGestureRecognizer(tap)
         setupUI()
     }
+    
     @objc func dismissKeyboard()
     {
        view.endEditing(true)
@@ -33,6 +34,7 @@ class NewUserViewController: UIViewController
     
     private func setupUI()
     {
+        formView.layer.cornerRadius = 10
         stepCounter = UserDefaults.standard.integer(forKey: Constants.userRegisterStepCounterKey)
         if(stepCounter==1)
         {
@@ -132,29 +134,50 @@ class NewUserViewController: UIViewController
         return true
     }
     
-    @IBAction func btnFemaleClick(_ sender: Any)
+    
+    @IBAction func btnGenderClick(_ sender: UIButton)
     {
-        btnFemale.layer.borderColor = UIColor.blue.cgColor
-        btnFemale.layer.borderWidth = 2.0
-        isFemale = true
-    }
-    @IBAction func btnMaleClick(_ sender: Any)
-    {
-        btnMale.layer.borderColor = UIColor.blue.cgColor
-        btnMale.layer.borderWidth = 2.0
-        isFemale = false
+        let selectedColor = UIColor(red: 58.0/255.0, green: 89.0/255.0, blue: 123.0/255.0, alpha: 1.0).cgColor
+        
+        sender.layer.borderColor = selectedColor
+        sender.layer.borderWidth = 4.0
+        sender.layer.cornerRadius = 10.0
+        
+        if sender == btnFemale
+        {
+            isFemale = true
+            btnMale.layer.borderWidth = 0.0
+        }
+        else
+        {
+            isFemale = false
+            btnFemale.layer.borderWidth = 0.0
+        }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-//    {
-//        if segue.destination is VisionViewController
-//        {
-//            let visionViewController = segue.destination as? VisionViewController
-//            visionViewController?.isWalk = isWalkMode
-//            if(!isWalkMode)
-//            {
-//                visionViewController?.destinationLocation = localLocationList[locationSelectionCounter]
-//            }
-//        }
-//    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    {
+       return range.location < 10
+    }
+   
+    public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool
+    {
+        textView.text = ""
+        return true
+    }
+    
+    public func textViewDidEndEditing(_ textView: UITextView)
+    {
+        if textView.text.isEmpty
+        {
+            if textView == txtView
+            {
+                textView.text = "Enter First Emergency Address"
+            }
+            else
+            {
+                 textView.text = "Enter Second Emergency Address"
+            }
+        }
+    }
 }

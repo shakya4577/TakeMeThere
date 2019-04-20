@@ -12,14 +12,16 @@
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>NSCameraUsageDescription</key>
+	<string>To see your surrondigs</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>So that you can speak</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleExecutable</key>
@@ -57,7 +59,5 @@
 	<string>So that I can listen</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>To get your current location</string>
-	<key>NSCameraUsageDescription</key>
-	<string>To see your surrondigs</string>
 </dict>
 </plist>
