@@ -25,6 +25,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         txtLocationSearch.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: .editingChanged)
        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
+        
     }
     
     override func viewWillAppear(_ animated: Bool)
