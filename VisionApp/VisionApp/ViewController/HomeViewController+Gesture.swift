@@ -1,6 +1,31 @@
 import UIKit
 extension HomeViewController
 {
+    
+    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
+    {
+        let searchText = searchBar.text!
+        localLocationList = RealmManager.getLocationList()
+        if(searchText != "")
+        {
+            localLocationList = localLocationList.filter { $0.locationName.contains(searchText) }
+            if(localLocationList.count==0)
+            {
+                AppDelegate.locationManager.searchLocationList(locationInput: searchText) {
+                    (returnedlocationList:[LocationModel])
+                    in
+                    self.localLocationList = returnedlocationList
+                    self.locationTableView.reloadData()
+                }
+            }
+        }
+        else
+        {
+            localLocationList = RealmManager.getLocationList()
+        }
+        locationTableView.reloadData()
+    }
+    
     @IBAction func longPressDetected(_ sender: UILongPressGestureRecognizer)
     {
        

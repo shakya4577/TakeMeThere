@@ -2,27 +2,25 @@ import UIKit
 import Speech
 import MapKit
 import Vision
-class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,PrimeDelegate
+class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate, PrimeDelegate
 {
     @IBOutlet weak var locationTableView: UITableView!
     @IBOutlet weak var mainView: UIImageView!
-    private var localLocationList = [LocationModel]()
+    internal var localLocationList = [LocationModel]()
     private var isWalkMode = true
     internal var isSelection = false
     internal var locationSelectionCounter = 0
-    @IBOutlet weak var txtLocationSearch: UITextField!
+   
     
     let visionViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VisionViewController") as! VisionViewController
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mapView: MKMapView!
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-
-        locationTableView.delegate = self
-        locationTableView.dataSource = self
         AppDelegate.primeDelegate = self
         AppDelegate.locationManager.appleMap = mapView
-        txtLocationSearch.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: .editingChanged)
        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
         
@@ -49,30 +47,7 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
             }
         })
     }
-    
-    @objc func textFieldDidChange(textField: UITextField)
-    {
-        let searchText = textField.text!
-        localLocationList = RealmManager.getLocationList()
-        if(searchText != "")
-        {
-            localLocationList = localLocationList.filter { $0.locationName.contains(searchText) }
-            if(localLocationList.count==0)
-            {
-                AppDelegate.locationManager.searchLocationList(locationInput: textField.text!) {
-                    (returnedlocationList:[LocationModel])
-                    in
-                    self.localLocationList = returnedlocationList
-                    self.locationTableView.reloadData()
-                }
-            }
-        }
-        else
-        {
-            localLocationList = RealmManager.getLocationList()
-        }
-        locationTableView.reloadData()
-    }
+   
     
     func filterLocationList(filterInput: String)
     {

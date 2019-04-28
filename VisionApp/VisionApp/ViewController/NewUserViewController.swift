@@ -17,12 +17,25 @@ class NewUserViewController: UIViewController,UITextFieldDelegate,UITextViewDele
     @IBOutlet weak var txtView: UITextView!
     @IBOutlet weak var txtFieldHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var txtView2: UITextView!
-    var stepCounter = 0
+    var stepCounter : Int
+    {
+        get
+        {
+          return  UserDefaults.standard.integer(forKey: Constants.userRegisterStepCounterKey)
+        }
+        set
+        {
+            UserDefaults.standard.set(newValue, forKey: Constants.userRegisterStepCounterKey)
+            setupUI()
+        }
+    }
+    
     var isFemale:Bool? = nil
     override func viewDidLoad()
     {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
+        formView.layer.cornerRadius = 10
         setupUI()
     }
     
@@ -34,8 +47,7 @@ class NewUserViewController: UIViewController,UITextFieldDelegate,UITextViewDele
     
     private func setupUI()
     {
-        formView.layer.cornerRadius = 10
-        stepCounter = UserDefaults.standard.integer(forKey: Constants.userRegisterStepCounterKey)
+        UserDefaults.standard.integer(forKey: Constants.userRegisterStepCounterKey)
         if(stepCounter==1)
         {
             txtField.isHidden = true
@@ -57,7 +69,7 @@ class NewUserViewController: UIViewController,UITextFieldDelegate,UITextViewDele
             
             txtView.isHidden = false
             txtView2.isHidden = false
-        }
+       }
     }
     
     @IBAction func btnNextClick(_ sender: Any)
@@ -70,9 +82,7 @@ class NewUserViewController: UIViewController,UITextFieldDelegate,UITextViewDele
                {
                   UserDefaults.standard.set(txtField.text, forKey: Constants.UserNameKey)
                   UserDefaults.standard.set(gender, forKey: Constants.UserGenderKey)
-                stepCounter = stepCounter+1
-                UserDefaults.standard.set(stepCounter, forKey: Constants.userRegisterStepCounterKey)
-                setupUI()
+                  stepCounter = 1
                }
                 else
                 {
@@ -90,9 +100,7 @@ class NewUserViewController: UIViewController,UITextFieldDelegate,UITextViewDele
                 UserDefaults.standard.set(txtEmgPh1.text, forKey: Constants.userEmgNoOneKey)
                 UserDefaults.standard.set(txtEmgPh2.text, forKey: Constants.userEmgNoTwoKey)
                 UserDefaults.standard.set(txtEmgPh3.text, forKey: Constants.userEmgNoThreeKey)
-                stepCounter = stepCounter+1
-                UserDefaults.standard.set(stepCounter, forKey: Constants.userRegisterStepCounterKey)
-                setupUI()
+                stepCounter = 2
             }
         }
         else
@@ -101,9 +109,7 @@ class NewUserViewController: UIViewController,UITextFieldDelegate,UITextViewDele
             {
                 UserDefaults.standard.set(txtView.text, forKey: Constants.userEmgAddrOneKey)
                 UserDefaults.standard.set(txtView2.text, forKey: Constants.userEmgAddrTwoKey)
-                stepCounter = stepCounter+1
-                UserDefaults.standard.set(stepCounter, forKey: Constants.userRegisterStepCounterKey)
-                 UserDefaults.standard.set(true, forKey: Constants.userRegisterDone)
+                UserDefaults.standard.set(true, forKey: Constants.userRegisterDone)
                 performSegue(withIdentifier: "LetsWalkSegue", sender: Data())
             }
         }
@@ -111,27 +117,26 @@ class NewUserViewController: UIViewController,UITextFieldDelegate,UITextViewDele
     
     private func isTextFieldValid(textField:UITextField!=nil,textView:UITextView!=nil)->Bool
     {
-        if(textField != nil)
+        if let textBox = textField
         {
-            if(textField.text=="")
+            if(textBox.text!.isEmpty)
             {
-                textField.layer.borderColor = UIColor.red.cgColor
-                textField.layer.borderWidth = 1.0
+                textBox.layer.borderColor = UIColor.red.cgColor
+                textBox.layer.borderWidth = 2.0
                 return false
             }
             return true
         }
-        if(textView != nil)
+        else
         {
-            if(textView.text=="")
+            if(textView.text!.isEmpty)
             {
                 textView.layer.borderColor = UIColor.red.cgColor
-                textView.layer.borderWidth = 1.0
+                textView.layer.borderWidth = 2.0
                 return false
             }
             return true
         }
-        return true
     }
     
     
@@ -162,7 +167,7 @@ class NewUserViewController: UIViewController,UITextFieldDelegate,UITextViewDele
    
     public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool
     {
-        textView.text = ""
+        textView.text = nil
         return true
     }
     

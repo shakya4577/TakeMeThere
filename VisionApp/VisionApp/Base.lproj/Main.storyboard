@@ -42,7 +42,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
                                             <outlet property="delegate" destination="j3k-7C-LyF" id="4Qr-id-4X3"/>
                                         </connections>
@@ -54,7 +54,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
                                             <outlet property="delegate" destination="j3k-7C-LyF" id="S05-w3-IIY"/>
                                         </connections>
@@ -66,7 +66,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
                                             <outlet property="delegate" destination="j3k-7C-LyF" id="1EY-Re-zvY"/>
                                         </connections>
@@ -241,6 +241,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="rSg-Fz-6gF"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="KIf-2Z-jmg"/>
+                                </connections>
                             </tableView>
                             <imageView multipleTouchEnabled="YES" alpha="0.10000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VisionSplash.png" translatesAutoresizingMaskIntoConstraints="NO" id="6Q0-ii-8oh">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
@@ -254,12 +258,6 @@
                                     <outletCollection property="gestureRecognizers" destination="2Wv-vk-9jm" appends="YES" id="dLL-ZT-cme"/>
                                 </connections>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CVD-lq-4pF">
-                                <rect key="frame" x="20" y="40" width="335" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <mapView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="zpp-cM-3yT">
                                 <rect key="frame" x="375" y="667" width="0.0" height="0.0"/>
                                 <constraints>
@@ -267,22 +265,32 @@
                                     <constraint firstAttribute="width" id="b8v-GQ-71n"/>
                                 </constraints>
                             </mapView>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="pTY-iW-SnU">
+                                <rect key="frame" x="0.0" y="25" width="375" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="ZRw-lT-DP8"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="tpR-NA-QYG"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="0.27450980392156865" green="0.48627450980392156" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="iv6-nH-X1O" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-16" id="0Iv-fh-NGU"/>
                             <constraint firstItem="iv6-nH-X1O" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="0Wy-nc-z4U"/>
+                            <constraint firstItem="pTY-iW-SnU" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="2ir-Tv-6mj"/>
+                            <constraint firstItem="iv6-nH-X1O" firstAttribute="top" secondItem="pTY-iW-SnU" secondAttribute="bottom" constant="18" id="Aa1-qY-Cjg"/>
                             <constraint firstItem="6Q0-ii-8oh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="I1G-hh-z51"/>
-                            <constraint firstItem="CVD-lq-4pF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="K7x-E2-3qg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CVD-lq-4pF" secondAttribute="trailing" constant="20" id="LgO-ID-8up"/>
+                            <constraint firstItem="pTY-iW-SnU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Inj-rx-LYi"/>
+                            <constraint firstItem="pTY-iW-SnU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="OAb-bk-Tnj"/>
                             <constraint firstItem="iv6-nH-X1O" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-20" id="R5R-sY-40o"/>
-                            <constraint firstItem="CVD-lq-4pF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Vg8-7d-iEH"/>
                             <constraint firstItem="6Q0-ii-8oh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Xzm-UY-DUW"/>
                             <constraint firstItem="6Q0-ii-8oh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bg7-JV-Ll6"/>
                             <constraint firstItem="zpp-cM-3yT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="djy-ll-bpj"/>
                             <constraint firstItem="zpp-cM-3yT" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="egm-Tn-ipN"/>
                             <constraint firstItem="6Q0-ii-8oh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="uWb-Fh-LkD"/>
-                            <constraint firstItem="iv6-nH-X1O" firstAttribute="top" secondItem="CVD-lq-4pF" secondAttribute="bottom" constant="29" id="wzQ-aD-jvA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -292,7 +300,7 @@
                         <outlet property="locationTableView" destination="iv6-nH-X1O" id="aFe-jv-FTn"/>
                         <outlet property="mainView" destination="6Q0-ii-8oh" id="6Fw-PG-Cxf"/>
                         <outlet property="mapView" destination="zpp-cM-3yT" id="vV2-XT-GY3"/>
-                        <outlet property="txtLocationSearch" destination="CVD-lq-4pF" id="Zc4-zp-W7P"/>
+                        <outlet property="searchBar" destination="pTY-iW-SnU" id="AvL-tt-VGe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
