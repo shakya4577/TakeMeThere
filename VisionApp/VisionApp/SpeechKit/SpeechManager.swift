@@ -95,11 +95,11 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate,AVSpeechSynthesizerDel
         {
             if(voiceInputMessage == "Let's walk")
             {
-                AppDelegate.primeDelegate!.letsWalk()
+                AppDelegate.visionDelegate!.NavigateToVision(isLocalLocation: false)
             }
             else if(voiceInputMessage == "Where am I")
             {
-                AppDelegate.primeDelegate!.whereAmI()
+                AppDelegate.visionDelegate!.whereAmI()
             }
             else
             {
@@ -114,7 +114,7 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate,AVSpeechSynthesizerDel
                 print(String(destination))
                 if (isTakeMeCommand == "Take me to")
                 {
-                    AppDelegate.primeDelegate!.filterLocationList(filterInput: String(destination))
+                    AppDelegate.visionDelegate!.filterLocationList(filterInput: String(destination))
                 }
             }
         }
@@ -157,11 +157,6 @@ class SpeechManager: NSObject, SFSpeechRecognizerDelegate,AVSpeechSynthesizerDel
     
     func inputsToSaveLocation()->(String,String)
     {
-
-//        voiceOutput(message: "What is the location name")
-//        sleep(2)
-//        voiceInput(isLocationSave: true)
-//        return (locationName,locationPlacemark)
         DispatchQueue.main.asyncAfter(deadline: .now() + 6.0, execute: {
             self.voiceOutput(message: "What is the location name",commandType: Constants.VoiceCommand.VoiceCommandLocationName)
         });
