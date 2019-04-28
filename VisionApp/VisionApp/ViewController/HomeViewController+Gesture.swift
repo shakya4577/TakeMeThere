@@ -31,12 +31,6 @@ extension HomeViewController
         }
     }
     
-    @IBAction func longPressDetected(_ sender: UILongPressGestureRecognizer)
-    {
-       
-        AppDelegate.speechManager.voiceOutput(message: "Hi I am Listening", commandType: Constants.VoiceCommand.VoiceCommandAwakeInteractor);
-    }
-    
     @IBAction func swipeDetected(_ sender: UISwipeGestureRecognizer)
     {
         let isLocalLocation = searchBar.text?.isEmpty
@@ -44,8 +38,8 @@ extension HomeViewController
         switch sender.direction
         {
         case .up:
-            locationSelectionCounter = locationSelectionCounter - 1
             selectDestination()
+            locationSelectionCounter = locationSelectionCounter - 1
             let indexPath = NSIndexPath(item: locationSelectionCounter, section: 0)
             locationTableView.scrollToRow(at: indexPath as IndexPath, at: UITableView.ScrollPosition.top, animated: true)
         case .right: NavigateToVision(isLocalLocation: isLocalLocation!)
@@ -53,6 +47,7 @@ extension HomeViewController
         selectDestination()
         let indexPath = NSIndexPath(item: locationSelectionCounter, section: 0)
         locationTableView.scrollToRow(at: indexPath as IndexPath, at: UITableView.ScrollPosition.top, animated: true)
+        case .left : saveThisLocation()
         default:
             return
         }
@@ -63,5 +58,10 @@ extension HomeViewController
        AppDelegate.visionDelegate?.whereAmI()
     }
     
+    @IBAction func longPressDetected(_ sender: UILongPressGestureRecognizer)
+    {
+        
+        AppDelegate.speechManager.voiceOutput(message: "Hi I am Listening", commandType: Constants.VoiceCommand.VoiceCommandAwakeInteractor);
+    }
    
 }
