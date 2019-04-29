@@ -2,25 +2,19 @@ import UIKit
 import Speech
 import MapKit
 import Vision
-class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate, PrimeDelegate
+class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,VisionDelegate
 {
     @IBOutlet weak var locationTableView: UITableView!
     @IBOutlet weak var mainView: UIImageView!
     internal var localLocationList = [LocationModel]()
-    private var isWalkMode = true
-    internal var isSelection = false
     internal var locationSelectionCounter = 0
-   
-    
-    let visionViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "VisionViewController") as! VisionViewController
-    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mapView: MKMapView!
+    var searchEditingSemaphor = true
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        AppDelegate.primeDelegate = self
-        AppDelegate.locationManager.appleMap = mapView
+       AppDelegate.locationManager.appleMap = mapView
        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
         
@@ -39,19 +33,9 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
         resignFirstResponder()
     }
    
-    func whereAmI()
-    {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-            AppDelegate.locationManager.getUserLocatoin { (location: String) in
-                AppDelegate.speechManager.voiceOutput(message:"You are at " + location,commandType:  Constants.VoiceCommand.VoiceCommandInfo)
-            }
-        })
-    }
    
-    
     func filterLocationList(filterInput: String)
     {
-        isSelection = true
         if (filterInput == "")
         {
             selectDestination()
@@ -88,20 +72,18 @@ class HomeViewController: UIViewController,SFSpeechRecognizerDelegate,UITableVie
             return
         }
         AppDelegate.speechManager.voiceOutput(message: localLocationList[locationSelectionCounter].locationName)
-     }
-    
-    func letsWalk()
-    {
-        visionViewController.destinationLocation = nil
-        self.navigationController?.pushViewController(visionViewController, animated: true)
     }
     
-    func takeMetoDestination()
+    func NavigateToVision(isLocalLocation:Bool=false)
     {
-        visionViewController.destinationLocation = localLocationList[locationSelectionCounter];
-        self.navigationController?.pushViewController(visionViewController, animated: true)
+        let visionViewController = VisionViewController()
+        if !isLocalLocation
+        {
+            visionViewController.destinationLocation = localLocationList[locationSelectionCounter];
+        }
+        performSegue(withIdentifier: "VisionIdentifier", sender: nil)
     }
-   
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return localLocationList.count
     }

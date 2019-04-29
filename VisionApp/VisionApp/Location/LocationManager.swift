@@ -130,12 +130,10 @@ class LocationManager : NSObject,CLLocationManagerDelegate,MKMapViewDelegate
         directions.calculate(completionHandler: {(response, error) in
             if let error = error {
                 print(error.localizedDescription)
-                AppDelegate.visionDelegate?.isNavigationAvailable = false
              }
             else {
                 if let response = response
                 {
-                  AppDelegate.visionDelegate?.isNavigationAvailable = true
                   self.showRoute(response)
                 }
             }

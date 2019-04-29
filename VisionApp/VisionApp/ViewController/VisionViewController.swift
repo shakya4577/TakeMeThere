@@ -7,31 +7,8 @@ import SpriteKit
 import ARKit
 import Vision
 
-class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, ARSessionDelegate
+class VisionViewController: UIViewController,ARSKViewDelegate, ARSessionDelegate,VisionDelegate
 {
-    var tempNavAvailableFlag = Bool()
-    var isNavigationAvailable: Bool
-    {
-        set
-        {
-            tempNavAvailableFlag = newValue
-            if let dest = destinationLocation
-            {
-                self.title = dest.locationName
-            }
-            if(newValue)
-            {
-                sceneViewBottomConstraint.constant = 0
-                routeMap.isHidden = false
-            }
-        }
-        get
-        {
-            return tempNavAvailableFlag
-        }
-        
-    }
-    
     @IBOutlet weak var routeMap: MKMapView!
     @IBOutlet weak var lblInfoTwo: UILabel!
     @IBOutlet weak var sceneViewBottomConstraint: NSLayoutConstraint!
@@ -47,11 +24,11 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         super.viewDidLoad()
         AppDelegate.visionDelegate = self
         AppDelegate.locationManager.appleMap = routeMap
+        
         NotificationCenter.default.addObserver(self, selector: #selector(nextMoveSelector(_:)), name: Constants.nextMoveNotificationName, object: nil)
         
         let overlayScene = SKScene()
         overlayScene.scaleMode = .aspectFill
-        sceneView.delegate = self
         sceneView.presentScene(overlayScene)
         sceneView.session.delegate = self
         
@@ -65,14 +42,17 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool)
+    {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
-        routeMap.isHidden = true
+        
         if let dest = destinationLocation
         {
+            self.title = destinationLocation?.locationName
+            sceneViewBottomConstraint.constant = -1 * routeMap.frame.height
             AppDelegate.locationManager.destinationCoordinate = CLLocationCoordinate2D(latitude: dest.locatoinLatitude, longitude: dest.locationLongitude)
+            routeMap.isHidden = false
         }
         else
         {
@@ -85,7 +65,6 @@ class VisionViewController: UIViewController,VisionDelegate,ARSKViewDelegate, AR
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        // Pause the view's session
         sceneView.session.pause()
     }
     

@@ -22,12 +22,10 @@
 		B15AC742221EC3FF00953F0E /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15AC741221EC3FF00953F0E /* RealmManager.swift */; };
 		B15AC78C221F16AD00953F0E /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15AC78B221F16AD00953F0E /* Speech.framework */; };
 		B15AC78E221F1B7C00953F0E /* SpeechManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15AC78D221F1B7C00953F0E /* SpeechManager.swift */; };
-		B16EC5CA2225202300E30532 /* NewUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B16EC5C92225202300E30532 /* NewUserViewController.swift */; };
 		B16EC5CD2225238600E30532 /* maleLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = B16EC5CC2225238600E30532 /* maleLogo.png */; };
 		B16EC5CF2225239200E30532 /* femaleLogo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = B16EC5CE2225239200E30532 /* femaleLogo.jpeg */; };
 		B16EC5D12225384500E30532 /* nextArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = B16EC5D02225384500E30532 /* nextArrow.png */; };
 		B18945672223CF6A005F2833 /* LocationTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18945662223CF6A005F2833 /* LocationTableCell.swift */; };
-		B189456B2223E060005F2833 /* PrimeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B189456A2223E060005F2833 /* PrimeDelegate.swift */; };
 		B19BFCA82228EA8C00FC9599 /* HomeViewController+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19BFCA72228EA8C00FC9599 /* HomeViewController+Gesture.swift */; };
 		B19BFCAA2228EC2700FC9599 /* VisionViewController+Gesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19BFCA92228EC2600FC9599 /* VisionViewController+Gesture.swift */; };
 		B1CA9186221D2CF6004B4CAB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CA9185221D2CF6004B4CAB /* LocationManager.swift */; };
@@ -82,13 +80,11 @@
 		B15AC741221EC3FF00953F0E /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		B15AC78B221F16AD00953F0E /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
 		B15AC78D221F1B7C00953F0E /* SpeechManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechManager.swift; sourceTree = "<group>"; };
-		B16EC5C92225202300E30532 /* NewUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserViewController.swift; sourceTree = "<group>"; };
 		B16EC5CC2225238600E30532 /* maleLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maleLogo.png; sourceTree = "<group>"; };
 		B16EC5CE2225239200E30532 /* femaleLogo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = femaleLogo.jpeg; sourceTree = "<group>"; };
 		B16EC5D02225384500E30532 /* nextArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextArrow.png; sourceTree = "<group>"; };
 		B1838D5722295F23002AEFF0 /* VisionApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VisionApp.entitlements; sourceTree = "<group>"; };
 		B18945662223CF6A005F2833 /* LocationTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableCell.swift; sourceTree = "<group>"; };
-		B189456A2223E060005F2833 /* PrimeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimeDelegate.swift; sourceTree = "<group>"; };
 		B19BFCA72228EA8C00FC9599 /* HomeViewController+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Gesture.swift"; sourceTree = "<group>"; };
 		B19BFCA92228EC2600FC9599 /* VisionViewController+Gesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VisionViewController+Gesture.swift"; sourceTree = "<group>"; };
 		B1CA9185221D2CF6004B4CAB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -157,7 +153,6 @@
 		B11CFC30222440AE00F222C3 /* Delegate */ = {
 			isa = PBXGroup;
 			children = (
-				B189456A2223E060005F2833 /* PrimeDelegate.swift */,
 				B11CFC312224410700F222C3 /* VisionDelegate.swift */,
 			);
 			path = Delegate;
@@ -195,7 +190,6 @@
 				B1F83E65221B136700F19F2B /* VisionViewController.swift */,
 				B19BFCA92228EC2600FC9599 /* VisionViewController+Gesture.swift */,
 				B18945662223CF6A005F2833 /* LocationTableCell.swift */,
-				B16EC5C92225202300E30532 /* NewUserViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -504,8 +498,6 @@
 			files = (
 				B19BFCA82228EA8C00FC9599 /* HomeViewController+Gesture.swift in Sources */,
 				B1F83E39221B0E2200F19F2B /* HomeViewController.swift in Sources */,
-				B16EC5CA2225202300E30532 /* NewUserViewController.swift in Sources */,
-				B189456B2223E060005F2833 /* PrimeDelegate.swift in Sources */,
 				B15AC78E221F1B7C00953F0E /* SpeechManager.swift in Sources */,
 				B1F83E66221B136700F19F2B /* VisionViewController.swift in Sources */,
 				B15AC70C221EB79E00953F0E /* UserDetailModel.swift in Sources */,

@@ -1,86 +1,67 @@
 import UIKit
 extension HomeViewController
 {
-    
-    public func searchBarSearchButtonClicked(_ searchBar: UISearchBar)
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String)
     {
-        let searchText = searchBar.text!
-        localLocationList = RealmManager.getLocationList()
-        if(searchText != "")
+        if searchEditingSemaphor
         {
-            localLocationList = localLocationList.filter { $0.locationName.contains(searchText) }
-            if(localLocationList.count==0)
-            {
-                AppDelegate.locationManager.searchLocationList(locationInput: searchText) {
-                    (returnedlocationList:[LocationModel])
-                    in
-                    self.localLocationList = returnedlocationList
-                    self.locationTableView.reloadData()
+            searchEditingSemaphor = false
+            _ = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { (timer) in
+                self.searchEditingSemaphor = true
+                self.localLocationList = RealmManager.getLocationList()
+                if(searchBar.text != "")
+                {
+                    self.localLocationList = self.localLocationList.filter { $0.locationName.contains(searchBar.text!)}
+                    if(self.localLocationList.count==0)
+                    {
+                        AppDelegate.locationManager.searchLocationList(locationInput: searchBar.text!) {
+                            (returnedlocationList:[LocationModel])
+                            in
+                            self.localLocationList = returnedlocationList
+                            self.locationTableView.reloadData()
+                        }
+                    }
                 }
+                else
+                {
+                    self.localLocationList = RealmManager.getLocationList()
+                }
+                self.locationTableView.reloadData()
             }
         }
-        else
-        {
-            localLocationList = RealmManager.getLocationList()
-        }
-        locationTableView.reloadData()
-    }
-    
-    @IBAction func longPressDetected(_ sender: UILongPressGestureRecognizer)
-    {
-       
-        AppDelegate.speechManager.voiceOutput(message: "Hi I am Listening", commandType: Constants.VoiceCommand.VoiceCommandAwakeInteractor);
     }
     
     @IBAction func swipeDetected(_ sender: UISwipeGestureRecognizer)
     {
-        if(sender.direction == .up && !isSelection)
+        let isLocalLocation = searchBar.text?.isEmpty
+        
+        switch sender.direction
         {
-            filterLocationList(filterInput: "")
-        }
-        else if(sender.direction == .up && isSelection)
-        {
+        case .up:
+            selectDestination()
             locationSelectionCounter = locationSelectionCounter - 1
-            selectDestination()
             let indexPath = NSIndexPath(item: locationSelectionCounter, section: 0)
             locationTableView.scrollToRow(at: indexPath as IndexPath, at: UITableView.ScrollPosition.top, animated: true)
-        }
-        else if(sender.direction == .right && !isSelection)
-        {
-            letsWalk()
-        }
-        else if(sender.direction == .right && isSelection)
-        {
-            takeMetoDestination()
-        }
-        else if(sender.direction == .down && isSelection)
-        {
-            locationSelectionCounter = locationSelectionCounter + 1
-            selectDestination()
-            let indexPath = NSIndexPath(item: locationSelectionCounter, section: 0)
-            locationTableView.scrollToRow(at: indexPath as IndexPath, at: UITableView.ScrollPosition.top, animated: true)
-        }
-        else if(sender.direction == .down && !isSelection)
-        {
-            saveThisLocation()
+        case .right: NavigateToVision(isLocalLocation: isLocalLocation!)
+        case .down :  locationSelectionCounter = locationSelectionCounter + 1
+        selectDestination()
+        let indexPath = NSIndexPath(item: locationSelectionCounter, section: 0)
+        locationTableView.scrollToRow(at: indexPath as IndexPath, at: UITableView.ScrollPosition.top, animated: true)
+        case .left : saveThisLocation()
+        default:
+            return
         }
     }
     
     @IBAction func tapDetected(_ sender: UITapGestureRecognizer)
     {
-        whereAmI()
+       AppDelegate.visionDelegate?.whereAmI()
     }
-    func saveThisLocation()
+    
+    @IBAction func longPressDetected(_ sender: UILongPressGestureRecognizer)
     {
-        AppDelegate.locationManager.saveCurrentLocation { (isSuccess:Bool) in
-            if(isSuccess)
-            {
-                AppDelegate.speechManager.voiceOutput(message: "Location Saved successfully ")
-            }
-            else
-            {
-                AppDelegate.speechManager.voiceOutput(message: "Couldn't save location")
-            }
-        }
+        
+        AppDelegate.speechManager.voiceOutput(message: "Hi I am Listening", commandType: Constants.VoiceCommand.VoiceCommandAwakeInteractor);
     }
+   
 }

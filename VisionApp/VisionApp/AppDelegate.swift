@@ -14,20 +14,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     static let speechManager:SpeechManager = SpeechManager()
     static let locationManager:LocationManager = LocationManager()
-    static let homeViewController:HomeViewController = HomeViewController()
-    static var primeDelegate:PrimeDelegate?
     static var visionDelegate:VisionDelegate?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
     {
-        print(UserDefaults.standard.bool(forKey: Constants.userRegisterDone))
-        if(!UserDefaults.standard.bool(forKey: Constants.userRegisterDone))
-        {
-            let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-            let newUserViewController = mainStoryBoard.instantiateViewController(withIdentifier: "NewUserViewController") as! NewUserViewController
-            self.window?.rootViewController = newUserViewController
-        }
-        return true
+         return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
